@@ -29,6 +29,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@aws-sdk/client-s3": "^3.385.0"
+		"@aws-sdk/client-s3": "^3.385.0",
+		"@google-cloud/bigquery": "^7.1.1",
+		"@google-cloud/storage": "^7.0.1"
 	}
 }
