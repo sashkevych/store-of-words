@@ -11,6 +11,8 @@
 		const { res } = await response.json();
 		console.log('Post : ', res);
 	}
+
+	
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -19,4 +21,4 @@
 
 
 
-<button on:click={sendPost}>POST</button>
+<button on:click={sendPost} >Init files</button>
