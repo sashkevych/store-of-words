@@ -13,6 +13,7 @@
 	}
 
 	
+	
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -20,5 +21,3 @@
 
 
 
-
-<button on:click={sendPost} >Init files</button>
