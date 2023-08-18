@@ -8,6 +8,6 @@ export async function load({ params }) {
   const res = await loadWeeklyRepeats()
   
   return {
-    data: JSON.stringify(res)
+    weeklyRepeats: JSON.stringify(res)
   };
 }
