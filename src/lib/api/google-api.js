@@ -15,3 +15,14 @@ const metadata = {
 };
 
 
+export async function loadWeeklyRepeats() {
+	const [job] = await bigquery.createQueryJob(
+		'SELECT * FROM `nativ_table.all_schema` WHERE `repeat`.type = "weekly"'
+	);
+	// console.log(`Job ${job.id} started.`);
+
+	const [rows] = await job.getQueryResults();
+
+	return rows
+}
+
