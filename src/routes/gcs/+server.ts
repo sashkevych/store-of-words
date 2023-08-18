@@ -3,9 +3,8 @@ import {  } from '$lib/api/google-api.js';
 import {  } from '../../../fs/app.js';
 
 export async function POST({ request, cookies }) {
-	// const res = await qwe()
-	// console.log(res);
-
+	console.log('POST FUNCTION ! ! ! !  !');
+	
 
 	return json({ res: '123' });
 }
