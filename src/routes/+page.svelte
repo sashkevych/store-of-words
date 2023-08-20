@@ -6,43 +6,49 @@
 
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
 
-	function compareSentences(arr1, arr2, box_id) {
-		let obj = {
-			box_id: box_id,
-			sentences: []
-		};
+	async function areThereAnyChanges(bucket_1, bucket_2) {
+		let res = bucket_1.some((el, i) => {
+			let el1 = el.sentences;
+			let el2 = bucket_2[i].sentences;
 
-		arr1.forEach((el, i) => {
-			const el1 = el;
-			const el2 = arr2[i];
+			// console.log('Sentences : ', el1, el1);
+			let res = el1.some((el, i) => {
+				// console.log('Text : ', el.text, el1);
 
-			if (el1.text != el2.text) {
-				obj.sentences.push({
-					id: el1.id,
-					text: el2.text
-				});
-			} else {
+				return el.text != el2[i].text;
+			});
+
+			if (res) {
+				return res;
 			}
 		});
-
-		return obj;
+		console.log(res);
+		return res;
 	}
 
-	async function compareBuckets(bucket_1, bucket_2) {
-		console.log('COMPARE ! ! ');
-		const result = [];
+	async function createUpdatedData(bucket_1, bucket_2) {
+		const new_data = bucket_2.filter((el, i) => {
+			let el1 = el.sentences;
+			let el2 = bucket_1[i].sentences;
 
-		bucket_1.forEach((el, i) => {
-			const el1 = el.sentences;
-			const el2 = bucket_2[i].sentences;
+			let res = el1.some((el, i) => {
+				console.log(el.text , el2[i].text);
 
-			let res = compareSentences(el1, el2, el.box_id);
+				return el.text != el2[i].text
+				
+			});
 
-			if (res.sentences[0]) result.push(res);
+			if (res) return el;
 		});
-		
-		return result;
+
+		console.log(new_data);
+		return new_data
 	}
+async function qwe() {
+	let res =  await areThereAnyChanges(JSON.parse(data.weeklyRepeats), weeklyRepeats)
+
+	if (res) await createUpdatedData(JSON.parse(data.weeklyRepeats), weeklyRepeats)
+}
 
 	async function sendPost(content) {
 		const response = await fetch('http://localhost:5173/gcs', {
@@ -56,23 +62,42 @@
 		const { res } = await response.json();
 		console.log('Post : ', res);
 	}
+	async function sendPut(content) {
+		const response = await fetch('http://localhost:5173/api', {
+			method: 'PUT',
+			body: JSON.stringify({ content }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
-	let a = 1;
+		// const { res } = await response.json();
+		// console.log('Post : ', res);
+	}
 
-	onMount(() => {
+	async function close_event_function() {
+		const NEW_CHANGES = await areThereAnyChanges(JSON.parse(data.weeklyRepeats), weeklyRepeats);
+		if (NEW_CHANGES)
+			await sendPut(await createUpdatedData(JSON.parse(data.weeklyRepeats), weeklyRepeats));
 
-		return async () => {
+		return null;
+	}
 
-			let res =  await compareBuckets(JSON.parse(data.weeklyRepeats), weeklyRepeats);
+	// onMount(() => {
+	// 	return async () => {
+	// 		let res = await compareBuckets(JSON.parse(data.weeklyRepeats), weeklyRepeats);
 
-			console.log(res);
-		};
-	});
+	// 		console.log(res);
+	// 	};
+	// });
 </script>
+
+<svelte:window on:beforeunload={close_event_function} />
 
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
+<button on:click={qwe}>comapre</button>
 {#each weeklyRepeats as repeat}
 	<div>
 		{repeat.box_id} :

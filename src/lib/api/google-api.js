@@ -14,6 +14,37 @@ const metadata = {
 	}
 };
 
+async function format(collection) {
+	const input = JSON.stringify(collection)
+
+	const output = input.replace(/{"text":"(.*?)","id":(\d+)}/g, '("$1",$2)').replace(/},{/g, '),(');
+
+	console.log(`${output}`);
+
+	return `${output}`; 
+}
+
+async function createQuery(box_id, new_data, datasetId, tableId) {
+	return (
+		'UPDATE ' +
+		`${datasetId}.${tableId}` +
+		' SET sentences = ARRAY<STRUCT<text STRING, id INTEGER>> ' +
+		new_data +
+		' WHERE box_id = ' +
+		`"${box_id}"`
+	);
+}
+
+export async function updateSentences(boxes) {
+	await boxes.forEach(async (el, i) => {
+		const sentences = el.sentences;
+		const box_id = el.box_id;
+
+		const [job] = await bigquery.createQueryJob(await createQuery(box_id, await format(sentences),datasetId,tableId));
+
+		console.log(`Job ${job.id} started.`);
+	});
+}
 
 export async function loadWeeklyRepeats() {
 	const [job] = await bigquery.createQueryJob(
@@ -23,6 +54,5 @@ export async function loadWeeklyRepeats() {
 
 	const [rows] = await job.getQueryResults();
 
-	return rows
+	return rows;
 }
-
