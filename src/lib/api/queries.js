@@ -14,14 +14,11 @@ export async function formatForSET(collection) {
 
 	const output = input.replace(/{"text":"(.*?)","id":(\d+)}/g, '("$1",$2)').replace(/},{/g, '),(');
 
-	console.log(`${output}`);
-
 	return `${output}`;
 }
 
 export async function createSelectQuery(datasetId,tableId) {
     return (
-        // 'SELECT * FROM `.all_schema` WHERE `repeat`.type = "weekly"',
         'SELECT * FROM ' + `${datasetId}.${tableId}`+ ' WHERE repeat.type = "weekly"'
     )
 }

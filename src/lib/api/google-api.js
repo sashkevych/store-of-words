@@ -22,7 +22,7 @@ export async function loadWeeklyRepeats() {
 		await createSelectQuery(datasetId,tableId)
 	);
 
-	console.log(`Job ${job.id} started.`);
+	// console.log(`Job ${job.id} started.`);
 	const [rows] = await job.getQueryResults();
 
 	return rows;

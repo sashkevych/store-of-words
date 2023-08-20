@@ -19,7 +19,6 @@
 				return res;
 			}
 		});
-		console.log(res);
 		return res;
 	}
 
@@ -29,7 +28,6 @@
 			let el2 = bucket_1[i].sentences;
 
 			let res = el1.some((el, i) => {
-				console.log(el.text, el2[i].text);
 
 				return el.text != el2[i].text;
 			});
@@ -37,7 +35,6 @@
 			if (res) return el;
 		});
 
-		console.log(new_data);
 		return new_data;
 	}
 
