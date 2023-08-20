@@ -5,9 +5,9 @@ import { json } from '@sveltejs/kit';
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
 
-  const res = await loadWeeklyRepeats()
+  const data = await loadWeeklyRepeats()
     
   return {
-    weeklyRepeats: JSON.stringify(res)
+    weeklyRepeats: JSON.stringify(data)
   };
 }

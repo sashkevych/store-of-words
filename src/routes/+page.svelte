@@ -1,6 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
-
 	/** @type {import('./$types').PageData} */
 	export let data;
 
@@ -28,7 +26,6 @@
 			let el2 = bucket_1[i].sentences;
 
 			let res = el1.some((el, i) => {
-
 				return el.text != el2[i].text;
 			});
 
@@ -39,7 +36,7 @@
 	}
 
 	async function sendPut(content) {
-		const response = await fetch('http://localhost:5173/gcp', {
+		await fetch('http://localhost:5173/gcp', {
 			method: 'PUT',
 			body: JSON.stringify({ content }),
 			headers: {
