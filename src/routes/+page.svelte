@@ -73,6 +73,7 @@
 		isOnNewSentence = obj;
 	}
 	function addNewSentence(data, box_id, sentence) {
+		if (!sentence) return;
 		data.find((box) => {
 			if (box.box_id == box_id) {
 				const newId = box.sentences[box.sentences.length - 1].id + 1;
@@ -81,28 +82,29 @@
 			}
 		});
 		newSentence = '';
-
 	}
-
 </script>
 
 <svelte:window on:beforeunload={close_event_function} />
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="flex">
+	{#each weeklyRepeats as repeat}
+		<div class="border-2 border-green-500 p-2">
+			<div>box_id : {repeat.box_id}</div>
+			{#each repeat.sentences as { id, text }}
+				<div>id: {id} ; text: <input type="text" bind:value={text} /></div>
+			{/each}
+			<button class="border-2" on:click={() => openInputForSentence(isOnNewSentence, repeat.box_id)}
+				>add sentence</button
+			>
+			{#if isOnNewSentence.toggle && isOnNewSentence.id == repeat.box_id}
+				<input class="border-2" type="text" bind:value={newSentence} />
+				<button on:click={() => addNewSentence(weeklyRepeats, repeat.box_id, newSentence)}
+					>OK</button
+				>
+			{/if}
+		</div>
+	{/each}
+</div>
 
-{#each weeklyRepeats as repeat}
-	<div>
-		<button on:click={() => openInputForSentence(isOnNewSentence, repeat.box_id)}
-			>add sentence</button
-		>
-		{repeat.box_id} :
-		{#each repeat.sentences as { id, text }}
-			<input type="text" bind:value={text} />
-		{/each}
-		{#if isOnNewSentence.toggle && isOnNewSentence.id == repeat.box_id}
-			<input type="text" bind:value={newSentence} />
-			<button on:click={() => addNewSentence(weeklyRepeats, repeat.box_id, newSentence)}>OK</button>
-		{/if}
-	</div>
-{/each}
+<button class="border border-red-600 rounded-sm">Move all</button>
