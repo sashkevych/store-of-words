@@ -90,6 +90,7 @@
 <div class="flex">
 	{#each weeklyRepeats as repeat}
 		<div class="border-2 border-green-500 p-2">
+			<div>repeat count : {repeat.repeat.count}</div>
 			<div>box_id : {repeat.box_id}</div>
 			{#each repeat.sentences as { id, text }}
 				<div>id: {id} ; text: <input type="text" bind:value={text} /></div>
