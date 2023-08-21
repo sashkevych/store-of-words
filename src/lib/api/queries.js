@@ -1,4 +1,12 @@
 export async function createUpdateQuery(box_id, new_data, datasetId, tableId) {
+	console.log(
+		'UPDATE ' +
+			`${datasetId}.${tableId}` +
+			' SET sentences = ARRAY<STRUCT<text STRING, id INTEGER>> ' +
+			new_data +
+			' WHERE box_id = ' +
+			`"${box_id}"`
+	);
 	return (
 		'UPDATE ' +
 		`${datasetId}.${tableId}` +
@@ -17,8 +25,6 @@ export async function formatForSET(collection) {
 	return `${output}`;
 }
 
-export async function createSelectQuery(datasetId,tableId) {
-    return (
-        'SELECT * FROM ' + `${datasetId}.${tableId}`+ ' WHERE repeat.type = "weekly"'
-    )
+export async function createSelectQuery(datasetId, tableId) {
+	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
 }

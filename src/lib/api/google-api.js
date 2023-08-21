@@ -13,7 +13,7 @@ export async function updateSentences(boxes) {
 		const box_id = el.box_id;
 
 		const [job] = await bigquery.createQueryJob(await createUpdateQuery(box_id, await formatForSET(sentences),datasetId,tableId));
-		// console.log(`Job ${job.id} started.`);
+		console.log(`Job ${job.id} started.`);
 	});
 }
 

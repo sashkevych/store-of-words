@@ -1,6 +1,8 @@
 <script>
 	/** @type {import('./$types').PageData} */
 	export let data;
+	import { Box } from '$lib/scripts/newbox';
+
 
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
 
@@ -59,6 +61,7 @@
 		return null;
 	}
 
+
 	// Add new sentences logic
 	let newSentence = '';
 
@@ -86,41 +89,21 @@
 	}
 	// end
 
-	// ------------->>>>
-	function createRepeatDate() {
-		const DATE = new Date();
 
-		let year = DATE.getFullYear();
-		let month = DATE.getMonth() + 1;
-		let day = DATE.getDate();
-
-		const MaxDaysInMonth = new Date(year, month, 0).getDate();
-
-		let supposedNextDate = day + 7;
-
-		if (supposedNextDate > MaxDaysInMonth) {
-			let difference = supposedNextDate - MaxDaysInMonth;
-			month = month + 1;
-			if (month == 13) {
-				year += 1;
-				month = 1;
-			}
-			day = difference;
-		} else {
-			day = supposedNextDate;
-		}
-		return `${year}-${month}-${day}`;
-	}
 	function moveAll(weeklyRepeats) {
-		const newArr = weeklyRepeats.filter((el) => {
+		const lastBox = weeklyRepeats.find(el => el.repeat.count == 7)
+		const newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
 				el.repeat.count += 1;
 				return el;
 			}
 		});
+		newWeeklyRepeats.unshift(new Box());
 
-		console.log('newArr', newArr);
+		weeklyRepeats = newWeeklyRepeats
 		console.log('weeklyRepeats', weeklyRepeats);
+		
+
 	}
 </script>
 
