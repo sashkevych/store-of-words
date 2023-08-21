@@ -111,6 +111,17 @@
 		}
 		return `${year}-${month}-${day}`;
 	}
+	function moveAll(weeklyRepeats) {
+		const newArr = weeklyRepeats.filter((el) => {
+			if (el.repeat.count != 7) {
+				el.repeat.count += 1;
+				return el;
+			}
+		});
+
+		console.log('newArr', newArr);
+		console.log('weeklyRepeats', weeklyRepeats);
+	}
 </script>
 
 <svelte:window on:beforeunload={close_event_function} />
@@ -136,4 +147,6 @@
 	{/each}
 </div>
 
-<button class="border border-red-600 rounded-sm">Move all</button>
+<button class="border border-red-600 rounded-sm" on:click={() => moveAll(weeklyRepeats)}
+	>Move all</button
+>
