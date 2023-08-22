@@ -5,7 +5,7 @@ import { updateSentences, moveAll } from '$lib/api/google-api';
 export async function POST({ request }) {
 	const { day7, week1 } = await request.json();
 
-	await moveAll(day7);
+	await moveAll(day7,week1);
 
 	return json(1 + 1);
 }

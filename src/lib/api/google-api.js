@@ -1,7 +1,15 @@
 import { bucketName, datasetId, tableId } from '$env/static/private';
 import { bigquery, storage } from './client.js';
 
-import { formatForSET, createUpdateQuery, createSelectQuery, createChangeRepeatQuery,formatForRepeat } from './queries.js';
+import {
+	formatForSET,
+	createUpdateQuery,
+	createSelectQuery,
+	createChangeRepeatQuery,
+	formatForRepeat,
+	createInsertQuery,
+	updateRepeatCounts
+} from './queries.js';
 
 export async function updateSentences(boxes) {
 	await boxes.forEach(async (el, i) => {
@@ -25,9 +33,15 @@ export async function loadWeeklyRepeats() {
 }
 
 export async function moveAll(new7DayBox, newInstance) {
-	// const [job] = await bigquery.createQueryJob(
-		let res =  await createChangeRepeatQuery(new7DayBox.box_id,await formatForRepeat(new7DayBox.repeat),datasetId,tableId)
-		console.log(res);
-	// );
-	// console.log(`Job ${job.id} started.`);
+	await bigquery.createQueryJob(
+		await createChangeRepeatQuery(
+			new7DayBox.box_id,
+			await formatForRepeat(new7DayBox.repeat),
+			datasetId,
+			tableId
+		)
+	);
+	await bigquery.createQueryJob(await updateRepeatCounts(datasetId,tableId));		
+	await bigquery.createQueryJob(await createInsertQuery(newInstance, datasetId, tableId));
+
 }

@@ -40,6 +40,30 @@ export async function createChangeRepeatQuery(box_id, new_data, datasetId, table
 	);
 }
 
+export async function createInsertQuery(box, datasetId, tableId) {
+	const { box_id, created_at, repeat, sentences } = box;
+	return (
+		'INSERT ' +
+		`${datasetId}.${tableId}` +
+		' (box_id, created_at, repeat, sentences) ' +
+		`VALUES("${box_id}", "${created_at}", ${await formatForRepeat(repeat)}, ${await formatForSET(
+			sentences
+		)})`
+	);
+}
+
 export async function formatForRepeat(repeat) {
 	return `(${repeat.count},"${repeat.date}","${repeat.type}")`;
+}
+
+export async function updateRepeatCounts(datasetId,tableId) {
+// 	UPDATE `nativ_table.all_schema`
+// SET repeat.count = repeat.count + 1
+// WHERE repeat.type = 'weekly';
+	return (
+		'UPDATE ' +
+		`${datasetId}.${tableId} ` +
+		'SET repeat.count = repeat.count + 1 ' +
+		'WHERE repeat.type = "weekly"'
+	)
 }

@@ -109,6 +109,7 @@
 			}
 		});
 		
+		console.log('lastBox',lastBox);
 		const new7DayBox = create7DayRep(lastBox)
 
 		const newInstance =  new Box()
