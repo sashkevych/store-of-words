@@ -1,15 +1,7 @@
-export async function createUpdateQuery(box_id, new_data, datasetId, tableId) {
-	return (
-		'UPDATE ' +
-		`${datasetId}.${tableId}` +
-		' SET sentences = ARRAY<STRUCT<text STRING, id INTEGER>> ' +
-		new_data +
-		' WHERE box_id = ' +
-		`"${box_id}"`
-	);
+export async function formatRepeat(repeat) {
+	return `(${repeat.count},"${repeat.date}","${repeat.type}")`;
 }
-
-export async function formatForSET(collection) {
+export async function formatSentences(collection) {
 	const input = JSON.stringify(collection);
 
 	const output = input.replace(/{"text":"(.*?)","id":(\d+)}/g, '("$1",$2)').replace(/},{/g, '),(');
@@ -17,45 +9,49 @@ export async function formatForSET(collection) {
 	return `${output}`;
 }
 
-export async function createSelectQuery(datasetId, tableId) {
-	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
-}
-
-export async function createChangeRepeatQuery(box_id, new_data, datasetId, tableId) {
+export async function sentenceUpdateQuery(box_id, new_data, datasetId, tableId) {
 	return (
 		'UPDATE ' +
 		`${datasetId}.${tableId}` +
-		' SET repeat = STRUCT<count INTEGER, date DATE, type STRING> ' +
-		new_data +
+		' SET sentences = ARRAY<STRUCT<text STRING, id INTEGER>> ' +
+		await formatSentences(new_data) +
 		' WHERE box_id = ' +
 		`"${box_id}"`
 	);
 }
 
-export async function createInsertQuery(box, datasetId, tableId) {
+export async function weeklySentencesSelectQuery(datasetId, tableId) {
+	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
+}
+
+export async function repeatUpdateQuery(box_id, new_data, datasetId, tableId) {
+	return (
+		'UPDATE ' +
+		`${datasetId}.${tableId}` +
+		' SET repeat = STRUCT<count INTEGER, date DATE, type STRING> ' +
+		await formatRepeat(new_data) +
+		' WHERE box_id = ' +
+		`"${box_id}"`
+	);
+}
+
+export async function repeatInsertQuery(box, datasetId, tableId) {
 	const { box_id, created_at, repeat, sentences } = box;
 	return (
 		'INSERT ' +
 		`${datasetId}.${tableId}` +
 		' (box_id, created_at, repeat, sentences) ' +
-		`VALUES("${box_id}", "${created_at}", ${await formatForRepeat(repeat)}, ${await formatForSET(
+		`VALUES("${box_id}", "${created_at}", ${await formatRepeat(repeat)}, ${await formatSentences(
 			sentences
 		)})`
 	);
 }
 
-export async function formatForRepeat(repeat) {
-	return `(${repeat.count},"${repeat.date}","${repeat.type}")`;
-}
-
-export async function updateRepeatCounts(datasetId,tableId) {
-// 	UPDATE `nativ_table.all_schema`
-// SET repeat.count = repeat.count + 1
-// WHERE repeat.type = 'weekly';
+export async function updateRepeatCounts(datasetId, tableId) {
 	return (
 		'UPDATE ' +
 		`${datasetId}.${tableId} ` +
 		'SET repeat.count = repeat.count + 1 ' +
 		'WHERE repeat.type = "weekly"'
-	)
+	);
 }

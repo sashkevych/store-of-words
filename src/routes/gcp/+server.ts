@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { updateSentences, moveAll } from '$lib/api/google-api';
+import { updateWeeklySentences, moveAll } from '$lib/api/google-api';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
@@ -13,7 +13,7 @@ export async function POST({ request }) {
 export async function PUT({ request }) {
 	const { content } = await request.json();
 
-	await updateSentences(content);
+	await updateWeeklySentences(content);
 
 	return json(1 + 1);
 }

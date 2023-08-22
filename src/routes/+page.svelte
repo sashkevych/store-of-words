@@ -6,42 +6,6 @@
 
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
 
-	// async function areThereAnyChanges(bucket_1, bucket_2) {
-	// 	let res = bucket_1.some((el, i) => {
-	// 		let el1 = el.sentences;
-	// 		let el2 = bucket_2[i].sentences;
-
-	// 		let res = el1.some((el, i) => {
-	// 			if (!el2[i]?.text || !el1?.text) {
-	// 				return true;
-	// 			}
-	// 			return el.text != el2[i].text;
-	// 		});
-
-	// 		if (res) {
-	// 			return res;
-	// 		}
-	// 	});
-	// 	return res;
-	// }
-
-	// async function createUpdatedData(bucket_1, bucket_2) {
-	// 	const new_data = bucket_2.filter((el, i) => {
-	// 		let el1 = el.sentences;
-	// 		let el2 = bucket_1[i]?.sentences;
-
-	// 		let res = el1.some((el, i) => {
-	// 			if (!el2[i]) {
-	// 				return true;
-	// 			}
-	// 			return el.text != el2[i].text;
-	// 		});
-
-	// 		if (res) return el;
-	// 	});
-
-	// 	return new_data;
-	// }
 	async function areThereAnyChanges(newArr, oldArr) {
 		const changes = newArr.filter((el, i) => {
 			const el1 = el.sentences;
@@ -91,12 +55,11 @@
 		const changes = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
 		console.log(changes);
 		if (changes[0]) await sendPut(changes);
-		// const NEW_CHANGES = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
-		// if (NEW_CHANGES)
-		// 	await sendPut(await createUpdatedData(JSON.parse(data.weeklyRepeats), weeklyRepeats));
 
 		return null;
 	}
+
+
 
 	// Add new sentences logic
 	let newSentence = '';
@@ -128,26 +91,22 @@
 
 	function moveAll(weeklyRepeats) {
 		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
-		const newWeeklyRepeats = weeklyRepeats.filter((el) => {
+		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
 				el.repeat.count += 1;
 				return el;
 			}
 		});
 
-		console.log('lastBox', lastBox);
 		const new7DayBox = create7DayRep(lastBox);
+		const newBox = new Box();
 
-		const newInstance = new Box();
-
-		newWeeklyRepeats.unshift(new Box());
-
+		newWeeklyRepeats.unshift(newBox);
+		
 		weeklyRepeats = newWeeklyRepeats;
 
-		// console.log('weeklyRepeats', weeklyRepeats);
-		console.log('newBox', new7DayBox.repeat);
 
-		sendPost({ day7: new7DayBox, week1: newInstance });
+		sendPost({ day7: new7DayBox, week1: newBox });
 	}
 </script>
 
