@@ -52,6 +52,16 @@
 			}
 		});
 	}
+	async function sendPost(content) {
+		await fetch('http://localhost:5173/gcp', {
+			method: 'POST',
+			body: JSON.stringify( content ),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
+
 
 	async function close_event_function() {
 		const NEW_CHANGES = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
@@ -90,7 +100,7 @@
 	// end
 
 
-	function moveAll(weeklyRepeats) {
+	 function moveAll(weeklyRepeats) {
 		const lastBox = weeklyRepeats.find(el => el.repeat.count == 7)
 		const newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
@@ -100,15 +110,18 @@
 		});
 		
 		const new7DayBox = create7DayRep(lastBox)
+
+		const newInstance =  new Box()
+
 		newWeeklyRepeats.unshift(new Box());
 
 		weeklyRepeats = newWeeklyRepeats
 
 
-		console.log('weeklyRepeats', weeklyRepeats);
-		console.log('newBox', new7DayBox);
+		// console.log('weeklyRepeats', weeklyRepeats);
+		console.log('newBox', new7DayBox.repeat);
 		
-
+		sendPost({day7: new7DayBox,week1:newInstance})
 	}
 </script>
 

@@ -28,3 +28,18 @@ export async function formatForSET(collection) {
 export async function createSelectQuery(datasetId, tableId) {
 	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
 }
+
+export async function createChangeRepeatQuery(box_id, new_data, datasetId, tableId) {
+	return (
+		'UPDATE ' +
+		`${datasetId}.${tableId}` +
+		' SET repeat = STRUCT<count INTEGER, date DATE, type STRING> ' +
+		new_data +
+		' WHERE box_id = ' +
+		`"${box_id}"`
+	);
+}
+
+export async function formatForRepeat(repeat) {
+	return `(${repeat.count},"${repeat.date}","${repeat.type}")`;
+}
