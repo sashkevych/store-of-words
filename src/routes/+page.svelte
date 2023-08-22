@@ -42,14 +42,18 @@
 
 	// 	return new_data;
 	// }
-	function areThereAnyChanges(newArr, oldArr) {
-		const changes = newArr.map((el, i) => {
+	async function areThereAnyChanges(newArr, oldArr) {
+		const changes = newArr.filter((el, i) => {
 			const el1 = el.sentences;
 			const el2 = oldArr[i].sentences;
 
 			const thereIsRemovedText = el1.some((el) => !el.text);
 
-			if (thereIsRemovedText) return el;
+			if (thereIsRemovedText) {
+				const onlyWithText = el1.filter((el) => el.text);
+				el.sentences = onlyWithText;
+				return el;
+			}
 
 			const thereIsUpdateOrNew = el1.some((el, i) => {
 				if (!el2[i]?.text) {
@@ -63,6 +67,7 @@
 
 		return changes;
 	}
+
 	async function sendPut(content) {
 		await fetch('http://localhost:5173/gcp', {
 			method: 'PUT',
@@ -83,8 +88,9 @@
 	}
 
 	async function close_event_function() {
-		const changes = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))
-		if (changes[0]) await sendPut(changes) 
+		const changes = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
+		console.log(changes);
+		if (changes[0]) await sendPut(changes);
 		// const NEW_CHANGES = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
 		// if (NEW_CHANGES)
 		// 	await sendPut(await createUpdatedData(JSON.parse(data.weeklyRepeats), weeklyRepeats));
@@ -110,7 +116,8 @@
 		if (!sentence) return;
 		data.find((box) => {
 			if (box.box_id == box_id) {
-				const newId = box.sentences[box.sentences.length - 1].id + 1;
+				const Last_ID = box.sentences[box.sentences.length - 1]?.id
+				const newId = Last_ID ? Last_ID + 1 : 1 
 				const newSentence = sentence;
 				box.sentences.push({ text: newSentence, id: newId });
 			}
@@ -145,7 +152,7 @@
 </script>
 
 <svelte:window on:beforeunload={close_event_function} />
-
+<button  on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}>Compare</button>
 <div class="flex">
 	{#each weeklyRepeats as repeat}
 		<div class="border-2 border-green-500 p-2">
