@@ -2,7 +2,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 	import { Box } from '$lib/scripts/newbox';
-
+	import { create7DayRep } from '$lib/scripts/sevenrep';
 
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
 
@@ -98,10 +98,15 @@
 				return el;
 			}
 		});
+		
+		const new7DayBox = create7DayRep(lastBox)
 		newWeeklyRepeats.unshift(new Box());
 
 		weeklyRepeats = newWeeklyRepeats
+
+
 		console.log('weeklyRepeats', weeklyRepeats);
+		console.log('newBox', new7DayBox);
 		
 
 	}
