@@ -1,5 +1,5 @@
-export async function formatRepeat(repeat) {
-	return `(${repeat.count},"${repeat.date}","${repeat.type}")`;
+export async function formatRepeat({count,date,type}) {
+	return `(${count},"${date}","${type}")`;
 }
 export async function formatSentences(collection) {
 	const input = JSON.stringify(collection);
@@ -24,12 +24,12 @@ export async function weeklySentencesSelectQuery(datasetId, tableId) {
 	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
 }
 
-export async function repeatUpdateQuery(box_id, new_data, datasetId, tableId) {
+export async function repeatUpdateQuery({box_id, repeat}, datasetId, tableId) {
 	return (
 		'UPDATE ' +
 		`${datasetId}.${tableId}` +
 		' SET repeat = STRUCT<count INTEGER, date DATE, type STRING> ' +
-		await formatRepeat(new_data) +
+		await formatRepeat(repeat) +
 		' WHERE box_id = ' +
 		`"${box_id}"`
 	);

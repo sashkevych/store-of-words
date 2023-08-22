@@ -35,8 +35,7 @@ export async function loadWeeklyRepeats() {
 export async function moveAll(new7DayBox, newInstance) {
 	await bigquery.createQueryJob(
 		await repeatUpdateQuery(
-			new7DayBox.box_id,
-			new7DayBox.repeat,
+			new7DayBox
 			datasetId,
 			tableId
 		)
