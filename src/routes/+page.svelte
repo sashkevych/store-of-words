@@ -102,7 +102,6 @@
 		const newBox = new Box();
 
 		newWeeklyRepeats.unshift(newBox);
-
 		weeklyRepeats = newWeeklyRepeats;
 
 		sendPost({ day7: new7DayBox, week1: newBox });
@@ -113,29 +112,9 @@
 <button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
 	>Compare</button
 >
-<div class="flex">
-	{#each weeklyRepeats as repeat}
-		<div class="border-2 border-green-500 p-2">
-			<div>repeat count : {repeat.repeat.count}</div>
-			<div>box_id : {repeat.box_id}</div>
-			{#each repeat.sentences as { id, text }}
-				<div>id: {id} ; text: <input type="text" bind:value={text} /></div>
-			{/each}
-			<button class="border-2" on:click={() => openInputForSentence(isOnNewSentence, repeat.box_id)}
-				>add sentence</button
-			>
-			{#if isOnNewSentence.toggle && isOnNewSentence.id == repeat.box_id}
-				<input class="border-2" type="text" bind:value={newSentence} />
-				<button on:click={() => addNewSentence(weeklyRepeats, repeat.box_id, newSentence)}
-					>OK</button
-				>
-			{/if}
-		</div>
-	{/each}
-</div>
-
 <button class="border border-red-600 rounded-sm" on:click={() => moveAll(weeklyRepeats)}
-	>Move all</button
->{#each weeklyRepeats as repeat}
+	>Move all</button>
+	
+{#each weeklyRepeats as repeat}
 	<Editor {repeat} />
 {/each}
