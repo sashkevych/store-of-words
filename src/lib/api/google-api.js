@@ -2,11 +2,9 @@ import { bucketName, datasetId, tableId } from '$env/static/private';
 import { bigquery, storage } from './client.js';
 
 import {
-	formatSentences,
 	sentenceUpdateQuery,
 	weeklySentencesSelectQuery,
 	repeatUpdateQuery,
-	formatRepeat,
 	repeatInsertQuery,
 	updateRepeatCounts
 } from './queries.js';
@@ -35,7 +33,7 @@ export async function loadWeeklyRepeats() {
 export async function moveAll(new7DayBox, newInstance) {
 	await bigquery.createQueryJob(
 		await repeatUpdateQuery(
-			new7DayBox
+			new7DayBox,
 			datasetId,
 			tableId
 		)
