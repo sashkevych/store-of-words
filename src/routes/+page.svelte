@@ -4,6 +4,8 @@
 	import { Box } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
 
+	import Editor from '$lib/components/Editor.svelte';
+
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
 
 	async function areThereAnyChanges(newArr, oldArr) {
@@ -59,8 +61,6 @@
 		return null;
 	}
 
-
-
 	// Add new sentences logic
 	let newSentence = '';
 
@@ -79,8 +79,8 @@
 		if (!sentence) return;
 		data.find((box) => {
 			if (box.box_id == box_id) {
-				const Last_ID = box.sentences[box.sentences.length - 1]?.id
-				const newId = Last_ID ? Last_ID + 1 : 1 
+				const Last_ID = box.sentences[box.sentences.length - 1]?.id;
+				const newId = Last_ID ? Last_ID + 1 : 1;
 				const newSentence = sentence;
 				box.sentences.push({ text: newSentence, id: newId });
 			}
@@ -102,16 +102,17 @@
 		const newBox = new Box();
 
 		newWeeklyRepeats.unshift(newBox);
-		
-		weeklyRepeats = newWeeklyRepeats;
 
+		weeklyRepeats = newWeeklyRepeats;
 
 		sendPost({ day7: new7DayBox, week1: newBox });
 	}
 </script>
 
 <svelte:window on:beforeunload={close_event_function} />
-<button  on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}>Compare</button>
+<button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
+	>Compare</button
+>
 <div class="flex">
 	{#each weeklyRepeats as repeat}
 		<div class="border-2 border-green-500 p-2">
@@ -135,4 +136,6 @@
 
 <button class="border border-red-600 rounded-sm" on:click={() => moveAll(weeklyRepeats)}
 	>Move all</button
->
+>{#each weeklyRepeats as repeat}
+	<Editor {repeat} />
+{/each}
