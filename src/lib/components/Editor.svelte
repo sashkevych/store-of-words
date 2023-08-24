@@ -1,6 +1,7 @@
 <script>
+	import { newData } from '../../store';
+
 	export let repeat;
-	export let weeklyRepeats;
 	const { box_id, sentences } = repeat;
 
 	let newSentence = '';
@@ -18,18 +19,23 @@
 	}
 	function addNewSentence(data, box_id, sentence) {
 		if (!sentence) return;
-		data.find((box) => {
-			if (box.box_id == box_id) {
-				const Last_ID = box.sentences[box.sentences.length - 1]?.id;
-				const newId = Last_ID ? Last_ID + 1 : 1;
-				const newSentence = sentence;
-				box.sentences.push({ text: newSentence, id: newId });
-			}
-		});
+
+			data.find((box) => {
+				if (box.box_id == box_id) {
+					const Last_ID = box.sentences[box.sentences.length - 1]?.id;
+					const newId = Last_ID ? Last_ID + 1 : 1;
+					const newSentence = sentence;
+					box.sentences.push({ text: newSentence, id: newId });
+				}
+			});
+
+			$newData = $newData
+
 		newSentence = '';
 	}
-</script>
 
+	
+</script>
 <div class="border-2 border-green-500 p-2">
 	<div>repeat count : {repeat.repeat.count}</div>
 	<div>box_id : {box_id}</div>
@@ -41,6 +47,8 @@
 	>
 	{#if isOnNewSentence.toggle && isOnNewSentence.id == box_id}
 		<input class="border-2" type="text" bind:value={newSentence} />
-		<button on:click={() => addNewSentence(weeklyRepeats, box_id, newSentence)}>OK</button>
+		<button on:click={() => addNewSentence($newData, box_id, newSentence)}>OK</button>
 	{/if}
 </div>
+
+

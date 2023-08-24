@@ -1,19 +1,15 @@
 <script>
 	/** @type {import('./$types').PageData} */
 	export let data;
-	import { Box } from '$lib/scripts/newbox';
+	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
 
 	import Editor from '$lib/components/Editor.svelte';
 
 	import { oldData, newData } from '../store';
 
-	
-	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
-
-	oldData.set(JSON.parse(data.weeklyRepeats))
-	newData.set(JSON.parse(data.weeklyRepeats))
-
+	oldData.set(JSON.parse(data.weeklyRepeats));
+	newData.set(JSON.parse(data.weeklyRepeats));
 
 	async function areThereAnyChanges(newArr, oldArr) {
 		const changes = newArr.filter((el, i) => {
@@ -59,7 +55,7 @@
 		});
 	}
 	async function close_event_function() {
-		const changes = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
+		const changes = await areThereAnyChanges($newData, $oldData);
 		console.log(changes);
 		if (changes[0]) await sendPut(changes);
 
@@ -73,25 +69,27 @@
 				return el;
 			}
 		});
-
 		const new7DayBox = create7DayRep(lastBox);
-		const newBox = new Box();
 
+		const newBox = createBox();
 		newWeeklyRepeats.unshift(newBox);
-		weeklyRepeats = newWeeklyRepeats;
+
+		
+		newData.set(newWeeklyRepeats);
 
 		sendPost({ day7: new7DayBox, week1: newBox });
 	}
 </script>
 
 <svelte:window on:beforeunload={close_event_function} />
-<button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
+<!-- <button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
 	>Compare</button
->
-<button class="border border-red-600 rounded-sm" on:click={() => moveAll(weeklyRepeats)}
-	>Move all</button
+> -->
+<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}>Move all</button
 >
 
-{#each weeklyRepeats as repeat}
-	<Editor {repeat} {weeklyRepeats} />
-{/each}
+{#key $newData}
+	{#each $newData as qwe}
+		<Editor repeat={qwe} />
+	{/each}
+{/key}
