@@ -1,5 +1,6 @@
 <script>
 	export let repeat;
+	export let weeklyRepeats;
 	const { box_id, sentences } = repeat;
 
 	let newSentence = '';

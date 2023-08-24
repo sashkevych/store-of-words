@@ -6,7 +6,14 @@
 
 	import Editor from '$lib/components/Editor.svelte';
 
+	import { oldData, newData } from '../store';
+
+	
 	let weeklyRepeats = JSON.parse(data.weeklyRepeats);
+
+	oldData.set(JSON.parse(data.weeklyRepeats))
+	newData.set(JSON.parse(data.weeklyRepeats))
+
 
 	async function areThereAnyChanges(newArr, oldArr) {
 		const changes = newArr.filter((el, i) => {
@@ -33,7 +40,6 @@
 
 		return changes;
 	}
-
 	async function sendPut(content) {
 		await fetch('http://localhost:5173/gcp', {
 			method: 'PUT',
@@ -52,7 +58,6 @@
 			}
 		});
 	}
-
 	async function close_event_function() {
 		const changes = await areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats));
 		console.log(changes);
@@ -60,35 +65,6 @@
 
 		return null;
 	}
-
-	// Add new sentences logic
-	let newSentence = '';
-
-	let isOnNewSentence = {
-		toggle: false,
-		id: ''
-	};
-
-	function openInputForSentence(obj, box_id) {
-		obj.id = box_id;
-		obj.toggle = true;
-
-		isOnNewSentence = obj;
-	}
-	function addNewSentence(data, box_id, sentence) {
-		if (!sentence) return;
-		data.find((box) => {
-			if (box.box_id == box_id) {
-				const Last_ID = box.sentences[box.sentences.length - 1]?.id;
-				const newId = Last_ID ? Last_ID + 1 : 1;
-				const newSentence = sentence;
-				box.sentences.push({ text: newSentence, id: newId });
-			}
-		});
-		newSentence = '';
-	}
-	// end
-
 	function moveAll(weeklyRepeats) {
 		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
@@ -113,8 +89,9 @@
 	>Compare</button
 >
 <button class="border border-red-600 rounded-sm" on:click={() => moveAll(weeklyRepeats)}
-	>Move all</button>
-	
+	>Move all</button
+>
+
 {#each weeklyRepeats as repeat}
-	<Editor {repeat} />
+	<Editor {repeat} {weeklyRepeats} />
 {/each}
