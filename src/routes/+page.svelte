@@ -10,14 +10,37 @@
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(JSON.parse(data.weeklyRepeats));
+	function whiteSpaceFilter(newArr, oldArr) {
+		let doWeHaveWhiteSpace = false
+		const changes = newArr.filter((el, i) => {
+			let el1 = el.sentences;
+			let el2 = oldArr[i].sentences;
 
+			if (el1.length > el2.length) {
+				let withoutWhiteSpace = el1.filter((el, i) => {
+					if (!el2[i]) {
+						if (!el.text.trim()) {
+							doWeHaveWhiteSpace = true
+							return false;
+						}
+						return true
+					}
+				});
+				el.sentences = withoutWhiteSpace
+			}
+			return el;
+		});
+
+		if (doWeHaveWhiteSpace) newData.set(changes)
+
+	}
 	async function areThereAnyChanges(newArr, oldArr) {
 		const changes = newArr.filter((el, i) => {
 			const el1 = el.sentences;
 			const el2 = oldArr[i].sentences;
 
-			const thereIsRemovedText = el1.some((el) => !el.text);
-
+			const thereIsRemovedText = el1.some((el) => !el?.text);
+			console.log('thereIsRemovedText', thereIsRemovedText);
 			if (thereIsRemovedText) {
 				const onlyWithText = el1.filter((el) => el.text);
 				el.sentences = onlyWithText;
@@ -30,7 +53,7 @@
 				}
 				return el.text != el2[i].text;
 			});
-
+			console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
 			if (thereIsUpdateOrNew) return el;
 		});
 
@@ -72,6 +95,7 @@
 		sendPost({ day7: new7DayBox, week1: newBox });
 	}
 	async function close_event_handler() {
+		// whiteSpaceFilter($newData,$oldData)
 		const changes = await areThereAnyChanges($newData, $oldData);
 		console.log(changes);
 		if (changes[0]) await sendPut(changes);
@@ -90,7 +114,6 @@
 			return arr;
 		});
 	}
-
 	function deleteBoxIfEmpty(box_id, sentence_id) {
 		const Text = $newData
 			.find((box) => box.box_id == box_id)
@@ -106,7 +129,7 @@
 				box.sentences = newSentences;
 				return value;
 			});
-			console.log($newData);
+			console.log('newData ',$newData, '$oldData',$oldData);
 		}
 	}
 	function key_down_handler(event) {
@@ -130,9 +153,7 @@
 </script>
 
 <svelte:window on:beforeunload={close_event_handler} on:keydown={(e) => key_down_handler(e)} />
-<!-- <button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
-	>Compare</button
-> -->
+<button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 <button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}>Move all</button
 >
 

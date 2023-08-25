@@ -7,7 +7,6 @@
 
 
 	function isOnClickHandler(box_id,sentence_id) {
-
 		isFocusDiv.set({event:true,box_id,sentence_id})
 	}
 	
