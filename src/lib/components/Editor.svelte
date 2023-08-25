@@ -11,9 +11,11 @@
 		isFocusDiv.set({event:true,box_id,sentence_id})
 	}
 	
+
+
 </script>
 
-
+<button on:click={() => console.log($newData)}>log</button>
 <div class="gap-3">
 	<div>Day : {repeat.repeat.count}</div>
 	<div>Box : {box_id}</div>

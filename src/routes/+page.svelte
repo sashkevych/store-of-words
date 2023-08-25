@@ -90,9 +90,18 @@
 			return arr;
 		});
 	}
+
+	function deleteBoxIfEmpty(box_id, sentence_id) {
+		const box = $newData.find((box) => box.box_id == box_id);
+		const sentenceById = box.sentences.find(sen => sen.id == sentence_id).text
+	
+
+
+	}
 	function key_down_handler(event) {
 		const { key, target } = event;
 
+		const { box_id, sentence_id } = $isFocusDiv;
 		if (key == 'Enter') {
 			if (!$isFocusDiv.event) return;
 			const newDiv = document.createElement('div');
@@ -101,7 +110,10 @@
 
 			target.after(newDiv);
 
-			addNewSentence($isFocusDiv.box_id, $isFocusDiv.sentence_id);
+			addNewSentence(box_id, sentence_id);
+		} else if (key == 'Backspace') {
+			console.log('backspace');
+			deleteBoxIfEmpty(box_id, sentence_id);
 		}
 	}
 </script>
