@@ -78,19 +78,30 @@
 
 		return null;
 	}
+	function addNewSentence(box_id, sentence_id) {
+		newData.update((arr) => {
+			const box = arr.find((box) => box.box_id == box_id);
+
+			const Length = box.sentences.length;
+			const LastSentence = box.sentences[Length - 1];
+
+			box.sentences.push({ text: '', id: LastSentence.id ? LastSentence.id + 1 : LastSentence.id });
+
+			return arr;
+		});
+	}
 	function key_down_handler(event) {
 		const { key, target } = event;
 
 		if (key == 'Enter') {
-			if (!$isFocusDiv) return;
-			console.log('qwe');
+			if (!$isFocusDiv.event) return;
 			const newDiv = document.createElement('div');
 			const newContent = document.createTextNode('Hi there and greetings!');
 			newDiv.appendChild(newContent);
 
-			// target.after(newDiv);
-			console.log(target, newDiv);
-			target.parentNode.insertBefore(newDiv, target.nextSibling);
+			target.after(newDiv);
+
+			addNewSentence($isFocusDiv.box_id, $isFocusDiv.sentence_id);
 		}
 	}
 </script>
