@@ -89,7 +89,7 @@
 >
 
 {#key $newData}
-	{#each $newData as qwe}
-		<Editor repeat={qwe} />
+	{#each $newData as repeat}
+		<Editor {repeat} />
 	{/each}
 {/key}
