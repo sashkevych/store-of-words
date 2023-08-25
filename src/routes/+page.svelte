@@ -6,7 +6,7 @@
 
 	import Editor from '$lib/components/Editor.svelte';
 
-	import { oldData, newData } from '../store';
+	import { oldData, newData, isFocusDiv } from '../store';
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(JSON.parse(data.weeklyRepeats));
@@ -54,13 +54,6 @@
 			}
 		});
 	}
-	async function close_event_function() {
-		const changes = await areThereAnyChanges($newData, $oldData);
-		console.log(changes);
-		if (changes[0]) await sendPut(changes);
-
-		return null;
-	}
 	function moveAll(weeklyRepeats) {
 		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
@@ -74,14 +67,35 @@
 		const newBox = createBox();
 		newWeeklyRepeats.unshift(newBox);
 
-		
 		newData.set(newWeeklyRepeats);
 
 		sendPost({ day7: new7DayBox, week1: newBox });
 	}
+	async function close_event_handler() {
+		const changes = await areThereAnyChanges($newData, $oldData);
+		console.log(changes);
+		if (changes[0]) await sendPut(changes);
+
+		return null;
+	}
+	function key_down_handler(event) {
+		const { key, target } = event;
+
+		if (key == 'Enter') {
+			if (!$isFocusDiv) return;
+			console.log('qwe');
+			const newDiv = document.createElement('div');
+			const newContent = document.createTextNode('Hi there and greetings!');
+			newDiv.appendChild(newContent);
+
+			// target.after(newDiv);
+			console.log(target, newDiv);
+			target.parentNode.insertBefore(newDiv, target.nextSibling);
+		}
+	}
 </script>
 
-<svelte:window on:beforeunload={close_event_function} />
+<svelte:window on:beforeunload={close_event_handler} on:keydown={(e) => key_down_handler(e)} />
 <!-- <button on:click={() => areThereAnyChanges(weeklyRepeats, JSON.parse(data.weeklyRepeats))}
 	>Compare</button
 > -->
