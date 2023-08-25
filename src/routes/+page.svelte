@@ -92,11 +92,22 @@
 	}
 
 	function deleteBoxIfEmpty(box_id, sentence_id) {
-		const box = $newData.find((box) => box.box_id == box_id);
-		const sentenceById = box.sentences.find(sen => sen.id == sentence_id).text
-	
+		const Text = $newData
+			.find((box) => box.box_id == box_id)
+			.sentences.find((sen) => sen.id == sentence_id).text;
+		// const sentenceById = box.sentences.find(sen => sen.id == sentence_id)
 
-
+		if (!Text) {
+			console.log('!Text', !Text);
+			newData.update((value) => {
+				console.log('update');
+				const box = value.find((box) => box.box_id == box_id);
+				const newSentences = box.sentences.filter((sentence) => sentence.text);
+				box.sentences = newSentences;
+				return value;
+			});
+			console.log($newData);
+		}
 	}
 	function key_down_handler(event) {
 		const { key, target } = event;
