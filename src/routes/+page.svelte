@@ -35,7 +35,7 @@
 					return true;
 				}
 			});
-			// console.log('thereIsRemovedText', thereIsRemovedText);
+			console.log('thereIsRemovedText', thereIsRemovedText);
 			if (thereIsRemovedText) return el;
 
 			const thereIsUpdateOrNew = el1.some((el, i) => {
@@ -44,7 +44,7 @@
 				}
 				return el.text != el2[i].text;
 			});
-			// console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
+			console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
 			if (thereIsUpdateOrNew) return el;
 		});
 
@@ -147,6 +147,12 @@
 <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 <button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}>Move all</button
 >
+<button on:click={() => {
+	document.execCommand('bold')
+	console.log($newData);
+	
+}}>Bold</button>
+
 
 {#key $newData}
 	{#each $newData as repeat}

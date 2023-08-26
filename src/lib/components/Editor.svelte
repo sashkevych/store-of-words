@@ -27,8 +27,8 @@
 			{id}
 			class="border"
 			contenteditable="true"
-			bind:textContent={text}
+			bind:innerHTML={text}
 			on:mousedown={() => isOnClickHandler(box_id,id)}
-		/>
+		>{@html text}</div>
 	{/each}
 </div>
