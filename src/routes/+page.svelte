@@ -7,45 +7,36 @@
 	import Editor from '$lib/components/Editor.svelte';
 
 	import { oldData, newData, isFocusDiv } from '../store';
-
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(JSON.parse(data.weeklyRepeats));
-	function whiteSpaceFilter(newArr, oldArr) {
-		let doWeHaveWhiteSpace = false
-		const changes = newArr.filter((el, i) => {
-			let el1 = el.sentences;
-			let el2 = oldArr[i].sentences;
 
-			if (el1.length > el2.length) {
-				let withoutWhiteSpace = el1.filter((el, i) => {
-					if (!el2[i]) {
-						if (!el.text.trim()) {
-							doWeHaveWhiteSpace = true
-							return false;
-						}
-						return true
-					}
-				});
-				el.sentences = withoutWhiteSpace
-			}
-			return el;
+	function removeWhiteSpace(newArr) {
+		const res = newArr.filter((box) => {
+			// i need to fix a ID's
+			const onlyWithText = box.sentences.filter((sentence) => {
+				sentence.text = sentence.text.trim();
+
+				return sentence.text.trim();
+			});
+			box.sentences = onlyWithText;
+
+			return box;
 		});
 
-		if (doWeHaveWhiteSpace) newData.set(changes)
-
+		return res;
 	}
 	async function areThereAnyChanges(newArr, oldArr) {
-		const changes = newArr.filter((el, i) => {
+		const changes = removeWhiteSpace(newArr).filter((el, i) => {
 			const el1 = el.sentences;
 			const el2 = oldArr[i].sentences;
 
-			const thereIsRemovedText = el1.some((el) => !el?.text);
-			console.log('thereIsRemovedText', thereIsRemovedText);
-			if (thereIsRemovedText) {
-				const onlyWithText = el1.filter((el) => el.text);
-				el.sentences = onlyWithText;
-				return el;
-			}
+			const thereIsRemovedText = el1.some((el, i) => {
+				if (el2[i]?.text && !el?.text) {
+					return true;
+				}
+			});
+			// console.log('thereIsRemovedText', thereIsRemovedText);
+			if (thereIsRemovedText) return el;
 
 			const thereIsUpdateOrNew = el1.some((el, i) => {
 				if (!el2[i]?.text) {
@@ -53,7 +44,7 @@
 				}
 				return el.text != el2[i].text;
 			});
-			console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
+			// console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
 			if (thereIsUpdateOrNew) return el;
 		});
 
@@ -129,7 +120,7 @@
 				box.sentences = newSentences;
 				return value;
 			});
-			console.log('newData ',$newData, '$oldData',$oldData);
+			console.log('newData ', $newData, '$oldData', $oldData);
 		}
 	}
 	function key_down_handler(event) {
