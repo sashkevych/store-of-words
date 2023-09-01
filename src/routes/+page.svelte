@@ -4,7 +4,7 @@
 	<div id="item-3">Weekly</div>
 	<div id="item-4">Also today</div>
 	<div id="item-5">Work log</div>
-	<div id="item-7">space</div>
+	<div id="item-6">space</div>
 </div>
 
 <style>
@@ -31,11 +31,8 @@
 		background-color: chocolate;
 		grid-area: work-log;
 	}
+
 	#item-6 {
-		background-color: red;
-		grid-area: top-space;
-	}
-	#item-7 {
 		background-color: yellow;
 		grid-area: right-space;
 	}
