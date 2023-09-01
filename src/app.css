@@ -18,6 +18,32 @@ body {
 	text-align: center;
 }
 
+
+#side-bar {
+	background-color: blue;
+	grid-area: side-bar;
+}
+#data {
+	background-color: aquamarine;
+	grid-area: date;
+}
+#weekly {
+	background-color: blueviolet;
+	grid-area: weekly;
+}
+#also-today {
+	background-color: burlywood;
+	grid-area: also-today;
+}
+#work-log {
+	background-color: chocolate;
+	grid-area: work-log;
+}
+#space {
+	background-color: yellow;
+	grid-area: right-space;
+}
+
 @media (min-width: 0px) {
 	.container {
 		grid-template-columns: 1fr 5fr 4fr 20px;
