@@ -1,0 +1,1 @@
+<div id="weekly">Weekly</div>

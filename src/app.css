@@ -10,37 +10,26 @@ body {
 
 .container {
 	display: grid;
-	background-color: yellowgreen;
-	font-weight: 800;
 	height: 100vh;
-	text-transform: uppercase;
-	font-size: 12px;
-	text-align: center;
 }
 
 
 #side-bar {
-	background-color: blue;
 	grid-area: side-bar;
 }
 #data {
-	background-color: aquamarine;
 	grid-area: date;
 }
 #weekly {
-	background-color: blueviolet;
 	grid-area: weekly;
 }
 #also-today {
-	background-color: burlywood;
 	grid-area: also-today;
 }
 #work-log {
-	background-color: chocolate;
 	grid-area: work-log;
 }
 #space {
-	background-color: yellow;
 	grid-area: right-space;
 }
 
@@ -78,7 +67,7 @@ body {
 }
 @media (min-width: 1240px) {
 	.container {
-		grid-template-columns: 0.5fr 5fr 4fr 1fr;
+		grid-template-columns: 0.7fr 5fr 4fr 0.7fr;
 		grid-template-rows: 0.8fr 5fr 5fr;
 		grid-template-areas:
 			'side-bar date date right-space'

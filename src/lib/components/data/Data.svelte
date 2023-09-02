@@ -1,0 +1,1 @@
+<div id="data">FRIDAY, 30. AUG</div>
