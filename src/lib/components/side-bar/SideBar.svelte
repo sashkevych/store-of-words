@@ -1,5 +1,5 @@
 <script>
-	import "./style.css"
+	import './style.css';
 	import HomeIcon from './home.svelte';
 	import ScheduleIcon from './schedule.svelte';
 	import TodayIcon from './today.svelte';
@@ -15,19 +15,28 @@
 			<TodayIcon />
 			<FileIcon />
 		</div>
-		<ThemeIcon />
+		<div class="theme">
+			<ThemeIcon />
+		</div>
 	</div>
 </div>
 
 <style>
-
-.nav-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 50px;
-}
-.bar-container {
-	/* display: flex; */
-}
+	.nav-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 50px;
+		margin-top: 10px;
+	}
+	.bar-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100vh;
+		justify-content: space-between;
+	}
+	.theme {
+		margin-bottom: 10px;
+	}
 </style>
