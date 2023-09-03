@@ -17,7 +17,6 @@
 
     $: {
         if (wasMounted) {
-						console.log(1)
             removeActiveListener();
             addNewListener(query);
         }
@@ -26,7 +25,7 @@
     function addNewListener(query) {
         mql = window.matchMedia(query);
         mqlListener = v => matches = v.matches;
-        mql.addListener(mqlListener);
+        mql.addEventListener("change",mqlListener);
         matches = mql.matches;
     }
 
