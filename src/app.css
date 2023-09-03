@@ -47,6 +47,18 @@ body {
 			'also-today also-today also-today right-space'
 			'work-log work-log work-log right-space';
 	}
+	#weekly {
+		margin-left: 20px;
+		
+	}
+	#also-today {
+		margin-left: 20px;
+		
+	}
+	#work-log {
+		margin-left: 20px;
+		
+	}
 }
 @media (min-width: 600px) {
 	.container {
