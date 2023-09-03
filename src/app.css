@@ -11,6 +11,7 @@ body {
 .container {
 	display: grid;
 	height: 100vh;
+	
 }
 
 
@@ -25,9 +26,11 @@ body {
 }
 #also-today {
 	grid-area: also-today;
+	margin-bottom: 10px;
 }
 #work-log {
 	grid-area: work-log;
+	margin-bottom: 10px;
 }
 #space {
 	grid-area: right-space;
@@ -35,7 +38,8 @@ body {
 
 @media (min-width: 0px) {
 	.container {
-		grid-template-columns: 1fr 5fr 4fr 20px;
+		column-gap: 0rem;
+		grid-template-columns: 60px 5fr 4fr 20px;
 		grid-template-rows: 1fr 5fr 5fr 5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
@@ -46,7 +50,8 @@ body {
 }
 @media (min-width: 600px) {
 	.container {
-		grid-template-columns: 0.8fr 5fr 4fr 0.3fr;
+		column-gap: 2rem;
+		grid-template-columns: 85px 5fr 2fr 2px;
 		grid-template-rows: 1fr 5fr 5fr 5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
@@ -55,10 +60,11 @@ body {
 			'side-bar work-log work-log right-space';
 	}
 }
-@media (min-width: 905px) {
+@media (min-width: 1070px) {
 	.container {
-		grid-template-columns: 0.8fr 5fr 4fr 0.3fr;
-		grid-template-rows: 0.6fr 5fr 5fr;
+		column-gap: 3rem;
+		grid-template-columns: 85px 5fr 4fr 0px;
+		grid-template-rows: 0.6fr 4fr 4fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'side-bar weekly weekly right-space'
@@ -67,7 +73,8 @@ body {
 }
 @media (min-width: 1240px) {
 	.container {
-		grid-template-columns: 0.7fr 5fr 4fr 0.7fr;
+		column-gap: 3rem;
+		grid-template-columns: 85px 5fr 4fr 0.5fr;
 		grid-template-rows: 0.8fr 5fr 5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
@@ -77,7 +84,8 @@ body {
 }
 @media (min-width: 1440px) {
 	.container {
-		grid-template-columns: 1.4fr 5fr 4fr 0.6fr;
+		column-gap: 3rem;
+		grid-template-columns: 1.4fr 5fr 4fr 0.3fr;
 		grid-template-rows: 0.8fr 5fr 5fr;
 		grid-template-areas:
 			'side-bar date date right-space'

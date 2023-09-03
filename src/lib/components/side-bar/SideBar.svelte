@@ -5,20 +5,28 @@
 	import TodayIcon from './today.svelte';
 	import FileIcon from './file.svelte';
 	import ThemeIcon from './theme.svelte';
+
+	import MediaQuery from './MediaQuery.svelte';
 </script>
 
 <div id="side-bar" class="surface-container" style="width: 100%; height: 100%;">
-	<div class="bar-container">
-		<div class="nav-container">
-			<HomeIcon />
-			<ScheduleIcon />
-			<TodayIcon />
-			<FileIcon />
-		</div>
-		<div class="theme">
-			<ThemeIcon />
-		</div>
-	</div>
+	<MediaQuery query="(max-width: 600px)" let:matches>
+		{#if matches}
+			<div class="">Burger</div>
+		{:else}
+			<div class="bar-container">
+				<div class="nav-container">
+					<HomeIcon />
+					<ScheduleIcon />
+					<TodayIcon />
+					<FileIcon />
+				</div>
+				<div class="theme">
+					<ThemeIcon />
+				</div>
+			</div>
+		{/if}
+	</MediaQuery>
 </div>
 
 <style>
