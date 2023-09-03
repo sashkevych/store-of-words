@@ -7,7 +7,8 @@
 <style>
     .box {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
+        
     }
     .text {
         align-self: flex-end;
