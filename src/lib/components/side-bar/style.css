@@ -1,3 +1,17 @@
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 10px;
+}
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-between;
+}
 .nav {
     display: flex;
     flex-direction: column;
@@ -6,7 +20,22 @@
 }
 
 .home-widget {
-    height: 100%;
-    border: 1px solid black;
-    border-radius: 30px;
+	height: 100%;
+	border: 1px solid black;
+	border-radius: 30px;
+}
+@media ((min-width: 1440px)) {
+	.nav-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 50px;
+		margin-top: 10px;
+	}
+	.nav {
+		display: flex;
+		align-items: center;
+        flex-direction: row;
+		gap: 0.2rem;
+	}
 }

@@ -18,5 +18,5 @@
             />
         </g>
     </svg>
-    <div class="on-surface-variant-text label-small">Work log</div>
+    <div>Work log</div>
 </div>

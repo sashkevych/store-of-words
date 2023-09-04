@@ -18,9 +18,7 @@
             />
         </g>
     </svg>
-    <div class="on-surface-variant-text label-small">Home</div>
+    <div>Home</div>
 </div>
 <style>
-    .dick {
-    }
 </style>

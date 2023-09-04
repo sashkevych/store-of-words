@@ -1,19 +1,22 @@
 <script>
 	import './style.css';
-	import HomeIcon from './home.svelte';
-	import ScheduleIcon from './schedule.svelte';
-	import TodayIcon from './today.svelte';
-	import FileIcon from './file.svelte';
 	import ThemeIcon from './theme.svelte';
+	import NavButtons from './nav-buttons.svelte';
 
 	import MediaQuery from './MediaQuery.svelte';
-	import BurgerMenu from './burger-menu.svelte';
 </script>
 
 <div id="side-bar" class="surface-container" style="width: 100%; height: 100%;">
 	<MediaQuery query="(min-width: 1440px)" let:matches>
 		{#if matches}
-			<div>Large</div>
+		<div class="bar-container">
+			<div class="nav-container">
+				<NavButtons size={'large'} />
+			</div>
+			<div class="theme">
+				<ThemeIcon />
+			</div>
+		</div>
 		{/if}
 	</MediaQuery>
 
@@ -21,10 +24,7 @@
 		{#if matches}
 			<div class="bar-container">
 				<div class="nav-container">
-					<HomeIcon />
-					<ScheduleIcon />
-					<TodayIcon />
-					<FileIcon />
+					<NavButtons size={'default'} />
 				</div>
 				<div class="theme">
 					<ThemeIcon />
@@ -35,26 +35,13 @@
 
 	<MediaQuery query="(max-width: 600px)" let:matches>
 		{#if matches}
-			<BurgerMenu />
+		<NavButtons size={'small'}/>
 		{/if}
 	</MediaQuery>
 </div>
 
 <style>
-	.nav-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 50px;
-		margin-top: 10px;
-	}
-	.bar-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100vh;
-		justify-content: space-between;
-	}
+
 	.theme {
 		margin-bottom: 10px;
 	}

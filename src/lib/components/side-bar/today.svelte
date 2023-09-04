@@ -18,7 +18,7 @@
 			/>
 		</g>
 	</svg>
-	<div class="on-surface-variant-text label-small">Also today</div>
+	<div>Also today</div>
 </div>
 
 <style>

@@ -19,5 +19,5 @@
         </g>
     </svg>
     
-    <div class="on-surface-variant-text label-small">Weekly</div>
+    <div>Weekly</div>
 </div>
