@@ -3,7 +3,6 @@
 @tailwind utilities; */
 @import url(./css/theme.css);
 
-
 body {
 	margin: 0px;
 }
@@ -11,9 +10,8 @@ body {
 .container {
 	display: grid;
 	height: 100vh;
-	
+	row-gap: 2rem;
 }
-
 
 #side-bar {
 	grid-area: side-bar;
@@ -26,11 +24,9 @@ body {
 }
 #also-today {
 	grid-area: also-today;
-	margin-bottom: 10px;
 }
 #work-log {
 	grid-area: work-log;
-	margin-bottom: 10px;
 }
 #space {
 	grid-area: right-space;
@@ -40,68 +36,72 @@ body {
 	.container {
 		column-gap: 0rem;
 		grid-template-columns: 60px 5fr 4fr 20px;
-		grid-template-rows: 1fr 5fr 5fr 5fr;
+		grid-template-rows: 1fr 4fr 4fr 4.5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'weekly weekly weekly right-space'
 			'also-today also-today also-today right-space'
 			'work-log work-log work-log right-space';
 	}
-	#weekly {
+	#work-log {
+		margin-bottom: 2rem;
 		margin-left: 20px;
-		
+	}
+	#weekly {
+		grid-area: weekly;
+		margin-left: 20px;
 	}
 	#also-today {
+		grid-area: also-today;
 		margin-left: 20px;
-		
-	}
-	#work-log {
-		margin-left: 20px;
-		
 	}
 }
 @media (min-width: 600px) {
 	.container {
 		column-gap: 2rem;
 		grid-template-columns: 85px 5fr 2fr 2px;
-		grid-template-rows: 1fr 5fr 5fr 5fr;
+		grid-template-rows: 1fr 4fr 4fr 4.5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'side-bar weekly weekly right-space'
 			'side-bar also-today also-today right-space'
 			'side-bar work-log work-log right-space';
 	}
+	#work-log {
+		margin-bottom: 2rem;
+	}
 }
 @media (min-width: 1070px) {
 	.container {
 		column-gap: 3rem;
 		grid-template-columns: 85px 5fr 4fr 0px;
-		grid-template-rows: 0.6fr 4fr 4fr;
+		grid-template-rows: 0.6fr 4fr 4.33fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'side-bar weekly weekly right-space'
 			'side-bar also-today work-log right-space';
 	}
-}
-@media (min-width: 1240px) {
-	.container {
-		column-gap: 3rem;
-		grid-template-columns: 85px 5fr 4fr 0.5fr;
-		grid-template-rows: 0.8fr 5fr 5fr;
-		grid-template-areas:
-			'side-bar date date right-space'
-			'side-bar weekly weekly right-space'
-			'side-bar also-today work-log right-space';
+	#also-today {
+		margin-bottom: 2rem;
+	}
+	#work-log {
+		margin-bottom: 2rem;
 	}
 }
 @media (min-width: 1440px) {
 	.container {
 		column-gap: 3rem;
 		grid-template-columns: 1.4fr 5fr 4fr 0.3fr;
-		grid-template-rows: 0.8fr 5fr 5fr;
+		grid-template-rows: 0.8fr 4fr 4.33fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'side-bar weekly weekly right-space'
 			'side-bar also-today work-log right-space';
+	}
+	#also-today {
+		margin-bottom: 2rem;
+	}
+	#work-log {
+		margin-bottom: 2rem;
 	}
 }
