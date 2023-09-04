@@ -63,7 +63,7 @@ body {
 @media (min-width: 600px) {
 	.container {
 		column-gap: 2rem;
-		grid-template-columns: 85px 5fr 2fr 2px;
+		grid-template-columns: 95px 5fr 2fr 2px;
 		grid-template-rows: 1fr 4fr 4fr 4.5fr;
 		grid-template-areas:
 			'side-bar date date right-space'
@@ -78,7 +78,7 @@ body {
 @media (min-width: 1070px) {
 	.container {
 		column-gap: 3rem;
-		grid-template-columns: 85px 5fr 4fr 0px;
+		grid-template-columns: 95px 5fr 4fr 0px;
 		grid-template-rows: 0.6fr 4fr 4.33fr;
 		grid-template-areas:
 			'side-bar date date right-space'

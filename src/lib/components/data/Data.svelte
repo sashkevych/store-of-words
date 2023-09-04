@@ -1,16 +1,6 @@
-<div class="box" id="data">
-    <div class="text">
-        FRIDAY, 30. AUG
-    </div>
+<script>
+    import "./data.css"
+</script>
+<div class="data-box" id="data">
+	<div class="data-position-y">FRIDAY, 30. AUG</div>
 </div>
-
-<style>
-    .box {
-        display: flex;
-        justify-content: flex-end;
-        
-    }
-    .text {
-        align-self: flex-end;
-    }
-</style>
