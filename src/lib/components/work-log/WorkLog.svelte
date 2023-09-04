@@ -1,1 +1,5 @@
-<div id="work-log">Work log</div>
+<div id="work-log">
+    <div class="home-widget">
+
+    </div>
+</div>

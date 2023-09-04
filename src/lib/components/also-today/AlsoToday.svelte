@@ -1,1 +1,5 @@
-<div id="also-today">Also today</div>
+<div id="also-today">
+    <div class="home-widget">
+
+    </div>
+</div>

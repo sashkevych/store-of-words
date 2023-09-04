@@ -7,34 +7,35 @@
 	import ThemeIcon from './theme.svelte';
 
 	import MediaQuery from './MediaQuery.svelte';
+	import BurgerMenu from './burger-menu.svelte';
 </script>
 
 <div id="side-bar" class="surface-container" style="width: 100%; height: 100%;">
-	<MediaQuery query="(min-width: 1281px)" let:matches>
+	<MediaQuery query="(min-width: 1440px)" let:matches>
 		{#if matches}
 			<div>Large</div>
 		{/if}
 	</MediaQuery>
 
-	<MediaQuery query="(min-width: 601px) and (max-width: 1280px)" let:matches>
+	<MediaQuery query="(min-width: 601px) and (max-width: 1439px)" let:matches>
 		{#if matches}
-		<div class="bar-container">
-			<div class="nav-container">
-				<HomeIcon />
-				<ScheduleIcon />
-				<TodayIcon />
-				<FileIcon />
+			<div class="bar-container">
+				<div class="nav-container">
+					<HomeIcon />
+					<ScheduleIcon />
+					<TodayIcon />
+					<FileIcon />
+				</div>
+				<div class="theme">
+					<ThemeIcon />
+				</div>
 			</div>
-			<div class="theme">
-				<ThemeIcon />
-			</div>
-		</div>
 		{/if}
 	</MediaQuery>
 
 	<MediaQuery query="(max-width: 600px)" let:matches>
 		{#if matches}
-			<div>Burger</div>
+			<BurgerMenu />
 		{/if}
 	</MediaQuery>
 </div>
