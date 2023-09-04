@@ -18,5 +18,9 @@
             />
         </g>
     </svg>
-    <div>Home</div>
+    <div class="on-surface-variant-text label-small">Home</div>
 </div>
+<style>
+    .dick {
+    }
+</style>
