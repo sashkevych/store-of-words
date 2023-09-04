@@ -5,7 +5,7 @@
 <div id="work-log">
 	<div class="home-widget surface-container">
 		<div class="repeats-template">
-			<div class="headline-position headline-small on-surface-text">Weekly repeats</div>
+			<div class="headline-position headline-small on-surface-text">Work log</div>
 			<div class="repeats-container" />
 		</div>
 	</div>
