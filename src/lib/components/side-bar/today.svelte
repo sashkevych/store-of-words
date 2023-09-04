@@ -18,7 +18,7 @@
 			/>
 		</g>
 	</svg>
-	<div>Also today</div>
+	<div class={$$props.class}>Also today</div>
 </div>
 
 <style>

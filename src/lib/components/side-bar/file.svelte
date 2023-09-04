@@ -18,5 +18,5 @@
             />
         </g>
     </svg>
-    <div>Work log</div>
+    <div class={$$props.class}>Work log</div>
 </div>

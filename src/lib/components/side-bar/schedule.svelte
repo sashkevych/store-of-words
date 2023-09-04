@@ -19,5 +19,5 @@
         </g>
     </svg>
     
-    <div>Weekly</div>
+    <div class={$$props.class}>Weekly</div>
 </div>

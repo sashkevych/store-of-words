@@ -18,7 +18,7 @@
             />
         </g>
     </svg>
-    <div>Home</div>
+    <div class={$$props.class}>Home</div>
 </div>
 <style>
 </style>
