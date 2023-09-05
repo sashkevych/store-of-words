@@ -1,14 +1,13 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	export let data;
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
 
 	import Editor from '$lib/components/Editor.svelte';
 
 	import { oldData, newData, isFocusDiv } from '../../store';
-	oldData.set(JSON.parse(data.weeklyRepeats));
-	newData.set(JSON.parse(data.weeklyRepeats));
+
+
 
 	function removeWhiteSpace(newArr) {
 		const res = newArr.filter((box) => {
