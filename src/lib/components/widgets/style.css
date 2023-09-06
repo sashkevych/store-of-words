@@ -24,11 +24,26 @@
 .repeat-box {
 	width: 200px;
 	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: clip;
+	white-space: normal;
+	text-overflow:ellipsis;
 
-	border: 1px solid black;
-	border-radius: 23px;
 	
+	border-radius: 23px;
 	flex: 0 0 auto;
+}
+
+.sentence-position {
+	display: flex;
+	margin-left: 1.5rem;
+	gap: .1rem;
+}
+
+
+.header-position {
+	margin-left: 1.5rem;
+	margin-top: .9rem;
+	margin-bottom: .6rem;
+}
+.text-hidden {
+	width: 137px;
 }
