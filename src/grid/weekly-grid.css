@@ -15,8 +15,8 @@
 	grid-area: date;
     background-color: salmon;
 }
-#box-text {
-	grid-area: box-text;
+#editor {
+	grid-area: editor;
     background-color: sandybrown;
 }
 
@@ -31,7 +31,7 @@
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar date right-space'
-			'box-text box-text right-space'
+			'editor editor right-space'
 	}
 
 }
@@ -41,7 +41,7 @@
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar date right-space'
-			'box-text box-text right-space'
+			'editor editor right-space'
 	}
 }
 @media (min-width: 1166px) {
@@ -50,7 +50,7 @@
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar drop-menu date right-space'
-			'side-bar drop-menu box-text right-space'
+			'side-bar drop-menu editor right-space'
 	}
 	
 }
@@ -60,7 +60,7 @@
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar drop-menu date right-space'
-			'side-bar drop-menu box-text right-space'
+			'side-bar drop-menu editor right-space'
 	}
 	
 }
