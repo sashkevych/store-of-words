@@ -1,0 +1,7 @@
+.data-box {
+	display: flex;
+	justify-content: flex-end;
+}
+.data-position-y {
+	align-self: flex-end;
+}

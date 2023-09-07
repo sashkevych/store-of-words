@@ -1,5 +1,5 @@
 <script>
-	import './data.css';
+	import './style.css';
 </script>
 
 <div class="data-box" id="data">
