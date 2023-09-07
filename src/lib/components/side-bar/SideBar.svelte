@@ -20,7 +20,7 @@
 		{/if}
 	</MediaQuery>
 
-	<MediaQuery query="(min-width: 601px) and (max-width: 1439px)" let:matches>
+	<MediaQuery query="(min-width: 1070px) and (max-width: 1439px)" let:matches>
 		{#if matches}
 			<div class="bar-container">
 				<div class="nav-container">
@@ -33,7 +33,7 @@
 		{/if}
 	</MediaQuery>
 
-	<MediaQuery query="(max-width: 600px)" let:matches>
+	<MediaQuery query="(max-width: 1069px)" let:matches>
 		{#if matches}
 		<NavButtons size={'small'}/>
 		{/if}

@@ -46,7 +46,7 @@ body {
 			'work-log work-log work-log right-space';
 	}
 	#work-log {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		margin-left: 20px;
 	}
 	#weekly {
@@ -58,18 +58,22 @@ body {
 		margin-left: 20px;
 	}
 }
-@media (min-width: 600px) {
+@media (min-width: 848px) {
 	.container {
-		column-gap: 2rem;
-		grid-template-columns: 95px 5fr 2fr 2px;
-		grid-template-rows: 1fr 4fr 4fr 4.5fr;
+		column-gap: 0rem;
+		grid-template-columns: 60px 5fr 5fr 20px;
+		grid-template-rows: .6fr 4fr 4fr;
 		grid-template-areas:
 			'side-bar date date right-space'
-			'side-bar weekly weekly right-space'
-			'side-bar also-today also-today right-space'
-			'side-bar work-log work-log right-space';
+			'weekly weekly weekly right-space'
+			'also-today also-today work-log right-space';
 	}
 	#work-log {
+		margin-bottom: 2rem;
+	}
+	
+	#also-today {
+		grid-area: also-today;
 		margin-bottom: 2rem;
 	}
 }
