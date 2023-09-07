@@ -1,8 +1,8 @@
 <script>
-	import HomeIcon from './home.svelte';
-	import ScheduleIcon from './schedule.svelte';
-	import TodayIcon from './today.svelte';
-	import FileIcon from './file.svelte';
+	import Home from './home.svelte';
+	import Weekly from './weekly.svelte';
+	import Today from './today.svelte';
+	import WorkLog from './work-log.svelte';
 
 	import BurgerMenu from './burger-menu.svelte';
 
@@ -10,15 +10,15 @@
 </script>
 <!-- on-surface-variant-text label-small -->
 {#if size == 'large'}
-	<HomeIcon class="label-medium on-surface-variant-text"/>
-	<ScheduleIcon class="label-medium on-surface-variant-text"/>
-	<TodayIcon class="label-medium on-surface-variant-text"/>
-	<FileIcon class="label-medium on-surface-variant-text"/>
+	<Home/>
+	<Weekly/>
+	<Today/>
+	<WorkLog/>
 {:else if size == 'default'}
-	<HomeIcon class="label-medium on-surface-variant-text"/>
-	<ScheduleIcon class="label-medium on-surface-variant-text"/>
-	<TodayIcon class="label-medium on-surface-variant-text"/>
-	<FileIcon class="label-medium on-surface-variant-text"/>
+	<Home/>
+	<Weekly/>
+	<Today/>
+	<WorkLog/>
 {:else if size == 'small'}
 	<BurgerMenu />
 {/if}

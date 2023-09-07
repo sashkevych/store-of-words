@@ -18,7 +18,7 @@
 			/>
 		</g>
 	</svg>
-	<div class={$$props.class}>Also today</div>
+	<div class="label-medium on-surface-variant-text">Also today</div>
 </div>
 
 <style>

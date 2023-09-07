@@ -18,5 +18,5 @@
             />
         </g>
     </svg>
-    <div class={$$props.class}>Work log</div>
+    <div class="label-medium on-surface-variant-text">Work log</div>
 </div>
