@@ -1,12 +1,12 @@
 <script>
 	import './style.css';
+	import Boxes from './boxes.svelte';
+	import { newData } from '../../../store';
+
+	let weeklyRepeats = [];
+	newData.subscribe((vl) => (weeklyRepeats = vl));
 </script>
 
 <div id="also-today">
-	<div class="home-widget surface-container">
-		<div class="headline-position headline-small on-surface-text">Also today</div>
-		<div class="repeats-container">
-			<div class="repeat-box" />
-		</div>
-	</div>
+	<!-- <Boxes {weeklyRepeats} label={'Also today'} /> -->
 </div>
