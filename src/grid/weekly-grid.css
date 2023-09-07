@@ -1,0 +1,66 @@
+.weekly {
+	display: grid;
+	height: 100vh;
+}
+
+#side-bar {
+	grid-area: side-bar;
+    background-color: seagreen;
+}
+#drop-menu {
+	grid-area: drop-menu;
+    background-color: saddlebrown;
+}
+#data {
+	grid-area: date;
+    background-color: salmon;
+}
+#box-text {
+	grid-area: box-text;
+    background-color: sandybrown;
+}
+
+#space {
+	grid-area: right-space;
+    background-color: slateblue;
+}
+
+@media (min-width: 0px) {
+	.weekly {
+		grid-template-columns: 75px 2fr 10px;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'box-text box-text right-space'
+	}
+
+}
+@media (min-width: 848px) {
+	.weekly {
+		grid-template-columns: 75px 2fr 30px;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'box-text box-text right-space'
+	}
+}
+@media (min-width: 1166px) {
+	.weekly {
+		grid-template-columns: 95px 2fr 6fr 0.3fr;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar drop-menu date right-space'
+			'side-bar drop-menu box-text right-space'
+	}
+	
+}
+@media (min-width: 1440px) {
+	.weekly {
+		grid-template-columns: 1fr 2fr 6fr 0.3fr;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar drop-menu date right-space'
+			'side-bar drop-menu box-text right-space'
+	}
+	
+}
