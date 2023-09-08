@@ -4,7 +4,8 @@
 }
 #drop-menu {
 	grid-area: drop-menu;
-    background-color: saddlebrown;
+
+	
 }
 #editor {
 	grid-area: editor;
@@ -20,6 +21,9 @@
 			'side-bar date right-space'
 			'editor editor right-space'
 	}
+	#drop-menu {
+		display: none;
+	}
 
 }
 @media (min-width: 848px) {
@@ -30,6 +34,10 @@
 			'side-bar date right-space'
 			'editor editor right-space'
 	}
+	#drop-menu {
+		display: none;
+	}
+	
 }
 @media (min-width: 1166px) {
 	.weekly {
@@ -38,6 +46,9 @@
 		grid-template-areas:
 			'side-bar drop-menu date right-space'
 			'side-bar drop-menu editor right-space'
+	}
+	#drop-menu {
+		display: block;
 	}
 	
 }
@@ -48,6 +59,9 @@
 		grid-template-areas:
 			'side-bar drop-menu date right-space'
 			'side-bar drop-menu editor right-space'
+	}
+	#drop-menu {
+		display: block;
 	}
 	
 }

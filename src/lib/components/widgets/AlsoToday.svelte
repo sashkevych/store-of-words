@@ -8,6 +8,6 @@
 </script>
 
 <div id="also-today">
-	<Boxes {weeklyRepeats} label={'Also today'} />
+	<Boxes {weeklyRepeats} label={'Also today'} horizontal={true}/>
 </div>
 

@@ -8,5 +8,5 @@
 </script>
 
 <div id="weekly">
-	<Boxes {weeklyRepeats} label={'Weekly repeats'} />
+	<Boxes {weeklyRepeats} label={'Weekly repeats'}  horizontal={true}/>
 </div>
