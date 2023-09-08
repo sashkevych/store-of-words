@@ -2,27 +2,14 @@
 	display: grid;
 	height: 100vh;
 }
-
-#side-bar {
-	grid-area: side-bar;
-    background-color: seagreen;
-}
 #drop-menu {
 	grid-area: drop-menu;
     background-color: saddlebrown;
 }
-#data {
-	grid-area: date;
-    background-color: salmon;
-}
 #editor {
 	grid-area: editor;
-    background-color: sandybrown;
-}
-
-#space {
-	grid-area: right-space;
-    background-color: slateblue;
+	overflow: hidden;
+	overflow-y: scroll;
 }
 
 @media (min-width: 0px) {

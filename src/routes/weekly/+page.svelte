@@ -144,7 +144,7 @@
 </script>
 
 <svelte:window on:beforeunload={close_event_handler} on:keydown={(e) => key_down_handler(e)} />
-<div class="weekly">
+<div class="weekly surface">
 	<SideBar />
 	<div id="drop-menu" />
 	<Data />
@@ -168,3 +168,4 @@
 	</div>
 	<div id="space" />
 </div>
+
