@@ -4,7 +4,7 @@
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
-	import { oldData, newData, isFocusDiv , onFocusDiv} from '../../store';
+	import { oldData, newData, isFocusDiv, onFocusDiv } from '../../store';
 
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
@@ -63,17 +63,13 @@
 			const onlyWithText = box.sentences.filter((sentence, i, arr) => {
 				// fix id
 				const IsEmpty = sentence.text.trim();
-				// const NextElement = arr[i + 1];
-				// if (!IsEmpty) {
-				// 	if (NextElement) {
-				// 		NextElement.id = NextElement.id -= 1;
-				// 	}
-				// }
-				//
+
 				sentence.text = IsEmpty;
 				return IsEmpty;
 			});
-
+			onlyWithText.forEach((sentence, index, arr) => {
+				sentence.id = index + 1;
+			});
 			box.sentences = onlyWithText;
 
 			return box;
@@ -135,10 +131,8 @@
 		const Text = $newData
 			.find((box) => box.box_id == box_id)
 			.sentences.find((sen) => sen.id == sentence_id).text;
-		// const sentenceById = box.sentences.find(sen => sen.id == sentence_id)
 
 		if (!Text) {
-			console.log('!Text', !Text);
 			newData.update((value) => {
 				console.log('update');
 				const box = value.find((box) => box.box_id == box_id);
@@ -146,7 +140,6 @@
 				box.sentences = newSentences;
 				return value;
 			});
-			console.log('newData ', $newData, '$oldData', $oldData);
 		}
 	}
 	function key_down_handler(event) {
@@ -155,13 +148,12 @@
 
 		if (key == 'Enter') {
 			if (!$onFocusDiv) return;
-			newData.update(boxes => {
-				let box = boxes.find(box => box.box_id == box_id)
-				const length = box.sentences.length
-				box.sentences.push({text:'', id: length + 1})
-
-				return boxes
-			})
+			newData.update((boxes) => {
+				let box = boxes.find((box) => box.box_id == box_id);
+				const length = box.sentences.length;
+				box.sentences.push({ text: '', id: length + 1 });
+				return boxes;
+			});
 		} else if (key == 'Backspace') {
 			console.log('backspace');
 			deleteBoxIfEmpty(box_id, sentence_id);
