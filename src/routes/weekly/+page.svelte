@@ -4,7 +4,7 @@
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
-	import { oldData, newData, isFocusDiv } from '../../store';
+	import { oldData, newData, isFocusDiv , onFocusDiv} from '../../store';
 
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
@@ -22,43 +22,54 @@
 			const el1 = el.sentences;
 			const el2 = oldArr[i].sentences;
 
-			const thereIsRemovedText = el1.some((el, i) => {
-				console.log(el2[i]?.text, !el?.text ? !el?.text : 'dick');
-				if (el2[i]?.text && !el?.text) {
-					console.log('If statement TRUE');
-					return true;
-				}
-			});
-			console.log('thereIsRemovedText', thereIsRemovedText);
-			if (thereIsRemovedText) return el;
+			// const thereIsRemovedText = el1.some((el, i) => {
+			// 	// console.log(el2[i]?.text, !el?.text ? !el?.text : 'dick');
+			// 	if (el2[i]?.text && !el?.text) {
+			// 		console.log('If statement TRUE');
+			// 		return true;
+			// 	}
+			// });
+			// console.log('thereIsRemovedText', thereIsRemovedText);
+			// if (thereIsRemovedText) return el;
 
-			const thereIsUpdateOrNew = el1.some((el, i) => {
+			const isAnyChange = el1.some((el, i, arr) => {
 				if (!el2[i]?.text) {
+					console.log('1');
 					return true;
 				}
-				return el.text != el2[i].text;
+				if (!el.text) {
+					console.log('2');
+					return true;
+				}
+				if (el2[i + 1]?.text && !arr[i + 1]?.text) {
+					console.log('3');
+					return true;
+				}
+				if (el.text != el2[i].text) {
+					console.log('4');
+					return true;
+				}
+				return false;
 			});
-			console.log('thereIsUpdateOrNew', thereIsUpdateOrNew);
-			if (thereIsUpdateOrNew) return el;
+
+			if (isAnyChange) return el;
 		});
 
 		return changes;
 	}
 
 	function removeWhiteSpace(newArr) {
-		
 		const res = newArr.filter((box) => {
-			
-			const onlyWithText = box.sentences.filter((sentence,i,arr) => {
+			const onlyWithText = box.sentences.filter((sentence, i, arr) => {
 				// fix id
-				const IsEmpty = sentence.text.trim()
-				const NextElement = arr[i + 1]
-				if (!IsEmpty) {
-					if (NextElement) {
-						NextElement.id = NextElement.id -= 1
-					}
-				}
-				// 
+				const IsEmpty = sentence.text.trim();
+				// const NextElement = arr[i + 1];
+				// if (!IsEmpty) {
+				// 	if (NextElement) {
+				// 		NextElement.id = NextElement.id -= 1;
+				// 	}
+				// }
+				//
 				sentence.text = IsEmpty;
 				return IsEmpty;
 			});
@@ -67,7 +78,7 @@
 
 			return box;
 		});
-		console.log('white space',res);
+		console.log('white space', res);
 		return res;
 	}
 
@@ -143,14 +154,14 @@
 		const { box_id, sentence_id } = $isFocusDiv;
 
 		if (key == 'Enter') {
-			if (!$isFocusDiv.event) return;
-			const newDiv = document.createElement('div');
-			const newContent = document.createTextNode('Hi there and greetings!');
-			newDiv.appendChild(newContent);
+			if (!$onFocusDiv) return;
+			newData.update(boxes => {
+				let box = boxes.find(box => box.box_id == box_id)
+				const length = box.sentences.length
+				box.sentences.push({text:'', id: length + 1})
 
-			event.target.after(newDiv);
-
-			addNewSentence(box_id, sentence_id);
+				return boxes
+			})
 		} else if (key == 'Backspace') {
 			console.log('backspace');
 			deleteBoxIfEmpty(box_id, sentence_id);

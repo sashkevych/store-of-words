@@ -9,3 +9,4 @@ export let isFocusDiv = writable({
     box_id: '',
     sentence_id: ''
 })
+export let onFocusDiv = writable(false)

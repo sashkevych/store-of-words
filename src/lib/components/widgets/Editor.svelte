@@ -1,11 +1,12 @@
 <script>
-	import { newData, oldData, isFocusDiv } from '../../../store';
+	import { newData, oldData, isFocusDiv,onFocusDiv } from '../../../store';
 
 	export let repeat;
 
 	const { box_id, sentences } = repeat;
 
 	function isOnClickHandler(box_id, sentence_id) {
+		console.log('isOnClickHandler');
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 	}
 </script>
@@ -24,6 +25,8 @@
 			contenteditable="true"
 			bind:textContent={text}
 			on:mousedown={() => isOnClickHandler(box_id, id)}
+			on:focus={() => onFocusDiv.set(true)}
+			on:blur={() => onFocusDiv.set(false)}
 		/>
 	{/each}
 </div>
