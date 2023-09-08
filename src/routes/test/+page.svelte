@@ -3,7 +3,7 @@
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
 
-	import Editor from '$lib/components/Editor.svelte';
+	import Editor from '$lib/components/widgets/Editor.svelte';
 
 	import { oldData, newData, isFocusDiv } from '../../store';
 
