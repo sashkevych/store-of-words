@@ -4,8 +4,6 @@
 }
 #drop-menu {
 	grid-area: drop-menu;
-
-	
 }
 #editor {
 	grid-area: editor;
@@ -48,7 +46,7 @@
 			'side-bar drop-menu editor right-space'
 	}
 	#drop-menu {
-		display: block;
+		display: inline;
 	}
 	
 }
@@ -61,7 +59,7 @@
 			'side-bar drop-menu editor right-space'
 	}
 	#drop-menu {
-		display: block;
+		display: inline;
 	}
 	
 }

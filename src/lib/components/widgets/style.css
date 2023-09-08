@@ -1,3 +1,6 @@
+/* 
+ Horizontal
+*/
 .home-widget {
 	height: 100%;
 	border-radius: 30px;
@@ -48,6 +51,34 @@
 	height: 200px;
 	overflow: hidden;
 }
+/* 
+Vertical
+*/
+.weekly-widget {
+	display: flex;
+	flex-direction: column;
+
+	gap: 25px;
+	padding-top: 2.8rem;
+	padding-left: 25px;
+	margin-right: 25px;
+
+	border-left: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.repeat-box-vertical {
+	width: 100%;
+	height: 140px;
+
+	overflow: hidden;
+	border-radius: 23px;
+}
+
+.max-width {
+	width: 90%;
+}
+
+
 
 
 
@@ -57,7 +88,6 @@
 	.repeat-box {
 		width: 250px;
 		height: 140px;
-
 	}
 	.max-height {
 		height: 80px;
@@ -71,7 +101,6 @@
 		margin-top: 15px;
 
 		margin-right: 25px;
-	
 	}
 	.headline-position {
 		margin-top: 30px;

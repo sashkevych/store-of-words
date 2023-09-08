@@ -29,29 +29,21 @@
 {/if}
 
 {#if vertical}
-	<div class="surface-container">
-		<div class="repeats-container test">
-			{#each weeklyRepeats as { sentences, repeat }}
-				<div class="repeat-box secondary">
-					<div class="header-position title-medium on-secondary-text">
-						First repeat: {repeat.count}
-					</div>
-					<div class="max-height">
-						{#each sentences as { id, text }}
-							<div class="sentence-position body-small on-secondary-text">
-								<div>{id}.</div>
-								<div class="text-hidden">{@html text}</div>
-							</div>
-						{/each}
-					</div>
+	<div class="surface-container weekly-widget">
+		{#each weeklyRepeats as { sentences, repeat }}
+			<div class="repeat-box-vertical secondary">
+				<div class="header-position title-medium on-secondary-text">
+					First repeat: {repeat.count}
 				</div>
-			{/each}
-		</div>
+				<div class="max-width">
+					{#each sentences as { id, text }}
+						<div class="sentence-position body-small on-secondary-text">
+							<div>{id}.</div>
+							<div class="">{@html text}</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+		{/each}
 	</div>
 {/if}
-
-<style>
-	.test {
-		/* gap: 2rem; */
-	}
-</style>
