@@ -1,9 +1,6 @@
 <script>
-	import { newData, oldData, isFocusDiv,onFocusDiv } from '../../../store';
+	import { newData, oldData, isFocusDiv, onFocusDiv } from '../../../store';
 
-	export let repeat;
-
-	const { box_id, sentences } = repeat;
 
 	function isOnClickHandler(box_id, sentence_id) {
 		console.log('isOnClickHandler');
@@ -11,24 +8,30 @@
 	}
 </script>
 
-<div>
-	<div>Day : {repeat.repeat.count}</div>
-	<div>Box : {box_id}</div>
-</div>
-<div id={box_id} class="border-2 border-green-500 p-2">
-	{#each sentences as { text, id }}
-		<div class="bold">{id}</div>
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div
-			{id}
-			class="test"
-			contenteditable="true"
-			bind:textContent={text}
-			on:mousedown={() => isOnClickHandler(box_id, id)}
-			on:focus={() => onFocusDiv.set(true)}
-			on:blur={() => onFocusDiv.set(false)}
-		/>
-	{/each}
+<div id="editor">
+	{#key $newData}
+		{#each $newData as { box_id, sentences,repeat }}
+			<div>
+				<div>Day : {repeat.count}</div>
+				<div>Box : {box_id}</div>
+			</div>
+			<div id={box_id} class="border-2 border-green-500 p-2">
+				{#each sentences as { text, id }}
+					<div class="bold">{id}</div>
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<div
+						{id}
+						class="test"
+						contenteditable="true"
+						bind:textContent={text}
+						on:mousedown={() => isOnClickHandler(box_id, id)}
+						on:focus={() => onFocusDiv.set(true)}
+						on:blur={() => onFocusDiv.set(false)}
+					/>
+				{/each}
+			</div>
+		{/each}
+	{/key}
 </div>
 
 <style>

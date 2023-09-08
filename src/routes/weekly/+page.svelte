@@ -22,33 +22,11 @@
 			const el1 = el.sentences;
 			const el2 = oldArr[i].sentences;
 
-			// const thereIsRemovedText = el1.some((el, i) => {
-			// 	// console.log(el2[i]?.text, !el?.text ? !el?.text : 'dick');
-			// 	if (el2[i]?.text && !el?.text) {
-			// 		console.log('If statement TRUE');
-			// 		return true;
-			// 	}
-			// });
-			// console.log('thereIsRemovedText', thereIsRemovedText);
-			// if (thereIsRemovedText) return el;
-
 			const isAnyChange = el1.some((el, i, arr) => {
-				if (!el2[i]?.text) {
-					console.log('1');
-					return true;
-				}
-				if (!el.text) {
-					console.log('2');
-					return true;
-				}
-				if (el2[i + 1]?.text && !arr[i + 1]?.text) {
-					console.log('3');
-					return true;
-				}
-				if (el.text != el2[i].text) {
-					console.log('4');
-					return true;
-				}
+				if (!el2[i]?.text) return true;
+				if (!el.text) return true;
+				if (el2[i + 1]?.text && !arr[i + 1]?.text) return true;
+				if (el.text != el2[i].text) return true;
 				return false;
 			});
 
@@ -167,8 +145,7 @@
 	<SideBar />
 	<DropMenu />
 	<Data />
-	<div id="editor">
-		<button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
+	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}
 			>Move all</button
 		>
@@ -177,14 +154,8 @@
 				document.execCommand('bold');
 				console.log($newData);
 			}}>Bold</button
-		>
-		<button on:click={() => console.log($newData)}>log</button>
-		{#key $newData}
-			{#each $newData as repeat}
-				<Editor {repeat} />
-			{/each}
-		{/key}
-	</div>
+		> -->
+	<Editor />
 	<div id="space" />
 </div>
 
