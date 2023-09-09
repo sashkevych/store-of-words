@@ -1,6 +1,6 @@
 import { loadWeeklyRepeats } from '$lib/api/google-api.js';
 
-/** @type {import('./$types').PageServerLoad} */
+/** @type {import('./$types').LayoutServerLoad} */
 export async function load({ params }) {
 
   const data = await loadWeeklyRepeats()
