@@ -79,11 +79,21 @@ Vertical
 	width: 90%;
 }
 
-
-
-
-
-
+/*
+Editor
+*/
+.editor-box {
+	margin-top: 5rem;
+	margin-left: 5rem;
+}
+.sentence {
+	display: flex;
+	gap: 0.3rem;
+	margin-top: 10px;
+}
+.distance {
+	margin-top: 5rem;
+}
 
 @media ((min-width: 0px) and (max-width: 847px)) {
 	.repeat-box {
@@ -106,5 +116,9 @@ Vertical
 	.headline-position {
 		margin-top: 30px;
 		margin-left: 25px;
+	}
+	.editor-box {
+		margin-top: 3rem;
+		margin-left: 1rem;
 	}
 }
