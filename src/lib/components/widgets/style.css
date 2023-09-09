@@ -11,6 +11,11 @@
 .headline-position {
 	margin-top: 30px;
 	margin-left: 55px;
+	margin-right: 55px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .repeats-container {
 	height: 68%;
@@ -116,6 +121,7 @@ Editor
 	.headline-position {
 		margin-top: 30px;
 		margin-left: 25px;
+		margin-right: 25px;
 	}
 	.editor-box {
 		margin-top: 3rem;

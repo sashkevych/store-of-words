@@ -155,7 +155,6 @@
 				console.log($newData);
 			}}>Bold</button
 		> -->
-	<!-- <Editor /> -->
 	<div id="space" />
 </div>
 

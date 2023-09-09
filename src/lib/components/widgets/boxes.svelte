@@ -3,11 +3,17 @@
 	export let label = '';
 	export let horizontal = false;
 	export let vertical = false;
+
+
+	
 </script>
 
 {#if horizontal}
 	<div class="home-widget surface-container">
-		<div class="headline-position headline-small on-surface-text">{label}</div>
+		<div class="headline-position">
+			<div class="headline-small on-surface-text">{label}</div>
+			<div><button>Move all</button></div>
+		</div>
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat }}
 				<a href="/weekly/{repeat.count}" class="repeat-box secondary">
