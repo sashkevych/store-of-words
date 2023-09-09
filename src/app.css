@@ -9,3 +9,6 @@ a,
 u {
 	text-decoration: none;
 }
+[contenteditable] {
+	outline: 0px solid transparent;
+}

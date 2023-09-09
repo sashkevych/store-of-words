@@ -11,6 +11,11 @@
 .headline-position {
 	margin-top: 30px;
 	margin-left: 55px;
+	margin-right: 55px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .repeats-container {
 	height: 68%;
@@ -62,6 +67,7 @@ Vertical
 	padding-top: 2.8rem;
 	padding-left: 25px;
 	margin-right: 25px;
+	padding-bottom: 2.8rem;
 
 	border-left: 1px solid var(--md-sys-color-outline-variant);
 }
@@ -78,11 +84,21 @@ Vertical
 	width: 90%;
 }
 
-
-
-
-
-
+/*
+Editor
+*/
+.editor-box {
+	margin-top: 5rem;
+	margin-left: 5rem;
+}
+.sentence {
+	display: flex;
+	gap: 0.3rem;
+	margin-top: 10px;
+}
+.distance {
+	margin-top: 5rem;
+}
 
 @media ((min-width: 0px) and (max-width: 847px)) {
 	.repeat-box {
@@ -105,5 +121,10 @@ Vertical
 	.headline-position {
 		margin-top: 30px;
 		margin-left: 25px;
+		margin-right: 25px;
+	}
+	.editor-box {
+		margin-top: 3rem;
+		margin-left: 1rem;
 	}
 }

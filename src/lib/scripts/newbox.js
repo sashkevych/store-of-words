@@ -6,8 +6,7 @@ export function createBox() {
 		sentences: [],
 		repeat: {
 			count: 1,
-			// date: createRepeatDate(),
-			date: '2023-08-23',
+			date: '0000-00-00',
 			type: 'weekly'
 		},
 		created_at: new Date().toJSON(),
