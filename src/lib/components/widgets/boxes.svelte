@@ -1,18 +1,48 @@
 <script>
+	import { newData } from '../../../store';
 	export let weeklyRepeats = [];
 	export let label = '';
 	export let horizontal = false;
 	export let vertical = false;
 
+	import { createBox } from '$lib/scripts/newbox';
+	import { create7DayRep } from '$lib/scripts/sevenrep';
 
-	
+	async function sendPost(content) {
+		await fetch('http://localhost:5173/gcp', {
+			method: 'POST',
+			body: JSON.stringify(content),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
+
+	function moveAll(weeklyRepeats) {
+		console.log('move all');
+		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
+		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
+			if (el.repeat.count != 7) {
+				el.repeat.count += 1;
+				return el;
+			}
+		});
+		const new7DayBox = create7DayRep(lastBox);
+
+		const newBox = createBox();
+		newWeeklyRepeats.unshift(newBox);
+
+		newData.set(newWeeklyRepeats);
+
+		sendPost({ day7: new7DayBox, week1: newBox });
+	}
 </script>
 
 {#if horizontal}
 	<div class="home-widget surface-container">
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">{label}</div>
-			<div><button>Move all</button></div>
+			<div><button on:click={() => moveAll($newData)}>Move all</button></div>
 		</div>
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat }}

@@ -6,6 +6,8 @@
 		console.log('isOnClickHandler');
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 	}
+
+
 </script>
 
 <div id="editor">

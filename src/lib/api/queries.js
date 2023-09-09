@@ -1,4 +1,4 @@
-export async function formatRepeat({count,date,type}) {
+export async function formatRepeat({ count, date, type }) {
 	return `(${count},"${date}","${type}")`;
 }
 export async function formatSentences(collection) {
@@ -14,7 +14,7 @@ export async function sentenceUpdateQuery(box_id, new_data, datasetId, tableId) 
 		'UPDATE ' +
 		`${datasetId}.${tableId}` +
 		' SET sentences = ARRAY<STRUCT<text STRING, id INTEGER>> ' +
-		await formatSentences(new_data) +
+		(await formatSentences(new_data)) +
 		' WHERE box_id = ' +
 		`"${box_id}"`
 	);
@@ -24,12 +24,12 @@ export async function weeklySentencesSelectQuery(datasetId, tableId) {
 	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE repeat.type = "weekly"';
 }
 
-export async function repeatUpdateQuery({box_id, repeat}, datasetId, tableId) {
+export async function repeatUpdateQuery({ box_id, repeat }, datasetId, tableId) {
 	return (
 		'UPDATE ' +
 		`${datasetId}.${tableId}` +
 		' SET repeat = STRUCT<count INTEGER, date DATE, type STRING> ' +
-		await formatRepeat(repeat) +
+		(await formatRepeat(repeat)) +
 		' WHERE box_id = ' +
 		`"${box_id}"`
 	);

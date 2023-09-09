@@ -6,8 +6,7 @@
 
 	import { oldData, newData, isFocusDiv, onFocusDiv } from '../../store';
 
-	import { createBox } from '$lib/scripts/newbox';
-	import { create7DayRep } from '$lib/scripts/sevenrep';
+	
 
 	async function close_event_handler() {
 		// whiteSpaceFilter($newData,$oldData)
@@ -66,32 +65,6 @@
 		});
 	}
 
-	async function sendPost(content) {
-		await fetch('http://localhost:5173/gcp', {
-			method: 'POST',
-			body: JSON.stringify(content),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-	}
-	function moveAll(weeklyRepeats) {
-		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
-		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
-			if (el.repeat.count != 7) {
-				el.repeat.count += 1;
-				return el;
-			}
-		});
-		const new7DayBox = create7DayRep(lastBox);
-
-		const newBox = createBox();
-		newWeeklyRepeats.unshift(newBox);
-
-		newData.set(newWeeklyRepeats);
-
-		sendPost({ day7: new7DayBox, week1: newBox });
-	}
 
 	function addNewSentence(box_id, sentence_id) {
 		newData.update((arr) => {
