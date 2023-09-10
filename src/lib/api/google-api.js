@@ -26,19 +26,29 @@ export async function loadWeeklyRepeats() {
 	// console.log(`Job ${job.id} started.`);
 	const [rows] = await job.getQueryResults();
 
-	
 	return rows;
 }
 
 export async function moveAll(new7DayBox, newInstance) {
-	await bigquery.createQueryJob(
-		await repeatUpdateQuery(
-			new7DayBox,
-			datasetId,
-			tableId
-		)
-	);
-	await bigquery.createQueryJob(await updateRepeatCounts(datasetId,tableId));		
+	await bigquery.createQueryJob(await repeatUpdateQuery(new7DayBox, datasetId, tableId));
+	const [job] = await bigquery.createQueryJob(await updateRepeatCounts(datasetId, tableId));
+	await waitForJobCompletion(job.id);
 	await bigquery.createQueryJob(await repeatInsertQuery(newInstance, datasetId, tableId));
+}
 
+async function waitForJobCompletion(jobId) {
+	const pollIntervalMs = 500;
+
+	let job;
+
+	do {
+		[job] = await bigquery.job(jobId).get();
+
+		if (job.metadata.status.state !== 'DONE') {
+			// console.log(`Job status: ${job.metadata.status.state}`);
+			await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+		}
+	} while (job.metadata.status.state !== 'DONE');
+
+	// console.log('Job is DONE.', job.metadata.status.state);
 }
