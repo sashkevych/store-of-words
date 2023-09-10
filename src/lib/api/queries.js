@@ -55,3 +55,21 @@ export async function updateRepeatCounts(datasetId, tableId) {
 		'WHERE repeat.type = "weekly"'
 	);
 }
+
+export async function alsoTodaySelectQuery(datasetId, tableId) {
+	return (
+		'SELECT * FROM ' +
+		`${datasetId}.${tableId}` +
+		' WHERE repeat.type = "seven" AND repeat.date = '+ today()
+	);
+}
+
+function today() {
+	const DATE = new Date();
+
+	let year = DATE.getFullYear();
+	let month = DATE.getMonth() + 1;
+	let day = DATE.getDate();
+
+	return `"${year}-${month}-${day}"`;
+}

@@ -6,7 +6,8 @@ import {
 	weeklySentencesSelectQuery,
 	repeatUpdateQuery,
 	repeatInsertQuery,
-	updateRepeatCounts
+	updateRepeatCounts,
+	alsoTodaySelectQuery
 } from './queries.js';
 
 export async function updateWeeklySentences(boxes) {
@@ -23,7 +24,12 @@ export async function updateWeeklySentences(boxes) {
 
 export async function loadWeeklyRepeats() {
 	const [job] = await bigquery.createQueryJob(await weeklySentencesSelectQuery(datasetId, tableId));
-	// console.log(`Job ${job.id} started.`);
+	const [rows] = await job.getQueryResults();
+
+	return rows;
+}
+export async function loadAlsoTodayRepeats() {
+	const [job] = await bigquery.createQueryJob(await alsoTodaySelectQuery(datasetId, tableId));
 	const [rows] = await job.getQueryResults();
 
 	return rows;

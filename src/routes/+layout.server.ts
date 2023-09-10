@@ -1,11 +1,12 @@
-import { loadWeeklyRepeats } from '$lib/api/google-api.js';
+import { loadWeeklyRepeats, loadAlsoTodayRepeats } from '$lib/api/google-api.js';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load({ params }) {
+	const data = await loadWeeklyRepeats();
+	const today = await loadAlsoTodayRepeats();
 
-  const data = await loadWeeklyRepeats()
-      
-  return {
-    weeklyRepeats: JSON.stringify(data.sort((a,b) => a.repeat.count - b.repeat.count))
-  };
+	return {
+		weeklyRepeats: JSON.stringify(data.sort((a, b) => a.repeat.count - b.repeat.count)),
+		alsoTodayRepeats: JSON.stringify(today)
+	};
 }
