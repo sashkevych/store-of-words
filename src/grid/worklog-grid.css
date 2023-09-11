@@ -1,0 +1,77 @@
+.work-log {
+	display: grid;
+	height: 100vh;
+
+    background-color:wheat;
+}
+#editor {
+	grid-area: editor;
+	overflow: hidden;
+	overflow-y: scroll;
+    background-color: teal;
+}
+#side-bar {
+    grid-area: side-bar;
+    background-color: seagreen;
+}
+#date {
+    grid-area: date;
+    background-color: gold;
+}
+#space {
+    grid-area: right-space;
+    background-color: brown;
+}
+
+@media (min-width: 0px) {
+	.work-log {
+		grid-template-columns: 75px 2fr 10px;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'editor editor right-space'
+	}
+	#drop-menu {
+		display: none;
+	}
+
+}
+@media (min-width: 848px) {
+	.work-log {
+		grid-template-columns: 75px 2fr 30px;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'editor editor right-space'
+	}
+	#drop-menu {
+		display: none;
+	}
+	
+}
+@media (min-width: 1166px) {
+	.work-log {
+		grid-template-columns: 95px  6fr 0.3fr;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'side-bar editor right-space'
+	}
+	#drop-menu {
+		display: inline;
+	}
+	
+}
+@media (min-width: 1440px) {
+	.work-log {
+		grid-template-columns: .76fr 6fr 0.3fr;
+		grid-template-rows: 0.3fr 4fr ;
+		grid-template-areas:
+			'side-bar date right-space'
+			'side-bar editor right-space'
+	}
+	#drop-menu {
+		display: inline;
+	}
+	
+}
