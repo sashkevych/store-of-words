@@ -51,7 +51,11 @@
 			{#each weeklyRepeats as { sentences, repeat }}
 				<a href="/weekly/{repeat.count}" class="repeat-box secondary">
 					<div class="header-position title-medium on-secondary-text">
-						First repeat: {repeat.count}
+						{#if isWeekly}
+							First repeat: {repeat.count}
+						{:else}
+							{repeat.date.value}
+						{/if}
 					</div>
 					<div class="max-height">
 						{#each sentences as { id, text }}
@@ -72,7 +76,11 @@
 		{#each weeklyRepeats as { sentences, repeat }}
 			<a href="/weekly/{repeat.count}" class="repeat-box-vertical secondary">
 				<div class="header-position title-medium on-secondary-text">
-					First repeat: {repeat.count}
+					{#if isWeekly}
+						First repeat: {repeat.count}
+					{:else}
+						{repeat.date.value}
+					{/if}
 				</div>
 				<div class="max-width">
 					{#each sentences as { id, text }}

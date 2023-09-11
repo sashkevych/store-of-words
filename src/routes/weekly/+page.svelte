@@ -116,8 +116,8 @@
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu />
-	<Data />
+	<DropMenu dataArray={$newData}/>
+	<Data/>
 	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}
 			>Move all</button
