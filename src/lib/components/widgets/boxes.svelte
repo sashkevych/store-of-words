@@ -66,7 +66,7 @@
 				{:else}
 					<a href="/also-today/{box_id}" class="repeat-box secondary">
 						<div class="header-position title-medium on-secondary-text">
-							First repeat: {repeat.date.value}
+							{repeat.date.value}
 						</div>
 						<div class="max-height">
 							{#each sentences as { id, text }}
