@@ -5,12 +5,13 @@
 
     import { alsoToday } from '../../store';
 
+	const isAlsoToday = true
 </script>
 
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$alsoToday} isWeekly={false}/>
+	<DropMenu dataArray={$alsoToday} {isAlsoToday}/>
 	<Data />
 	<div id="space" />
 </div>

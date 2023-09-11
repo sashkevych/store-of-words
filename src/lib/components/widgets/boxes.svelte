@@ -1,7 +1,8 @@
 <script>
 	import { newData } from '../../../store';
 	export let weeklyRepeats = [];
-	export let isWeekly = true;
+	export let isWeekly = false;
+	export let isAlsoToday = false;
 	export let label = '';
 	export let horizontal = false;
 	export let vertical = false;
@@ -63,7 +64,8 @@
 							{/each}
 						</div>
 					</a>
-				{:else}
+				{/if}
+				{#if isAlsoToday}
 					<a href="/also-today/{box_id}" class="repeat-box secondary">
 						<div class="header-position title-medium on-secondary-text">
 							{repeat.date.value}
@@ -100,7 +102,8 @@
 						{/each}
 					</div>
 				</a>
-			{:else}
+			{/if}
+			{#if isAlsoToday}
 				<a href="/also-today/{box_id}" class="repeat-box-vertical secondary">
 					<div class="header-position title-medium on-secondary-text">
 						{repeat.date.value}

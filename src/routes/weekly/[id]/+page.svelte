@@ -10,11 +10,13 @@
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
 	$: box = $newData.find((box) => box.repeat.count == data.id);
+
+	const isWeekly = true
 </script>
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$newData}/>
+	<DropMenu dataArray={$newData} {isWeekly}/>
 	<Data />
 	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}

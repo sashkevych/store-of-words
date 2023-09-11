@@ -110,24 +110,16 @@
 			deleteBoxIfEmpty(box_id, sentence_id);
 		}
 	}
+
+	const isWeekly = true
 </script>
 
 <svelte:window on:beforeunload={close_event_handler} on:keydown={(e) => key_down_handler(e)} />
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$newData}/>
+	<DropMenu dataArray={$newData} {isWeekly}/>
 	<Data/>
-	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
-		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}
-			>Move all</button
-		>
-		<button
-			on:click={() => {
-				document.execCommand('bold');
-				console.log($newData);
-			}}>Bold</button
-		> -->
 	<div id="space" />
 </div>
 

@@ -10,11 +10,13 @@
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
 	$: box = $alsoToday.find((box) => box.box_id == data.id);
+
+	const isAlsoToday = true
 </script>
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$alsoToday} isWeekly={false}/>
+	<DropMenu dataArray={$alsoToday} {isAlsoToday}/>
 	<Data />
 	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}

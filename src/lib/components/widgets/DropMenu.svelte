@@ -4,11 +4,12 @@
 
     export let dataArray = []
 
-	export let isWeekly = true
+	export let isWeekly = false
+	export let isAlsoToday = false
 </script>
 
 <div id="drop-menu" class="surface-container drop-menu-container">
-	<Boxes weeklyRepeats={dataArray} vertical={true} {isWeekly}/>
+	<Boxes weeklyRepeats={dataArray} vertical={true} {isWeekly} {isAlsoToday}/>
 </div>
 
 <style>
