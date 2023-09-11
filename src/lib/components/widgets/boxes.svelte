@@ -1,6 +1,7 @@
 <script>
 	import { newData } from '../../../store';
 	export let weeklyRepeats = [];
+	export let isWeekly = true;
 	export let label = '';
 	export let horizontal = false;
 	export let vertical = false;
@@ -42,7 +43,9 @@
 	<div class="home-widget surface-container">
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">{label}</div>
-			<div><button on:click={() => moveAll($newData)}>Move all</button></div>
+			{#if isWeekly}
+				<div><button on:click={() => moveAll($newData)}>Move all</button></div>
+			{/if}
 		</div>
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat }}

@@ -1,13 +1,12 @@
 <script>
 	import './style.css';
 	import Boxes from './boxes.svelte';
-	import { newData } from '../../../store';
+	import { alsoToday } from '../../../store';
 
 	let weeklyRepeats = [];
-	newData.subscribe((vl) => (weeklyRepeats = vl));
+	alsoToday.subscribe((vl) => (weeklyRepeats = vl));
 </script>
 
 <div id="also-today">
-	<Boxes {weeklyRepeats} label={'Also today'} horizontal={true}/>
+	<Boxes {weeklyRepeats} label={'Also today'} horizontal={true} isWeekly={false} />
 </div>
-
