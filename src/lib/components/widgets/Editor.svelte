@@ -1,6 +1,6 @@
 <script>
 	import { newData, isFocusDiv, onFocusDiv } from '../../../store';
-
+	import "./style.css"
 	export let box;
 
 	function isOnClickHandler(box_id, sentence_id) {

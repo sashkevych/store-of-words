@@ -1,17 +1,35 @@
 <script>
 	import './style.css';
+
+	import { workLog } from '../../../store';
+
+	console.log($workLog);
 </script>
 
 <div id="work-log">
 	<div class="home-widget surface-container">
 		<div class="headline-position headline-small on-surface-text">Work log</div>
-		<div class="repeats-container">
-			
-		</div>
+		<a href="/work-log">
+			<div class="repeats-container">
+				<div class="secondary test">
+					{#each $workLog[0].sentences as { text, id }}
+						<div class="sentence-position body-small on-secondary-text header-position">
+							<div>{id}.</div>
+							<div>{text}</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</a>
 	</div>
 </div>
 
 <style>
+	.test {
+		/* height: 100%; */
+		width: 100%;
+		border-radius: 23px;
+	}
 	.home-widget {
 		height: 100%;
 		border-radius: 30px;
@@ -36,5 +54,4 @@
 
 		gap: 1.5rem;
 	}
-	
 </style>
