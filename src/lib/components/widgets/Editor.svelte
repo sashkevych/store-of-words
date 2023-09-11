@@ -67,10 +67,11 @@
 							class="test"
 							contenteditable="true"
 							bind:textContent={text}
-							on:mousedown={() => isOnClickHandler(box.box_id, id)}
+							
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 						/>
+						<!-- on:mousedown={() => isOnClickHandler(box.box_id, id)} -->
 					</div>
 				{/each}
 			</div>

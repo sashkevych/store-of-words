@@ -100,6 +100,19 @@ Editor
 	margin-top: 5rem;
 }
 
+/*
+WorkLog
+*/
+.work-log-sentences-bg {
+	width: 100%;
+	border-radius: 23px;
+}
+
+.worklog-headline-position {
+	margin-top: 30px;
+	margin-left: 55px;
+}
+
 @media ((min-width: 0px) and (max-width: 847px)) {
 	.repeat-box {
 		width: 250px;
