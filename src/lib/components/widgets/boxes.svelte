@@ -48,24 +48,36 @@
 			{/if}
 		</div>
 		<div class="repeats-container">
-			{#each weeklyRepeats as { sentences, repeat }}
-				<a href="/weekly/{repeat.count}" class="repeat-box secondary">
-					<div class="header-position title-medium on-secondary-text">
-						{#if isWeekly}
+			{#each weeklyRepeats as { sentences, repeat, box_id }}
+				{#if isWeekly}
+					<a href="/weekly/{repeat.count}" class="repeat-box secondary">
+						<div class="header-position title-medium on-secondary-text">
 							First repeat: {repeat.count}
-						{:else}
-							{repeat.date.value}
-						{/if}
-					</div>
-					<div class="max-height">
-						{#each sentences as { id, text }}
-							<div class="sentence-position body-small on-secondary-text">
-								<div>{id}.</div>
-								<div class="text-hidden">{@html text}</div>
-							</div>
-						{/each}
-					</div>
-				</a>
+						</div>
+						<div class="max-height">
+							{#each sentences as { id, text }}
+								<div class="sentence-position body-small on-secondary-text">
+									<div>{id}.</div>
+									<div class="text-hidden">{text}</div>
+								</div>
+							{/each}
+						</div>
+					</a>
+				{:else}
+					<a href="/also-today/{box_id}" class="repeat-box secondary">
+						<div class="header-position title-medium on-secondary-text">
+							First repeat: {repeat.date.value}
+						</div>
+						<div class="max-height">
+							{#each sentences as { id, text }}
+								<div class="sentence-position body-small on-secondary-text">
+									<div>{id}.</div>
+									<div class="text-hidden">{text}</div>
+								</div>
+							{/each}
+						</div>
+					</a>
+				{/if}
 			{/each}
 		</div>
 	</div>
@@ -73,24 +85,36 @@
 
 {#if vertical}
 	<div class="surface-container weekly-widget">
-		{#each weeklyRepeats as { sentences, repeat }}
-			<a href="/weekly/{repeat.count}" class="repeat-box-vertical secondary">
-				<div class="header-position title-medium on-secondary-text">
-					{#if isWeekly}
+		{#each weeklyRepeats as { sentences, repeat, box_id }}
+			{#if isWeekly}
+				<a href="/weekly/{repeat.count}" class="repeat-box-vertical secondary">
+					<div class="header-position title-medium on-secondary-text">
 						First repeat: {repeat.count}
-					{:else}
+					</div>
+					<div class="max-width">
+						{#each sentences as { id, text }}
+							<div class="sentence-position body-small on-secondary-text">
+								<div>{id}.</div>
+								<div class="">{text}</div>
+							</div>
+						{/each}
+					</div>
+				</a>
+			{:else}
+				<a href="/also-today/{box_id}" class="repeat-box-vertical secondary">
+					<div class="header-position title-medium on-secondary-text">
 						{repeat.date.value}
-					{/if}
-				</div>
-				<div class="max-width">
-					{#each sentences as { id, text }}
-						<div class="sentence-position body-small on-secondary-text">
-							<div>{id}.</div>
-							<div class="">{@html text}</div>
-						</div>
-					{/each}
-				</div>
-			</a>
+					</div>
+					<div class="max-width">
+						{#each sentences as { id, text }}
+							<div class="sentence-position body-small on-secondary-text">
+								<div>{id}.</div>
+								<div class="">{text}</div>
+							</div>
+						{/each}
+					</div>
+				</a>
+			{/if}
 		{/each}
 	</div>
 {/if}

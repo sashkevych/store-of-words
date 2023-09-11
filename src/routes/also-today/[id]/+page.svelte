@@ -2,19 +2,19 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	import { newData, oldData } from '../../../store';
+	import { alsoToday, newData, oldData } from '../../../store';
 
 	import Data from '$lib/components/data/Data.svelte';
 	import SideBar from '$lib/components/side-bar/SideBar.svelte';
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
-	$: box = $newData.find((box) => box.repeat.count == data.id);
+	$: box = $alsoToday.find((box) => box.box_id == data.id);
 </script>
 
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$newData}/>
+	<DropMenu dataArray={$alsoToday} isWeekly={false}/>
 	<Data />
 	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
 		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}
@@ -26,6 +26,6 @@
 				console.log($newData);
 			}}>Bold</button
 		> -->
-	<Editor {box} />
+	<Editor {box} isWeekly={false}/>
 	<div id="space" />
 </div>

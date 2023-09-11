@@ -7,7 +7,7 @@
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 	}
 
-
+	export let isWeekly = true;
 </script>
 
 <div id="editor">
@@ -17,16 +17,20 @@
 			{#each box.sentences as { text, id }}
 				<div class="sentence body-large on-surface-text">
 					<div>{id}.</div>
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<div
-						{id}
-						class="test"
-						contenteditable="true"
-						bind:textContent={text}
-						on:mousedown={() => isOnClickHandler(box.box_id, id)}
-						on:focus={() => onFocusDiv.set(true)}
-						on:blur={() => onFocusDiv.set(false)}
-					/>
+					{#if isWeekly}
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<div
+							{id}
+							class="test"
+							contenteditable="true"
+							bind:textContent={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
+							on:focus={() => onFocusDiv.set(true)}
+							on:blur={() => onFocusDiv.set(false)}
+						/>
+					{:else}
+						<div>{text}</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
