@@ -1,4 +1,4 @@
-import { bucketName, datasetId, tableId } from '$env/static/private';
+import { bucketName, datasetId, tableId, workLog } from '$env/static/private';
 import { bigquery, storage } from './client.js';
 
 import {
@@ -7,7 +7,8 @@ import {
 	repeatUpdateQuery,
 	repeatInsertQuery,
 	updateRepeatCounts,
-	alsoTodaySelectQuery
+	alsoTodaySelectQuery,
+	workLogSelectQuery
 } from './queries.js';
 
 export async function updateWeeklySentences(boxes) {
@@ -30,6 +31,13 @@ export async function loadWeeklyRepeats() {
 }
 export async function loadAlsoTodayRepeats() {
 	const [job] = await bigquery.createQueryJob(await alsoTodaySelectQuery(datasetId, tableId));
+	const [rows] = await job.getQueryResults();
+
+	return rows;
+}
+
+export async function loadWorkLog() {
+	const [job] = await bigquery.createQueryJob(await workLogSelectQuery(datasetId, workLog));
 	const [rows] = await job.getQueryResults();
 
 	return rows;

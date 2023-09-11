@@ -73,3 +73,8 @@ function today() {
 
 	return `"${year}-${month}-${day}"`;
 }
+
+
+export async function workLogSelectQuery(datasetId,tableId) {
+	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE type = "work-log"';
+}
