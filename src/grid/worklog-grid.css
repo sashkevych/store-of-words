@@ -64,7 +64,7 @@
 }
 @media (min-width: 1440px) {
 	.work-log {
-		grid-template-columns: .76fr 6fr 0.3fr;
+		grid-template-columns: .76fr 6fr 0.225fr;
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar date right-space'

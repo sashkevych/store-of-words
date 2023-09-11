@@ -5,8 +5,10 @@
 
 	let weeklyRepeats = [];
 	newData.subscribe((vl) => (weeklyRepeats = vl));
+
+	const isWeekly = true
 </script>
 
 <div id="weekly">
-	<Boxes {weeklyRepeats} label={'Weekly repeats'}  horizontal={true}/>
+	<Boxes {weeklyRepeats} label={'Weekly repeats'}  horizontal={true} {isWeekly}/>
 </div>

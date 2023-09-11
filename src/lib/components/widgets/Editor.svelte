@@ -1,5 +1,6 @@
 <script>
 	import { newData, isFocusDiv, onFocusDiv } from '../../../store';
+
 	export let box;
 
 	function isOnClickHandler(box_id, sentence_id) {
@@ -7,17 +8,19 @@
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 	}
 
-	export let isWeekly = true;
+	export let isWeekly = false;
+	export let isAlsoToday = false;
+	export let isWorkLog = false;
 </script>
 
 <div id="editor">
 	<div class="editor-box">
-		<div class="headline-large on-surface-text header-text">First repeat</div>
-		<div id={box.box_id} class="distance">
-			{#each box.sentences as { text, id }}
-				<div class="sentence body-large on-surface-text">
-					<div>{id}.</div>
-					{#if isWeekly}
+		{#if isWeekly}
+			<div class="headline-large on-surface-text header-text">First repeat</div>
+			<div id={box.box_id} class="distance">
+				{#each box.sentences as { text, id }}
+					<div class="sentence body-large on-surface-text">
+						<div>{id}.</div>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							{id}
@@ -28,12 +31,50 @@
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 						/>
-					{:else}
-						<div>{text}</div>
-					{/if}
-				</div>
-			{/each}
-		</div>
+					</div>
+				{/each}
+			</div>
+		{/if}
+		{#if isAlsoToday}
+			<div class="headline-large on-surface-text header-text">{box.repeat.date.value}</div>
+			<div id={box.box_id} class="distance">
+				{#each box.sentences as { text, id }}
+					<div class="sentence body-large on-surface-text">
+						<div>{id}.</div>
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<div
+							{id}
+							class="test"
+							contenteditable="true"
+							bind:textContent={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
+							on:focus={() => onFocusDiv.set(true)}
+							on:blur={() => onFocusDiv.set(false)}
+						/>
+					</div>
+				{/each}
+			</div>
+		{/if}
+		{#if isWorkLog}
+			<div class="headline-large on-surface-text header-text">Work log</div>
+			<div id="workLog" class="distance">
+				{#each box.sentences as { text, id }}
+					<div class="sentence body-large on-surface-text">
+						<div>{id}.</div>
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<div
+							{id}
+							class="test"
+							contenteditable="true"
+							bind:textContent={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
+							on:focus={() => onFocusDiv.set(true)}
+							on:blur={() => onFocusDiv.set(false)}
+						/>
+					</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>
 

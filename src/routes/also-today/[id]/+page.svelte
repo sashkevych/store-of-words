@@ -18,16 +18,6 @@
 	<SideBar />
 	<DropMenu dataArray={$alsoToday} {isAlsoToday}/>
 	<Data />
-	<!-- <button on:click={() => areThereAnyChanges($newData, $oldData)}>Compare</button>
-		<button class="border border-red-600 rounded-sm" on:click={() => moveAll($newData)}
-			>Move all</button
-		>
-		<button
-			on:click={() => {
-				document.execCommand('bold');
-				console.log($newData);
-			}}>Bold</button
-		> -->
-	<Editor {box} isWeekly={false}/>
+	<Editor {box} {isAlsoToday}/>
 	<div id="space" />
 </div>
