@@ -21,8 +21,9 @@
 				box.sentences = newSentences;
 				return value;
 			});
+			setTimeout(() => focusOnNewElement(box_id, sentence_id), 0);
 		}
-		setTimeout(() => focusOnNewElement(box_id, sentence_id), 0);
+		
 	}
 	function focusOnNewElement(box_id, sentence_id) {
 		console.log("it's called");
@@ -30,6 +31,7 @@
 		var lastChild = parent.lastElementChild?.lastElementChild;
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 		lastChild.focus();
+		
 	}
 	async function key_down_handler(event) {
 		const { key } = event;
