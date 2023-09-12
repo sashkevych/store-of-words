@@ -61,7 +61,7 @@
 		{/if}
 		{#if isWorkLog}
 			<div class="headline-large on-surface-text header-text">Work log</div>
-			<div id="workLog" class="distance">
+			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
 					<div class="sentence body-large on-surface-text">
 						<div>{id}.</div>
@@ -74,8 +74,8 @@
 							bind:textContent={text}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 						/>
-						<!-- on:mousedown={() => isOnClickHandler(box.box_id, id)} -->
 					</div>
 				{/each}
 			</div>
