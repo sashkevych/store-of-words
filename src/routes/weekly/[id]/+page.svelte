@@ -26,21 +26,16 @@
 	}
 	function key_down_handler(event) {
 		const { key } = event;
+
 		const { box_id, sentence_id } = $isFocusDiv;
 
 		if (key == 'Enter') {
-			console.log('1');
+			event.preventDefault();
 			if (!$onFocusDiv) return;
-			console.log('2');
 			newData.update((boxes) => {
-				let box = boxes.find((box) => {
-					console.log(box.box_id == box_id);
-					console.log('ID 1',box.box_id, 'ID 2',box_id);
-					return box.box_id == box_id;
-				});
+				let box = boxes.find((box) => box.box_id == box_id);
 				const length = box.sentences.length;
 				box.sentences.push({ text: '', id: length + 1 });
-				console.log('Box after update :',box);
 				return boxes;
 			});
 		} else if (key == 'Backspace') {
