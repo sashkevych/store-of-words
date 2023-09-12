@@ -1,6 +1,7 @@
 <script>
 	import './style.css';
 	import Boxes from './boxes.svelte';
+	import NothingYet from './NothingYet.svelte';
 	import { alsoToday } from '../../../store';
 
 	let weeklyRepeats = [];
@@ -10,5 +11,9 @@
 </script>
 
 <div id="also-today">
-	<Boxes {weeklyRepeats} label={'Also today'} horizontal={true} {isAlsoToday} />
+	{#if weeklyRepeats[0]}
+		<Boxes {weeklyRepeats} label={'Also today'} horizontal={true} {isAlsoToday} />
+	{:else}
+		<NothingYet widget={true}/>
+	{/if}
 </div>
