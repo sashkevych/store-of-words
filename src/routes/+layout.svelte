@@ -7,6 +7,7 @@
 	newData.set(JSON.parse(data.weeklyRepeats));
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
+	console.log($alsoToday);
 
 	async function close_event_handler() {
 		// whiteSpaceFilter($newData,$oldData)
