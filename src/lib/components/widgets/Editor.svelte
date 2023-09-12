@@ -28,6 +28,7 @@
 							{id}
 							class="test"
 							contenteditable="true"
+							tabIndex="0"
 							bind:textContent={text}
 							on:input={callHMR}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
@@ -69,6 +70,7 @@
 							{id}
 							class="test"
 							contenteditable="true"
+							tabIndex="0"
 							bind:textContent={text}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
