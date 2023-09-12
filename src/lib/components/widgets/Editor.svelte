@@ -1,6 +1,6 @@
 <script>
 	import { newData, isFocusDiv, onFocusDiv } from '../../../store';
-	import "./style.css"
+	import './style.css';
 	export let box;
 
 	function isOnClickHandler(box_id, sentence_id) {
@@ -11,6 +11,8 @@
 	export let isWeekly = false;
 	export let isAlsoToday = false;
 	export let isWorkLog = false;
+
+	const callHMR = () => newData.set($newData);
 </script>
 
 <div id="editor">
@@ -27,6 +29,7 @@
 							class="test"
 							contenteditable="true"
 							bind:textContent={text}
+							on:input={callHMR}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
@@ -67,7 +70,6 @@
 							class="test"
 							contenteditable="true"
 							bind:textContent={text}
-							
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 						/>
