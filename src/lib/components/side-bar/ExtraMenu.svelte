@@ -1,7 +1,7 @@
 <script>
 	import { isExtraMenu,extraMenuData, extraDataIs } from '../../../store';
 
-	import BackToMainMenu from './BackToMainMenu.svelte';
+	import BackToMainMenu from './icons/BackToMainMenu.svelte';
 
 	function setToDefault(){
 		isExtraMenu.set(false)

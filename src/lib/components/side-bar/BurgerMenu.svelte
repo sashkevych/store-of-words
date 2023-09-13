@@ -1,13 +1,13 @@
 <script>
-	import MenuClose from './MenuClose.svelte';
-	import MenuOpen from './MenuOpen.svelte';
-	import Theme from './theme.svelte';
+	import MenuClose from './icons/MenuClose.svelte';
+	import MenuOpen from './icons/MenuOpen.svelte';
+	import Theme from './icons/Theme.svelte';
 	import ExtraMenu from './ExtraMenu.svelte';
 
-	import Home from './home.svelte';
-	import Weekly from './weekly.svelte';
-	import Today from './today.svelte';
-	import WorkLog from './work-log.svelte';
+	import Home from './icons/Home.svelte';
+	import Weekly from './icons/Weekly.svelte';
+	import Today from './icons/Today.svelte';
+	import WorkLog from './icons/Work-log.svelte';
 
 	import { isExtraMenu } from '../../../store';
 

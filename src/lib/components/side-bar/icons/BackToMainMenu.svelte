@@ -1,5 +1,5 @@
 <script>
-    import { isExtraMenu } from "../../../store";
+    import { isExtraMenu } from "../../../../store";
 
     function closeExtraMenu() {
         isExtraMenu.set(false)

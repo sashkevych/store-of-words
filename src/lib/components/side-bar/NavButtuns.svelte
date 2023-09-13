@@ -1,10 +1,10 @@
 <script>
-	import Home from './home.svelte';
-	import Weekly from './weekly.svelte';
-	import Today from './today.svelte';
-	import WorkLog from './work-log.svelte';
+	import Home from './icons/Home.svelte';
+	import Weekly from './icons/Weekly.svelte';
+	import Today from './icons/Today.svelte';
+	import WorkLog from './icons/Work-log.svelte';
 
-	import BurgerMenu from './burger-menu.svelte';
+	import BurgerMenu from './BurgerMenu.svelte';
 
 	export let size = '';
 </script>

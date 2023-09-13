@@ -1,7 +1,7 @@
 <script>
 	import './style.css';
-	import ThemeIcon from './theme.svelte';
-	import NavButtons from './nav-buttons.svelte';
+	import ThemeIcon from './icons/Theme.svelte';
+	import NavButtons from './NavButtuns.svelte';
 
 	import MediaQuery from './MediaQuery.svelte';
 </script>

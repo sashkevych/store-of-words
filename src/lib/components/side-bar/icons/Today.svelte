@@ -1,7 +1,7 @@
 <script>
 	export let small = false;
-	import ArrowForward from './arrow-forward.svelte';
-	import { isExtraMenu, extraMenuData, extraDataIs, alsoToday } from '../../../store';
+	import ArrowForward from './ArrowForward.svelte';
+	import { isExtraMenu, extraMenuData, extraDataIs, alsoToday } from '../../../../store';
 
 	function goFurther(data, whichData) {
 		isExtraMenu.set(true);
