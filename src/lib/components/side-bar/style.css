@@ -18,6 +18,9 @@
     align-items: center;
     gap: .2rem;
 }
+.theme {
+    margin-bottom: 10px;
+}
 @media ((min-width: 1440px)) {
 	.nav-container {
 		display: flex;
