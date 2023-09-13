@@ -1,10 +1,15 @@
 <script>
 	export let small = false;
+	import { visible } from '../../../../store';
+	function toggleView() {
+		visible.set(!$visible);
+	}
 </script>
 
 <a href="/work-log">
 	{#if small}
-		<div class="nav-small">
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<div class="nav-small" on:click={toggleView} role="button" tabindex="0">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="26"

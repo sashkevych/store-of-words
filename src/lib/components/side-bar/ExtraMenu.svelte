@@ -4,6 +4,7 @@
 	import BackToMainMenu from './icons/BackToMainMenu.svelte';
 
 	function setToDefault(){
+		console.log('setToDefault');
 		isExtraMenu.set(false)
 		extraMenuData.set([])
 		extraDataIs.set('')

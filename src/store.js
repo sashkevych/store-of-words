@@ -19,3 +19,5 @@ export let onFocusDiv = writable(false)
 export let isExtraMenu = writable(false)
 export let extraDataIs = writable()
 export let extraMenuData = writable()
+
+export let visible = writable(false)

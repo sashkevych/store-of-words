@@ -9,11 +9,10 @@
 	import Today from './icons/Today.svelte';
 	import WorkLog from './icons/Work-log.svelte';
 
-	import { isExtraMenu } from '../../../store';
+	import { isExtraMenu, visible } from '../../../store';
 
-	let visible = false;
 	function toggleView() {
-		visible = !visible;
+		visible.set(!$visible);
 	}
 
 	const small = true;
@@ -21,14 +20,14 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="menu-position" role="button" on:click={toggleView} tabindex="0">
-	{#if visible}
+	{#if $visible}
 		<MenuOpen />
 	{:else}
 		<MenuClose />
 	{/if}
 </div>
 
-{#if visible}
+{#if $visible}
 	<div class="open-menu">
 		<div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->

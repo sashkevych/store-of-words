@@ -4,6 +4,7 @@
 	import { isExtraMenu, extraMenuData, extraDataIs, newData } from '../../../../store';
 
 	function goFurther(data, whichData) {
+		console.log('goFurther');
 		isExtraMenu.set(true);
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
