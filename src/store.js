@@ -5,7 +5,7 @@ export let oldData = writable()
 export let newData = writable()
 export let alsoToday = writable()
 export let workLog = writable()
-
+export let oldWorkLog = writable()
 
 export let isFocusDiv = writable({
     event: false,

@@ -2,7 +2,7 @@
 	import SideBar from '$lib/components/side-bar/SideBar.svelte';
 	import Data from '$lib/components/data/Data.svelte';
 	import Editor from '$lib/components/widgets/Editor.svelte';
-	import { workLog, onFocusDiv, isFocusDiv } from '../../store.js';
+	import { workLog, oldWorkLog, onFocusDiv, isFocusDiv } from '../../store.js';
 
 	let box = [];
 	workLog.subscribe((value) => (box = value[0]));
@@ -54,11 +54,56 @@
 			deleteBoxIfEmpty(box_id, sentence_id, store);
 		}
 	}
-	console.log($workLog)
+
+	async function areThereAnyChanges(newArr, oldArr) {
+		const changes = removeWhiteSpace(newArr).filter((el, i) => {
+			const el1 = el.sentences;
+			const el2 = oldArr[i].sentences;
+
+			const isAnyChange = el1.some((el, i, arr) => {
+				if (!el2[i]?.text) return true;
+				if (!el.text) return true;
+				if (el2[i + 1]?.text && !arr[i + 1]?.text) return true;
+				if (el.text != el2[i].text) return true;
+				return false;
+			});
+
+			if (isAnyChange) return el;
+		});
+
+		return changes;
+	}
+
+	function removeWhiteSpace(newArr) {
+		const res = newArr.filter((box) => {
+			const onlyWithText = box.sentences.filter((sentence, i, arr) => {
+				// fix id
+				const IsEmpty = sentence.text.trim();
+
+				sentence.text = IsEmpty;
+				return IsEmpty;
+			});
+			onlyWithText.forEach((sentence, index, arr) => {
+				sentence.id = index + 1;
+			});
+			box.sentences = onlyWithText;
+
+			return box;
+		});
+		console.log('white space', res);
+		return res;
+	}
+	async function test() {
+		const res = await areThereAnyChanges($workLog, $oldWorkLog)
+		console.log(res);
+
+	}
 </script>
 
 <svelte:window on:keydown={(e) => key_down_handler(e, workLog)} />
-
+<button on:click={test}>Compare Work logs</button>
+<button on:click={() => console.log($workLog)}>WorkLog</button>
+<button on:click={() => console.log($oldWorkLog)}>oldWorkLog</button>
 <div class="work-log">
 	<SideBar />
 	<Data />

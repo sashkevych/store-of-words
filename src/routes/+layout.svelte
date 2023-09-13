@@ -1,17 +1,18 @@
 <script>
 	import '../app.css';
-	import { alsoToday, newData, oldData, workLog } from '../store';
+	import { alsoToday, newData, oldData, workLog, oldWorkLog } from '../store';
 	export let data;
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(JSON.parse(data.weeklyRepeats));
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
-	console.log($alsoToday);
+	oldWorkLog.set(JSON.parse(data.workLog));
+	
 
 	async function close_event_handler() {
-		// whiteSpaceFilter($newData,$oldData)
 		const changes = await areThereAnyChanges($newData, $oldData);
+		// const workLogChanges = await areThereAnyChanges($workLog, $oldWorkLog);
 		console.log(changes);
 		if (changes[0]) await sendPut(changes);
 
