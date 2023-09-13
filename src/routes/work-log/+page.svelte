@@ -101,9 +101,7 @@
 </script>
 
 <svelte:window on:keydown={(e) => key_down_handler(e, workLog)} />
-<button on:click={test}>Compare Work logs</button>
-<button on:click={() => console.log($workLog)}>WorkLog</button>
-<button on:click={() => console.log($oldWorkLog)}>oldWorkLog</button>
+
 <div class="work-log">
 	<SideBar />
 	<Data />
