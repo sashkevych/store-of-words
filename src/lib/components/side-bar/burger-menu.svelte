@@ -8,7 +8,7 @@
 	import Today from './today.svelte';
 	import WorkLog from './work-log.svelte';
 
-	let visible = true;
+	let visible = false;
 	function toggleView() {
 		visible = !visible;
 	}
