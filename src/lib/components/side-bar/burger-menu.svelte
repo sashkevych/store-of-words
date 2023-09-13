@@ -29,7 +29,7 @@
 	<div class="open-menu">
 		<div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="top-icon" role="button" on:click={toggleView} tabindex="0"><MenuOpen /></div>
+			<div class="top-icon-position" role="button" on:click={toggleView} tabindex="0"><MenuOpen /></div>
 
 			<div class="nav-position">
 				<div><Home {small} /></div>
@@ -49,7 +49,7 @@
 	.nav-position {
 		margin-top: 42px;
 	}
-	.top-icon {
+	.top-icon-position {
 		margin-top: 18px;
 	}
 	.menu-position {
