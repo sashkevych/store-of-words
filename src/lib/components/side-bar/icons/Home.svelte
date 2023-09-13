@@ -1,8 +1,10 @@
 <script>
 	export let small = false;
 
-	import { visible } from '../../../../store';
+	import { visible, selected } from '../../../../store';
+
 	function toggleView() {
+		selected.set('home')
 		visible.set(!$visible);
 	}
 </script>

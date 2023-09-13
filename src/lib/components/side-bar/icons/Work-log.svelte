@@ -1,9 +1,13 @@
 <script>
 	export let small = false;
-	import { visible } from '../../../../store';
+	import { selected,visible } from '../../../../store';
 	function toggleView() {
 		visible.set(!$visible);
+		selected.set('work-log')
 	}
+	// function clickHandler() {
+
+	// }
 </script>
 
 <a href="/work-log">

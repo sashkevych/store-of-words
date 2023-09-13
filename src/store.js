@@ -21,3 +21,4 @@ export let extraDataIs = writable()
 export let extraMenuData = writable()
 
 export let visible = writable(false)
+export let selected = writable()

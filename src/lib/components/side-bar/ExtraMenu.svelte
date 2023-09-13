@@ -1,13 +1,17 @@
 <script>
-	import { isExtraMenu,extraMenuData, extraDataIs } from '../../../store';
+	import { selected, visible, isExtraMenu, extraMenuData, extraDataIs } from '../../../store';
 
 	import BackToMainMenu from './icons/BackToMainMenu.svelte';
 
-	function setToDefault(){
-		console.log('setToDefault');
-		isExtraMenu.set(false)
-		extraMenuData.set([])
-		extraDataIs.set('')
+	function setSelected(identifire) {
+		selected.set(identifire);
+	}
+	function toggleView() {
+		visible.set(!$visible);
+	}
+	function clicHandler(identifire) {
+		toggleView();
+		setSelected();
 	}
 </script>
 
@@ -17,11 +21,11 @@
 		<div class="extra-menu-margin">
 			{#each $extraMenuData as box}
 				{#if $extraDataIs == 'weekly'}
-					<a on:click={setToDefault} href="/weekly/{box.repeat.count}" 
+					<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
 						><div>First repeat</div></a
 					>
 				{:else if $extraDataIs == 'also-today'}
-					<a on:click={setToDefault} href="/also-today/{box.box_id}" 
+					<a on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
 						><div>{box.repeat.data}</div></a
 					>
 					<div>{box.repeat.data}</div>
@@ -41,6 +45,6 @@
 		margin-top: 15px;
 	}
 	.link-width {
-		width:fit-content;
+		width: fit-content;
 	}
 </style>
