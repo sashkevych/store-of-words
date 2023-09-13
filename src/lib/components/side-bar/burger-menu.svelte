@@ -2,11 +2,14 @@
 	import MenuClose from './MenuClose.svelte';
 	import MenuOpen from './MenuOpen.svelte';
 	import Theme from './theme.svelte';
+	import ExtraMenu from './ExtraMenu.svelte';
 
 	import Home from './home.svelte';
 	import Weekly from './weekly.svelte';
 	import Today from './today.svelte';
 	import WorkLog from './work-log.svelte';
+
+	import { isExtraMenu } from '../../../store';
 
 	let visible = false;
 	function toggleView() {
@@ -29,13 +32,19 @@
 	<div class="open-menu">
 		<div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="top-icon-position" role="button" on:click={toggleView} tabindex="0"><MenuOpen /></div>
+			<div class="top-icon-position" role="button" on:click={toggleView} tabindex="0">
+				<MenuOpen />
+			</div>
 
 			<div class="nav-position">
-				<div><Home {small} /></div>
-				<div><Weekly {small} /></div>
-				<div><Today {small} /></div>
-				<div><WorkLog {small} /></div>
+				{#if $isExtraMenu}
+					<ExtraMenu />
+				{:else}
+					<div><Home {small} /></div>
+					<div><Weekly {small} /></div>
+					<div><Today {small} /></div>
+					<div><WorkLog {small} /></div>
+				{/if}
 			</div>
 		</div>
 

@@ -13,3 +13,9 @@ export let isFocusDiv = writable({
     sentence_id: ''
 })
 export let onFocusDiv = writable(false)
+
+
+
+export let isExtraMenu = writable(false)
+export let extraDataIs = writable()
+export let extraMenuData = writable()

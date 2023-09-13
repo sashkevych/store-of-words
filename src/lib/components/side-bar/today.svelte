@@ -1,10 +1,23 @@
 <script>
 	export let small = false;
 	import ArrowForward from './arrow-forward.svelte';
+	import { isExtraMenu, extraMenuData, extraDataIs, alsoToday } from '../../../store';
+
+	function goFurther(data, whichData) {
+		isExtraMenu.set(true);
+		extraDataIs.set(whichData);
+		extraMenuData.set(data);
+	}
 </script>
 
 {#if small}
-	<div class="position-with-arrow">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<div
+		class="position-with-arrow"
+		role="button"
+		on:click={() => goFurther($alsoToday, 'also-today')}
+		tabindex="0"
+	>
 		<div class="nav-small">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
