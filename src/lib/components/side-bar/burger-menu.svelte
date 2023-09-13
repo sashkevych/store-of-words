@@ -3,10 +3,17 @@
 	import MenuOpen from './MenuOpen.svelte';
 	import Theme from './theme.svelte';
 
-	let visible = false;
+	import Home from './home.svelte';
+	import Weekly from './weekly.svelte';
+	import Today from './today.svelte';
+	import WorkLog from './work-log.svelte';
+
+	let visible = true;
 	function toggleView() {
 		visible = !visible;
 	}
+
+	const small = true;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -21,23 +28,30 @@
 {#if visible}
 	<div class="open-menu">
 		<div>
-      <div class="top-icon" role="button" on:click={toggleView} tabindex="0"><MenuOpen /></div>
-      <div>Home</div>
-      <div>Weekly</div>
-      <div>Also today</div>
-      <div>Work log</div>
-    </div>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="top-icon" role="button" on:click={toggleView} tabindex="0"><MenuOpen /></div>
+
+			<div class="nav-position">
+				<div><Home {small} /></div>
+				<div><Weekly {small} /></div>
+				<div><Today {small} /></div>
+				<div><WorkLog {small} /></div>
+			</div>
+		</div>
 
 		<div class="theme">
-      <Theme />
-    </div>
+			<Theme />
+		</div>
 	</div>
 {/if}
 
 <style>
-  .top-icon {
-    margin-top: 18px;
-  }
+	.nav-position {
+		margin-top: 42px;
+	}
+	.top-icon {
+		margin-top: 18px;
+	}
 	.menu-position {
 		display: flex;
 		height: 100%;
@@ -52,17 +66,15 @@
 		position: absolute;
 		top: 0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
-
-    
 		background-color: sandybrown;
 	}
-  .open-menu > div {
-    margin-left: 18px;
-  }
+	.open-menu > div {
+		margin-left: 18px;
+	}
 	.main {
 		height: 100vh;
 		background-color: rgb(173, 255, 47);

@@ -9,14 +9,14 @@
 <div id="side-bar" class="surface-container" style="width: 100%; height: 100%;">
 	<MediaQuery query="(min-width: 1440px)" let:matches>
 		{#if matches}
-		<div class="bar-container">
-			<div class="nav-container">
-				<NavButtons size={'large'} />
+			<div class="bar-container">
+				<div class="nav-container">
+					<NavButtons size={'large'} />
+				</div>
+				<div class="theme">
+					<ThemeIcon />
+				</div>
 			</div>
-			<div class="theme">
-				<ThemeIcon />
-			</div>
-		</div>
 		{/if}
 	</MediaQuery>
 
@@ -35,12 +35,10 @@
 
 	<MediaQuery query="(max-width: 1165px)" let:matches>
 		{#if matches}
-		<NavButtons size={'small'}/>
+			<NavButtons size={'small'} />
 		{/if}
 	</MediaQuery>
 </div>
 
 <style>
-
-	
 </style>
