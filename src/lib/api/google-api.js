@@ -19,8 +19,13 @@ export async function updateWeeklySentences(boxes) {
 		const [job] = await bigquery.createQueryJob(
 			await sentenceUpdateQuery(box_id, sentences, datasetId, tableId)
 		);
-		// console.log(`Job ${job.id} started.`);
 	});
+}
+export async function updateWorkLog(box) {
+	const { box_id, sentences } = box[0];
+	const [job] = await bigquery.createQueryJob(
+		await sentenceUpdateQuery(box_id, sentences, datasetId, workLog)
+	);
 }
 
 export async function loadWeeklyRepeats() {
@@ -59,10 +64,8 @@ async function waitForJobCompletion(jobId) {
 		[job] = await bigquery.job(jobId).get();
 
 		if (job.metadata.status.state !== 'DONE') {
-			// console.log(`Job status: ${job.metadata.status.state}`);
 			await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
 		}
 	} while (job.metadata.status.state !== 'DONE');
 
-	// console.log('Job is DONE.', job.metadata.status.state);
 }

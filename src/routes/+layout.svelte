@@ -8,13 +8,12 @@
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));
-	
 
 	async function close_event_handler() {
 		const changes = await areThereAnyChanges($newData, $oldData);
-		// const workLogChanges = await areThereAnyChanges($workLog, $oldWorkLog);
-		console.log(changes);
-		if (changes[0]) await sendPut(changes);
+		const workLogChanges = await areThereAnyChanges($workLog, $oldWorkLog);
+		if (changes[0]) await sendPut(changes, 'updateWeekly');
+		if (workLogChanges[0]) await sendPut(workLogChanges, 'updateWorkLog');
 
 		return null;
 	}
@@ -57,13 +56,13 @@
 		return res;
 	}
 
-	async function sendPut(content) {
-		await fetch('http://localhost:5173/gcp', {
+	async function sendPut(content, action) {
+		await fetch(`http://localhost:5173/gcp/?action=${action}`, {
 			method: 'PUT',
-			body: JSON.stringify({ content }),
 			headers: {
 				'Content-Type': 'application/json'
-			}
+			},
+			body: JSON.stringify({ content })
 		});
 	}
 </script>

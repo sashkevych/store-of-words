@@ -3,7 +3,6 @@ export async function formatRepeat({ count, date, type }) {
 }
 export async function formatSentences(collection) {
 	const input = JSON.stringify(collection);
-
 	const output = input.replace(/{"text":"(.*?)","id":(\d+)}/g, '("$1",$2)').replace(/},{/g, '),(');
 
 	return `${output}`;
@@ -60,7 +59,8 @@ export async function alsoTodaySelectQuery(datasetId, tableId) {
 	return (
 		'SELECT * FROM ' +
 		`${datasetId}.${tableId}` +
-		' WHERE repeat.type = "seven" AND repeat.date = '+ today()
+		' WHERE repeat.type = "seven" AND repeat.date = ' +
+		today()
 	);
 }
 
@@ -74,7 +74,6 @@ function today() {
 	return `"${year}-${month}-${day}"`;
 }
 
-
-export async function workLogSelectQuery(datasetId,tableId) {
+export async function workLogSelectQuery(datasetId, tableId) {
 	return 'SELECT * FROM ' + `${datasetId}.${tableId}` + ' WHERE type = "work-log"';
 }
