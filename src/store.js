@@ -20,7 +20,7 @@ export let isExtraMenu = writable(false)
 export let extraDataIs = writable()
 export let extraMenuData = writable()
 
-export let visible = writable(true)
+export let visible = writable(false)
 export let selected = writable()
 
 // Side bar toggles

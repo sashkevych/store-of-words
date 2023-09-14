@@ -27,7 +27,7 @@
 			/>
 		</g>
 	</svg>
-	<div>Main menu</div>
+	<div class="title-medium on-surface-variant-text">Main menu</div>
 </div>
 <style>
     .back-to-main-position {
@@ -35,6 +35,10 @@
         align-items: center;
         gap: 12px;
         cursor: pointer;
+
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border: 1px solid black;
 
     }
 </style>

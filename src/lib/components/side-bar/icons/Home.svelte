@@ -34,11 +34,11 @@
 				<g mask="url(#mask0_53_51)">
 					<path
 						d="M6.57778 20.5058H9.6011V13.9346H16.399V20.5058H19.4223V10.8724L13.0001 6.05566L6.57778 10.8724V20.5058ZM4.11317 22.9704V9.64008L13.0001 2.97168L21.8869 9.63792V22.9704H14.0316V16.302H11.9685V22.9704H4.11317Z"
-						fill="#1C1B1F"
+						fill="#51443A"
 					/>
 				</g>
 			</svg>
-			<div class="label-large on-surface-variant-text">Home</div>
+			<div class="title-medium on-surface-variant-text">Home</div>
 		</div>
 	{:else}
 		<div class="nav">
@@ -63,7 +63,7 @@
 				<g mask="url(#mask0_53_51)">
 					<path
 						d="M6.57778 20.5058H9.6011V13.9346H16.399V20.5058H19.4223V10.8724L13.0001 6.05566L6.57778 10.8724V20.5058ZM4.11317 22.9704V9.64008L13.0001 2.97168L21.8869 9.63792V22.9704H14.0316V16.302H11.9685V22.9704H4.11317Z"
-						fill="#1C1B1F"
+						fill="#51443A"
 					/>
 				</g>
 			</svg>
@@ -77,7 +77,7 @@
 		padding-left: 16px;
 		padding-right: 16px;
 
-		padding-top: 7px;
-		padding-bottom: 7px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 </style>

@@ -36,8 +36,8 @@ nav small bar
 	padding-left: 16px;
 	padding-right: 16px;
 
-	padding-top: 7px;
-	padding-bottom: 7px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .position-with-arrow {
 	display: flex;
@@ -61,6 +61,7 @@ nav small bar
 /* Icons */
 .clicked-icon {
 	border: 1px solid red;
+	border-radius: 100px;
 }
 
 @media ((min-width: 1440px)) {

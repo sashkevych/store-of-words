@@ -23,13 +23,13 @@
 				{#if $extraDataIs == 'weekly'}
 					<div class="distantion">
 						<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
-							><div class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
+							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
 						>
 					</div>
 				{:else if $extraDataIs == 'also-today'}
 					<div class="distantion">
 						<a on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
-							><div class:clicked-icon={$selected == box.box_id}>{box.repeat.data.value}</div></a
+							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.box_id}>{box.repeat.data.value}</div></a
 						>
 					</div>
 				{/if}
@@ -46,14 +46,13 @@
 
 	.extra-menu-margin {
 		margin-left: 22px;
-		margin-top: 15px;
 	}
 	.distantion {
-		padding: 16px;
+		padding-left: 16px;
 		padding-right: 16px;
 
-		padding-top: 7px;
-		padding-bottom: 7px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 		border: 1px solid black;
 	}
 </style>
