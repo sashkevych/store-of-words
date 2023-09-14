@@ -12,3 +12,5 @@ u {
 [contenteditable] {
 	outline: 0px solid transparent;
 }
+
+button { border:none; background-color: transparent;} 

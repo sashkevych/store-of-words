@@ -45,7 +45,22 @@
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">{label}</div>
 			{#if isWeekly}
-				<div><button on:click={() => moveAll($newData)}>Move all</button></div>
+				<button class="move-all">
+					<div
+						class="primary" style="width: 100%; height: 100%;  border-radius: 100px;"
+					>
+						<div
+							style="align-self: stretch; flex: 1 1 0; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 8px; display: inline-flex"
+						>
+							<div
+								class="on-primary-text label-large" style="text-align: center; font-family: Roboto; font-weight: 500; line-height: 20px; letter-spacing: 0.10px; word-wrap: break-word"
+							>
+								Move all
+							</div>
+						</div>
+					</div>
+				</button>
+				<!-- <div><button on:click={() => moveAll($newData)}>Move all</button></div> -->
 			{/if}
 		</div>
 		<div class="repeats-container">
@@ -121,3 +136,10 @@
 		{/each}
 	</div>
 {/if}
+
+
+<style>
+	.move-all {
+		cursor: pointer;
+	}
+</style>

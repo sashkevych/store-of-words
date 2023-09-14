@@ -102,7 +102,7 @@
 
 <svelte:window on:keydown={(e) => key_down_handler(e, workLog)} />
 
-<div class="work-log">
+<div class="work-log surface">
 	<SideBar />
 	<Data />
 	<Editor {box} {isWorkLog} />
