@@ -18,15 +18,15 @@
 <div>
 	<div class="nav-position">
 		<BackToMainMenu />
-		<div class="extra-menu-margin">
+		<div class="extra-menu-margin" >
 			{#each $extraMenuData as box}
 				{#if $extraDataIs == 'weekly'}
 					<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
-						><div>First repeat</div></a
+						><div class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
 					>
 				{:else if $extraDataIs == 'also-today'}
-					<a on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
-						><div>{box.repeat.data}</div></a
+					<a  on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
+						><div class:clicked-icon={$selected == box.box_id}>{box.repeat.data}</div></a
 					>
 					<div>{box.repeat.data}</div>
 				{/if}

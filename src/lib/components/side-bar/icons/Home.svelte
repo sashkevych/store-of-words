@@ -12,7 +12,7 @@
 <a href="/">
 	{#if small}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="nav-small" role="button" on:click={toggleView} tabindex="0">
+		<div class="nav-small" class:clicked-icon={$selected == 'home'} role="button" on:click={toggleView} tabindex="0">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="26"

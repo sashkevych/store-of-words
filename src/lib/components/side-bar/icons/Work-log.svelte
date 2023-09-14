@@ -13,7 +13,7 @@
 <a href="/work-log">
 	{#if small}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="nav-small" on:click={clickHandler} role="button" tabindex="0">
+		<div class="nav-small" class:clicked-icon={$selected == 'work-log'} on:click={clickHandler} role="button" tabindex="0">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="26"

@@ -83,7 +83,7 @@
 		margin-top: 42px;
 	}
 	.top-icon-position {
-		margin-top: 18px;
+		margin-top: 20px;
 	}
 	.menu-position {
 		display: flex;
@@ -106,7 +106,7 @@
 		background-color: sandybrown;
 	}
 	.open-menu > div {
-		margin-left: 18px;
+		margin-left: 26px;
 	}
 	.main {
 		height: 100vh;
