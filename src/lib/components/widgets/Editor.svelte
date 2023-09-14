@@ -18,7 +18,7 @@
 <div id="editor">
 	<div class="editor-box">
 		{#if isWeekly}
-			<div class="headline-large on-surface-text header-text">First repeat</div>
+			<div class="headline-large on-surface-text header-text">{box.repeat.label} repeat</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
 					<div class="sentence body-large on-surface-text">

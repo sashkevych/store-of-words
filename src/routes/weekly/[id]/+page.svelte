@@ -55,7 +55,7 @@
 		}
 	}
 
-	$: box = $newData.find((box) => box.repeat.count == data.id);
+	$: box = $newData.find((box) => box.repeat.label == data.id);
 
 	const isWeekly = true;
 </script>

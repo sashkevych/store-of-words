@@ -22,7 +22,7 @@
 
 	function moveAll(weeklyRepeats) {
 		console.log('move all');
-		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
+		const lastBox = weeklyRepeats.find((el) => el.repeat.label == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
 				el.repeat.count += 1;
@@ -51,7 +51,7 @@
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat, box_id }}
 				{#if isWeekly}
-					<a href="/weekly/{repeat.count}" class="repeat-box secondary">
+					<a href="/weekly/{repeat.label}" class="repeat-box secondary">
 						<div class="header-position title-medium on-secondary-text">
 							{repeat.label} repeat
 						</div>
@@ -89,7 +89,7 @@
 	<div class="surface-container-low weekly-widget">
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
-				<a href="/weekly/{repeat.count}" class="repeat-box-vertical secondary">
+				<a href="/weekly/{repeat.label}" class="repeat-box-vertical secondary">
 					<div class="header-position title-medium on-secondary-text">
 						{repeat.label} repeat
 					</div>
