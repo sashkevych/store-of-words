@@ -18,17 +18,20 @@
 <div>
 	<div class="nav-position">
 		<BackToMainMenu />
-		<div class="extra-menu-margin" >
+		<div class="extra-menu-margin">
 			{#each $extraMenuData as box}
 				{#if $extraDataIs == 'weekly'}
-					<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
-						><div class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
-					>
+					<div class="distantion">
+						<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
+							><div class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
+						>
+					</div>
 				{:else if $extraDataIs == 'also-today'}
-					<a  on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
-						><div class:clicked-icon={$selected == box.box_id}>{box.repeat.data}</div></a
-					>
-					<div>{box.repeat.data}</div>
+					<div class="distantion">
+						<a on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
+							><div class:clicked-icon={$selected == box.box_id}>{box.repeat.data.value}</div></a
+						>
+					</div>
 				{/if}
 			{/each}
 		</div>
@@ -38,13 +41,19 @@
 <style>
 	.nav-position {
 		margin-top: 42px;
+		margin-left: 18px;
 	}
 
 	.extra-menu-margin {
-		margin-left: 38px;
+		margin-left: 22px;
 		margin-top: 15px;
 	}
-	.link-width {
-		width: fit-content;
+	.distantion {
+		padding: 16px;
+		padding-right: 16px;
+
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border: 1px solid black;
 	}
 </style>

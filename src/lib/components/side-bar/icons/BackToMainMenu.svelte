@@ -35,5 +35,6 @@
         align-items: center;
         gap: 12px;
         cursor: pointer;
+
     }
 </style>
