@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import { alsoToday, newData, oldData, workLog, oldWorkLog } from '../store';
+	import { mouseOver,mouseLeave, visible, alsoToday, newData, oldData, workLog, oldWorkLog } from '../store';
 	export let data;
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
@@ -65,7 +65,13 @@
 			body: JSON.stringify({ content })
 		});
 	}
+
+	function clickHandler() {
+		if ($mouseLeave && !$mouseOver) {
+			visible.set(false);
+		}
+	}
 </script>
 
-<svelte:window on:beforeunload={close_event_handler} />
+<svelte:window on:beforeunload={close_event_handler} on:click={clickHandler} />
 <slot />

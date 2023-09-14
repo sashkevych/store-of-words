@@ -9,17 +9,35 @@
 	import Today from './icons/Today.svelte';
 	import WorkLog from './icons/Work-log.svelte';
 
-	import { isExtraMenu, visible } from '../../../store';
+	import { isExtraMenu, visible, mouseOver, mouseLeave } from '../../../store';
 
 	function toggleView() {
+		console.log('toggle visible');
 		visible.set(!$visible);
 	}
 
 	const small = true;
+
+	function onMouseOver() {
+		mouseOver.set(true);
+		mouseLeave.set(false);
+	}
+	function onMouseLeave() {
+		mouseLeave.set(true);
+		mouseOver.set(false);
+	}
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="menu-position" role="button" on:click={toggleView} tabindex="0">
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<div
+	class="menu-position"
+	role="button"
+	on:click={toggleView}
+	tabindex="0"
+	on:mouseover={onMouseOver}
+	on:mouseleave={onMouseLeave}
+>
 	{#if $visible}
 		<MenuOpen />
 	{:else}
@@ -28,7 +46,14 @@
 </div>
 
 {#if $visible}
-	<div class="open-menu">
+	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+	<div
+		class="open-menu"
+		role="button"
+		tabindex="0"
+		on:mouseover={onMouseOver}
+		on:mouseleave={onMouseLeave}
+	>
 		<div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="top-icon-position" role="button" on:click={toggleView} tabindex="0">
