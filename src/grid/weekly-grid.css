@@ -52,7 +52,7 @@
 }
 @media (min-width: 1440px) {
 	.weekly {
-		grid-template-columns: 1fr 2fr 6fr 0.3fr;
+		grid-template-columns: 95px 2fr 6fr 0.3fr;
 		grid-template-rows: 0.3fr 4fr ;
 		grid-template-areas:
 			'side-bar drop-menu date right-space'

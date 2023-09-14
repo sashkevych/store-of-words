@@ -64,7 +64,7 @@ nav small bar
 	border-radius: 100px;
 }
 
-@media ((min-width: 1440px)) {
+/* @media ((min-width: 1440px)) {
 	.nav-container {
 		display: flex;
 		flex-direction: column;
@@ -78,4 +78,4 @@ nav small bar
 		flex-direction: row;
 		gap: 0.2rem;
 	}
-}
+} */
