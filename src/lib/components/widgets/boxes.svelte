@@ -51,7 +51,7 @@
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat, box_id }}
 				{#if isWeekly}
-					<a href="/weekly/{repeat.label}" class="repeat-box secondary">
+					<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box secondary">
 						<div class="header-position title-medium on-secondary-text">
 							{repeat.label} repeat
 						</div>
@@ -89,7 +89,7 @@
 	<div class="surface-container-low weekly-widget">
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
-				<a href="/weekly/{repeat.label}" class="repeat-box-vertical secondary">
+				<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box-vertical secondary">
 					<div class="header-position title-medium on-secondary-text">
 						{repeat.label} repeat
 					</div>

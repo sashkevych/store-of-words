@@ -55,7 +55,7 @@
 		}
 	}
 
-	$: box = $newData.find((box) => box.repeat.label == data.id);
+	$: box = $newData.find((box) => box.repeat.label.toLowerCase() == data.id);
 
 	const isWeekly = true;
 </script>
