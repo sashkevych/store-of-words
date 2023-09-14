@@ -11,7 +11,7 @@
 	}
 	function clicHandler(identifire) {
 		toggleView();
-		setSelected();
+		setSelected(identifire);
 	}
 </script>
 
