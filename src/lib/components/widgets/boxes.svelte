@@ -86,7 +86,7 @@
 {/if}
 
 {#if vertical}
-	<div class="surface-container-low weekly-widget">
+	<div class="surface-container weekly-widget">
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
 				<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box-vertical secondary">
