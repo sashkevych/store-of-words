@@ -1,7 +1,7 @@
 <script>
 	export let widget = false
 </script>
-<div class="home-widget surface-container">
+<div class="home-widget surface-container-low">
 	{#if widget}
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">Also today</div>

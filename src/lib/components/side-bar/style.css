@@ -52,7 +52,10 @@ nav small bar
 	
 }
 .theme-small {
-	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+
+	margin-bottom: 20px;
 }
 
 /* Icons */

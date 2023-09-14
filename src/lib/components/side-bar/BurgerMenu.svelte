@@ -48,7 +48,7 @@
 {#if $visible}
 	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 	<div
-		class="open-menu"
+		class="open-menu surface-container"
 		role="button"
 		tabindex="0"
 		on:mouseover={onMouseOver}
@@ -73,7 +73,7 @@
 		</div>
 
 		<div class="theme-small">
-			<Theme />
+			<Theme small={true}/>
 		</div>
 	</div>
 {/if}
@@ -106,7 +106,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 
-		background-color: sandybrown;
 		border-radius: 0px 16px 16px 0px;
 	}
 	.main {

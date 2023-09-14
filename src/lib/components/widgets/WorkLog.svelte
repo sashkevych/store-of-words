@@ -6,7 +6,7 @@
 </script>
 
 <div id="work-log">
-	<div class="home-widget surface-container">
+	<div class="home-widget surface-container-low">
 		<div class="worklog-headline-position headline-small on-surface-text">Work log</div>
 		<a href="/work-log">
 			<div class="repeats-container">

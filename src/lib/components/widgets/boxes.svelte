@@ -41,7 +41,7 @@
 </script>
 
 {#if horizontal}
-	<div class="home-widget surface-container">
+	<div class="home-widget surface-container-low">
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">{label}</div>
 			{#if isWeekly}
@@ -86,7 +86,7 @@
 {/if}
 
 {#if vertical}
-	<div class="surface-container weekly-widget">
+	<div class="surface-container-low weekly-widget">
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
 				<a href="/weekly/{repeat.count}" class="repeat-box-vertical secondary">
