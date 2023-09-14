@@ -107,6 +107,7 @@
 	}
 	.open-menu > div {
 		margin-left: 26px;
+		margin-right: 10px;
 	}
 	.main {
 		height: 100vh;

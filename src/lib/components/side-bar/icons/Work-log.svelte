@@ -1,19 +1,25 @@
 <script>
 	export let small = false;
-	import { selected,visible } from '../../../../store';
+	import { selected, visible } from '../../../../store';
 	function toggleView() {
 		visible.set(!$visible);
-		selected.set('work-log')
+		selected.set('work-log');
 	}
 	function clickHandler() {
-		toggleView()
+		toggleView();
 	}
 </script>
 
 <a href="/work-log">
 	{#if small}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="nav-small" class:clicked-icon={$selected == 'work-log'} on:click={clickHandler} role="button" tabindex="0">
+		<div
+			class="devider"
+			class:clicked-icon={$selected == 'work-log'}
+			on:click={clickHandler}
+			role="button"
+			tabindex="0"
+		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="26"
@@ -39,7 +45,7 @@
 					/>
 				</g>
 			</svg>
-			<div class="label-medium on-surface-variant-text">Work log</div>
+			<div class="label-large on-surface-variant-text">Work log</div>
 		</div>
 	{:else}
 		<div class="nav">
@@ -74,4 +80,11 @@
 </a>
 
 <style>
+	.devider {
+		padding-left: 16px;
+		padding-right: 16px;
+
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
 </style>

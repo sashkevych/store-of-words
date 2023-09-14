@@ -4,7 +4,7 @@
 	import { visible, selected } from '../../../../store';
 
 	function toggleView() {
-		selected.set('home')
+		selected.set('home');
 		visible.set(!$visible);
 	}
 </script>
@@ -12,7 +12,7 @@
 <a href="/">
 	{#if small}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="nav-small" class:clicked-icon={$selected == 'home'} role="button" on:click={toggleView} tabindex="0">
+		<div class="devider" class:clicked-icon={true} role="button" on:click={toggleView} tabindex="0">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="26"
@@ -38,7 +38,7 @@
 					/>
 				</g>
 			</svg>
-			<div class="label-medium on-surface-variant-text">Home</div>
+			<div class="label-large on-surface-variant-text">Home</div>
 		</div>
 	{:else}
 		<div class="nav">
@@ -71,3 +71,13 @@
 		</div>
 	{/if}
 </a>
+
+<style>
+	.devider {
+		padding-left: 16px;
+		padding-right: 16px;
+
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
+</style>
