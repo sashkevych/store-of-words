@@ -1,10 +1,10 @@
 <script>
 	export let widget = false;
 
-	$: style = widget ? 'home-widget' : 'nothing-yet'
+	$: style = widget ? 'home-widget surface-container-low' : 'nothing-yet surface-container'
 </script>
 
-<div class="surface-container {style}">
+<div class="{style}">
 	{#if widget}
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">Also today</div>
