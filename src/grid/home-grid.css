@@ -71,7 +71,7 @@
 	.container {
 		column-gap: 3rem;
 		grid-template-columns: 95px 5fr 4fr 0px;
-		grid-template-rows: 0.6fr 4fr 4.33fr;
+		grid-template-rows: 0.67fr 4fr 4.33fr;
 		grid-template-areas:
 			'side-bar date date right-space'
 			'side-bar weekly weekly right-space'

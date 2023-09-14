@@ -22,8 +22,8 @@
 			{#each $extraMenuData as box}
 				{#if $extraDataIs == 'weekly'}
 					<div class="distantion">
-						<a on:click={() => clicHandler(box.repeat.count)} href="/weekly/{box.repeat.count}"
-							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.repeat.count}>First repeat</div></a
+						<a on:click={() => clicHandler(box.repeat.label)} href="/weekly/{box.repeat.label.toLowerCase()}"
+							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.repeat.label}>First repeat</div></a
 						>
 					</div>
 				{:else if $extraDataIs == 'also-today'}
