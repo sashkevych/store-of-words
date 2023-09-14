@@ -1,10 +1,35 @@
 <script>
 	import '../app.css';
-	import { mouseOver,mouseLeave, visible, alsoToday, newData, oldData, workLog, oldWorkLog } from '../store';
+	import {
+		mouseOver,
+		mouseLeave,
+		visible,
+		alsoToday,
+		newData,
+		oldData,
+		workLog,
+		oldWorkLog
+	} from '../store';
 	export let data;
 
+	function label(count) {
+		if (count == 1) return 'First';
+		if (count == 2) return 'Second';
+		if (count == 3) return 'Third';
+		if (count == 4) return 'Fourth';
+		if (count == 5) return 'Fifth';
+		if (count == 6) return 'Sixth';
+		if (count == 7) return 'Seventh';
+	}
+	function addLabels(boxes) {
+		return boxes.map((box) => {
+			box.repeat.label = label(box.repeat.count);
+			return box;
+		});
+	}
+
 	oldData.set(JSON.parse(data.weeklyRepeats));
-	newData.set(JSON.parse(data.weeklyRepeats));
+	newData.set(addLabels(JSON.parse(data.weeklyRepeats)));
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));
