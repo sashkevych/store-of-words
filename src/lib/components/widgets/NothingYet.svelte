@@ -1,7 +1,10 @@
 <script>
-	export let widget = false
+	export let widget = false;
+
+	$: style = widget ? 'home-widget' : 'nothing-yet'
 </script>
-<div class="home-widget surface-container-low">
+
+<div class="surface-container {style}">
 	{#if widget}
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">Also today</div>
@@ -39,5 +42,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.nothing-yet {
+		height: 100%;
+		padding-top: 1px;
+		margin-top: -1px;
+
+		border-left: 1px solid var(--md-sys-color-outline-variant);
 	}
 </style>

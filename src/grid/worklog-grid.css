@@ -1,26 +1,20 @@
 .work-log {
 	display: grid;
 	height: 100vh;
-
-    background-color:wheat;
 }
 #editor {
 	grid-area: editor;
 	overflow: hidden;
 	overflow-y: scroll;
-    background-color: teal;
 }
 #side-bar {
     grid-area: side-bar;
-    background-color: seagreen;
 }
 #date {
     grid-area: date;
-    background-color: gold;
 }
 #space {
     grid-area: right-space;
-    background-color: brown;
 }
 
 @media (min-width: 0px) {
