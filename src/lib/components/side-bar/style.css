@@ -32,7 +32,6 @@ nav small bar
 	gap: 0.8rem;
 	width: 100%;
 
-	background-color: aqua;
 
 	padding-left: 16px;
 	padding-right: 16px;
@@ -51,6 +50,9 @@ nav small bar
 	gap: 0.7rem;
 
 	
+}
+.theme-small {
+	margin-bottom: 10px;
 }
 
 /* Icons */

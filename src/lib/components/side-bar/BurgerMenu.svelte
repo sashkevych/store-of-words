@@ -72,7 +72,7 @@
 			</div>
 		</div>
 
-		<div class="theme">
+		<div class="theme-small">
 			<Theme />
 		</div>
 	</div>
@@ -81,9 +81,12 @@
 <style>
 	.nav-position {
 		margin-top: 42px;
+		margin-left:5px;
+		margin-right: 10px;
 	}
 	.top-icon-position {
 		margin-top: 20px;
+		margin-left: 24px
 	}
 	.menu-position {
 		display: flex;
@@ -104,10 +107,7 @@
 		justify-content: space-between;
 
 		background-color: sandybrown;
-	}
-	.open-menu > div {
-		margin-left: 26px;
-		margin-right: 10px;
+		border-radius: 0px 16px 16px 0px;
 	}
 	.main {
 		height: 100vh;
