@@ -26,3 +26,6 @@ export let selected = writable()
 // Side bar toggles
 export let mouseOver = writable(false)
 export let mouseLeave = writable(false)
+
+
+export let theme = writable('')

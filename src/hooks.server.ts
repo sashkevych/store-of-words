@@ -13,12 +13,15 @@ export async function handle({ event, resolve }) {
 		theme = cookieTheme;
 	}
 
+	event.locals.theme = theme
 	if (theme) {
 		console.log('theme');
-        console.timeEnd('LOAD');
-		return await resolve(event, {
+        
+		const response = await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('data-theme=""', `data-theme="${theme}"`)
 		});
+		console.timeEnd('LOAD');
+		return response
 	}
 
 	const response = await resolve(event);

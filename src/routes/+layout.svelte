@@ -8,7 +8,8 @@
 		newData,
 		oldData,
 		workLog,
-		oldWorkLog
+		oldWorkLog,
+		theme
 	} from '../store';
 	export let data;
 
@@ -33,6 +34,7 @@
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));
+	theme.set(data.theme)
 
 	async function close_event_handler() {
 		const changes = await areThereAnyChanges($newData, $oldData);
