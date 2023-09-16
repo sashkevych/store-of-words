@@ -199,6 +199,9 @@
 .surface-variant {
   background-color: var(--md-sys-color-surface-variant);
 }
+.surface-variant-2 {
+  background-color: var(--md-sys-color-surface-variant-2);
+}
 .surface-variant-text {
   color: var(--md-sys-color-surface-variant);
 }
