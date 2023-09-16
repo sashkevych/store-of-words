@@ -12,6 +12,13 @@
 	height: 100vh;
 	justify-content: space-between;
 }
+.clicked {
+	font-variation-settings: 'FILL' 1 !important;
+	background-color: var(--md-sys-color-on-surface-2) !important;
+}
+.clicked-hover-icon {
+	font-size: 25px;
+}
 .activ {
 	font-weight: 300 !important;
 }

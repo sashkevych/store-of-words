@@ -2,14 +2,49 @@
 	export let small = false;
 	import ArrowForward from './ArrowForward.svelte';
 	import { isExtraMenu, extraMenuData, extraDataIs, alsoToday } from '../../../../store';
+	import { visible, selected } from '../../../../store';
 
 	function goFurther(data, whichData) {
 		isExtraMenu.set(true);
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
 	}
-	let toggle = false
-	let activ = ''
+	function toggleView() {
+		selected.set('also-tday');
+		clicked = 'clicked';
+		visible.set(!$visible);
+		newHower = 'clicked-hover-icon';
+		toggle = true;
+	}
+
+	var toggle = false;
+	var activ = '';
+	var newHower = '';
+	var clicked = '';
+
+	function mouseover() {
+		if ($selected == 'also-tday') {
+			newHower = 'clicked-hover-icon';
+			return;
+		}
+		toggle = true;
+	}
+	function mouseleave() {
+		if ($selected == 'also-tday') {
+			newHower = '';
+			return;
+		}
+		toggle = false;
+	}
+	function changeCallBack(selected) {
+		if (selected == 'also-tday') {
+			clicked = 'clicked';
+		} else {
+			clicked = '';
+			toggle = false;
+		}
+	}
+	$: changeCallBack($selected);
 </script>
 
 {#if small}
@@ -57,14 +92,17 @@
 	<a
 		class="nav"
 		href="/also-today"
-		on:mouseover={() => (toggle = true)}
-		on:mouseleave={() => (toggle = false)}
+		on:mouseover={mouseover}
+		on:mouseleave={mouseleave}
 		on:mousedown={() => (activ = 'activ')}
 		on:mouseup={() => (activ = '')}
+		role="button"
+		on:click={toggleView}
+		tabindex="0"
 	>
 		<span
-			class="on-surface-variant-text material-symbols-outlined {activ}"
-			class:icon-hover={toggle}>date_range</span
+			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
+			class:icon-hover={toggle}>event</span
 		>
 		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Also today</div>
 	</a>

@@ -1,15 +1,45 @@
 <script>
 	export let small = false;
 	import { selected, visible } from '../../../../store';
-	function toggleView() {
-		visible.set(!$visible);
-		selected.set('work-log');
-	}
 	function clickHandler() {
 		toggleView();
 	}
-	let toggle = false
-	let activ = ''
+	function toggleView() {
+		selected.set('work-log');
+		clicked = 'clicked';
+		visible.set(!$visible);
+		newHower = 'clicked-hover-icon';
+		toggle = true;
+	}
+
+	var toggle = false;
+	var activ = '';
+	var newHower = '';
+	var clicked = '';
+
+	function mouseover() {
+		if ($selected == 'work-log') {
+			newHower = 'clicked-hover-icon';
+			return;
+		}
+		toggle = true;
+	}
+	function mouseleave() {
+		if ($selected == 'work-log') {
+			newHower = '';
+			return;
+		}
+		toggle = false;
+	}
+	function changeCallBack(selected) {
+		if (selected == 'work-log') {
+			clicked = 'clicked';
+		} else {
+			clicked = '';
+			toggle = false;
+		}
+	}
+	$: changeCallBack($selected);
 </script>
 
 {#if small}
@@ -55,18 +85,19 @@
 	<a
 		class="nav"
 		href="/work-log"
-		on:mouseover={() => (toggle = true)}
-		on:mouseleave={() => (toggle = false)}
+		on:mouseover={mouseover}
+		on:mouseleave={mouseleave}
 		on:mousedown={() => (activ = 'activ')}
 		on:mouseup={() => (activ = '')}
+		role="button"
+		on:click={toggleView}
+		tabindex="0"
 	>
 		<span
-			class="on-surface-variant-text material-symbols-outlined {activ}"
-			class:icon-hover={toggle}>date_range</span
+			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
+			class:icon-hover={toggle}>note</span
 		>
-		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>
-			Work log
-		</div>
+		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Work log</div>
 	</a>
 {/if}
 

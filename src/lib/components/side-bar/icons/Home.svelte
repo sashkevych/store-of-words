@@ -5,11 +5,40 @@
 
 	function toggleView() {
 		selected.set('home');
+		clicked = 'clicked';
 		visible.set(!$visible);
+		newHower = 'clicked-hover-icon';
+		toggle = true;
 	}
 
 	var toggle = false;
 	var activ = '';
+	var newHower = '';
+	var clicked = '';
+
+	function mouseover() {
+		if ($selected == 'home') {
+			newHower = 'clicked-hover-icon';
+			return;
+		}
+		toggle = true;
+	}
+	function mouseleave() {
+		if ($selected == 'home') {
+			newHower = '';
+			return;
+		}
+		toggle = false;
+	}
+	function changeCallBack(selected) {
+		if (selected == 'home') {
+			clicked = 'clicked';
+		} else {
+			clicked = '';
+			toggle = false;
+		}
+	}
+	$: changeCallBack($selected);
 </script>
 
 {#if small}
@@ -49,8 +78,8 @@
 	<a
 		class="nav"
 		href="/"
-		on:mouseover={() => (toggle = true)}
-		on:mouseleave={() => (toggle = false)}
+		on:mouseover={mouseover}
+		on:mouseleave={mouseleave}
 		on:mousedown={() => (activ = 'activ')}
 		on:mouseup={() => (activ = '')}
 		role="button"
@@ -58,7 +87,7 @@
 		tabindex="0"
 	>
 		<span
-			class="on-surface-variant-text material-symbols-outlined {activ}"
+			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
 			class:icon-hover={toggle}>Home</span
 		>
 		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Home</div>

@@ -2,16 +2,50 @@
 	export let small = false;
 	import ArrowForward from './ArrowForward.svelte';
 	import { isExtraMenu, extraMenuData, extraDataIs, newData } from '../../../../store';
-
+	import { visible, selected } from '../../../../store';
 	function goFurther(data, whichData) {
 		console.log('goFurther');
 		isExtraMenu.set(true);
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
 	}
+	$: console.log($selected);
+	function toggleView() {
+		selected.set('weekly');
+		clicked = 'clicked';
+		visible.set(!$visible);
+		newHower = 'clicked-hover-icon';
+		toggle = true;
+	}
 
-	let toggle = false
-	let activ = ''
+	var toggle = false;
+	var activ = '';
+	var newHower = '';
+	var clicked = '';
+
+	function mouseover() {
+		if ($selected == 'weekly') {
+			newHower = 'clicked-hover-icon';
+			return;
+		}
+		toggle = true;
+	}
+	function mouseleave() {
+		if ($selected == 'weekly') {
+			newHower = '';
+			return;
+		}
+		toggle = false;
+	}
+	function changeCallBack(selected) {
+		if (selected == 'weekly') {
+			clicked = 'clicked';
+		} else {
+			clicked = ''
+			toggle = false
+		}
+	}
+	$: changeCallBack($selected);
 </script>
 
 {#if small}
@@ -59,13 +93,16 @@
 	<a
 		class="nav"
 		href="/weekly"
-		on:mouseover={() => (toggle = true)}
-		on:mouseleave={() => (toggle = false)}
+		on:mouseover={mouseover}
+		on:mouseleave={mouseleave}
 		on:mousedown={() => (activ = 'activ')}
 		on:mouseup={() => (activ = '')}
+		role="button"
+		on:click={toggleView}
+		tabindex="0"
 	>
 		<span
-			class="on-surface-variant-text material-symbols-outlined {activ}"
+			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
 			class:icon-hover={toggle}>date_range</span
 		>
 		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Weekly</div>
