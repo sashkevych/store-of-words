@@ -12,6 +12,49 @@
 	height: 100vh;
 	justify-content: space-between;
 }
+.activ {
+	font-weight: 300 !important;
+}
+.material-symbols-outlined {
+	font-family: 'Material Symbols Outlined';
+	font-style: normal;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40;
+	font-weight: 600;
+	transition: font-weight 0.3s ease;
+	transition: background-color 0.3s ease;
+
+	border-radius: 16px;
+	width: 56px;
+	height: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.material-symbols-outlined:hover {
+	font-weight: 700;
+
+	background-color: var(--md-sys-color-surface-variant-2);
+	border-radius: 16px;
+}
+.icon-hover {
+	font-weight: 700;
+
+	background-color: var(--md-sys-color-surface-variant-2);
+	border-radius: 16px;
+}
+.text-hover {
+	font-weight: 500;
+}
+.nav:active {
+	font-weight: 300;
+}
 .nav {
 	display: flex;
 	flex-direction: column;
@@ -32,7 +75,6 @@ nav small bar
 	gap: 0.8rem;
 	width: 100%;
 
-
 	padding-left: 16px;
 	padding-right: 16px;
 
@@ -48,8 +90,6 @@ nav small bar
 	display: flex;
 	align-items: center;
 	gap: 0.7rem;
-
-	
 }
 .theme-small {
 	display: flex;
