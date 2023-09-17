@@ -9,43 +9,47 @@
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
 	}
-	$: console.log($selected);
-	function toggleView() {
-		selected.set('weekly');
+	const name = 'also-today';
+
+	var activ,
+		newHower,
+		clicked,
+		toggle = false;
+
+	function toggleView(visibleLastValue, name) {
+		selected.set(name);
 		clicked = 'clicked';
-		visible.set(!$visible);
+		visible.set(!visibleLastValue);
 		newHower = 'clicked-hover-icon';
 		toggle = true;
 	}
 
-	var toggle = false;
-	var activ = '';
-	var newHower = '';
-	var clicked = '';
-
-	function mouseover() {
-		if ($selected == 'weekly') {
+	function mouseover(selected, name) {
+		if (selected == name) {
 			newHower = 'clicked-hover-icon';
 			return;
 		}
 		toggle = true;
 	}
-	function mouseleave() {
-		if ($selected == 'weekly') {
+	function mouseleave(selected, name) {
+		if (selected == name) {
 			newHower = '';
 			return;
 		}
 		toggle = false;
 	}
-	function changeCallBack(selected) {
-		if (selected == 'weekly') {
+	function changeCallBack(selected, name) {
+		if (selected == name) {
 			clicked = 'clicked';
 		} else {
-			clicked = ''
-			toggle = false
+			clicked = '';
+			toggle = false;
 		}
 	}
-	$: changeCallBack($selected);
+	function changeActivState() {
+		activ = activ ? '' : 'activ';
+	}
+	$: changeCallBack($selected, name);
 </script>
 
 {#if small}
@@ -93,12 +97,12 @@
 	<a
 		class="nav"
 		href="/weekly"
-		on:mouseover={mouseover}
-		on:mouseleave={mouseleave}
-		on:mousedown={() => (activ = 'activ')}
-		on:mouseup={() => (activ = '')}
+		on:mouseover={() => mouseover($selected, name)}
+		on:mouseleave={() => mouseleave($selected, name)}
+		on:mousedown={changeActivState}
+		on:mouseup={changeActivState}
 		role="button"
-		on:click={toggleView}
+		on:click={() => toggleView($visible, name)}
 		tabindex="0"
 	>
 		<span

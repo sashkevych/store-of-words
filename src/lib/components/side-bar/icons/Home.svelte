@@ -5,25 +5,27 @@
 
 	const name = 'home';
 
-	var toggle = false;
-	var activ, newHower, clicked;
+	var activ,
+		newHower,
+		clicked,
+		toggle = false;
 
-	function toggleView(visible,name) {
+	function toggleView(visibleLastValue, name) {
 		selected.set(name);
 		clicked = 'clicked';
-		visible.set(!visible);
+		visible.set(!visibleLastValue);
 		newHower = 'clicked-hover-icon';
 		toggle = true;
 	}
 
-	function mouseover(selected,name) {
+	function mouseover(selected, name) {
 		if (selected == name) {
 			newHower = 'clicked-hover-icon';
 			return;
 		}
 		toggle = true;
 	}
-	function mouseleave(selected,name) {
+	function mouseleave(selected, name) {
 		if (selected == name) {
 			newHower = '';
 			return;
@@ -81,12 +83,12 @@
 	<a
 		class="nav"
 		href="/"
-		on:mouseover={() => mouseover($selected,name)}
-		on:mouseleave={() => mouseleave($selected,name)}
+		on:mouseover={() => mouseover($selected, name)}
+		on:mouseleave={() => mouseleave($selected, name)}
 		on:mousedown={changeActivState}
 		on:mouseup={changeActivState}
 		role="button"
-		on:click={() => toggleView($visible,name)}
+		on:click={() => toggleView($visible, name)}
 		tabindex="0"
 	>
 		<span

@@ -9,42 +9,47 @@
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
 	}
-	function toggleView() {
-		selected.set('also-tday');
+	const name = 'weekly';
+
+	var activ,
+		newHower,
+		clicked,
+		toggle = false;
+
+	function toggleView(visibleLastValue, name) {
+		selected.set(name);
 		clicked = 'clicked';
-		visible.set(!$visible);
+		visible.set(!visibleLastValue);
 		newHower = 'clicked-hover-icon';
 		toggle = true;
 	}
 
-	var toggle = false;
-	var activ = '';
-	var newHower = '';
-	var clicked = '';
-
-	function mouseover() {
-		if ($selected == 'also-tday') {
+	function mouseover(selected, name) {
+		if (selected == name) {
 			newHower = 'clicked-hover-icon';
 			return;
 		}
 		toggle = true;
 	}
-	function mouseleave() {
-		if ($selected == 'also-tday') {
+	function mouseleave(selected, name) {
+		if (selected == name) {
 			newHower = '';
 			return;
 		}
 		toggle = false;
 	}
-	function changeCallBack(selected) {
-		if (selected == 'also-tday') {
+	function changeCallBack(selected, name) {
+		if (selected == name) {
 			clicked = 'clicked';
 		} else {
 			clicked = '';
 			toggle = false;
 		}
 	}
-	$: changeCallBack($selected);
+	function changeActivState() {
+		activ = activ ? '' : 'activ';
+	}
+	$: changeCallBack($selected, name);
 </script>
 
 {#if small}
@@ -92,18 +97,20 @@
 	<a
 		class="nav"
 		href="/also-today"
-		on:mouseover={mouseover}
-		on:mouseleave={mouseleave}
-		on:mousedown={() => (activ = 'activ')}
-		on:mouseup={() => (activ = '')}
+		on:mouseover={() => mouseover($selected, name)}
+		on:mouseleave={() => mouseleave($selected, name)}
+		on:mousedown={changeActivState}
+		on:mouseup={changeActivState}
 		role="button"
-		on:click={toggleView}
+		on:click={() => toggleView($visible, name)}
 		tabindex="0"
 	>
 		<span
 			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
 			class:icon-hover={toggle}>event</span
 		>
-		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Also today</div>
+		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>
+			Also today
+		</div>
 	</a>
 {/if}
