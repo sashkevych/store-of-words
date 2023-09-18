@@ -49,13 +49,9 @@
 					<div class="primary" style="width: 100%; height: 100%;  border-radius: 100px;">
 						<div
 							style="align-self: stretch; flex: 1 1 0; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 8px; display: inline-flex"
+							class="on-primary-text label-large"
 						>
-							<div
-								class="on-primary-text label-large"
-								style="text-align: center; font-family: Roboto; font-weight: 500; line-height: 20px; letter-spacing: 0.10px; word-wrap: break-word"
-							>
-								Move all
-							</div>
+							Move all
 						</div>
 					</div>
 				</button>
@@ -143,22 +139,34 @@
 	.move-all {
 		cursor: pointer;
 	}
+	.move-all:hover > div {
+		background-color: var(--md-sys-color-primary-2);
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	}
 
+	.move-all:hover > div > div {
+		font-weight: 500;
+	}
+
+	.move-all:active > div > div{
+		font-weight: 300;
+	}
+	
 	.repeat-box {
 		width: 200px;
 		white-space: normal;
 		border-radius: 24px;
 
-		transition: border-radius 0.3s  ease-in-out;
+		transition: border-radius 0.3s ease-in-out;
 		flex: 0 0 auto;
 	}
 
 	.repeat-box:hover {
 		border-radius: 48px;
-		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		/* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 		background-color: var(--md-sys-color-secondary-container-2);
 	}
-	.repeat-box:hover .header-position{
+	.repeat-box:hover .header-position {
 		font-weight: 500;
 	}
 
@@ -168,13 +176,13 @@
 
 		overflow: hidden;
 		border-radius: 24px;
-		transition: border-radius 0.3s  ease-in-out;
+		transition: border-radius 0.3s ease-in-out;
 	}
 	.repeat-box-vertical:hover {
 		border-radius: 48px;
-		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		/* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 	}
-	.repeat-box-vertical:hover .header-position{
+	.repeat-box-vertical:hover .header-position {
 		font-weight: 500;
 	}
 </style>

@@ -110,6 +110,7 @@
 	--md-ref-palette-neutral-variant100: #ffffff;
 	/* light */
 	--md-sys-color-primary-light: #8c4f00;
+	--md-sys-color-primary-light-2: rgba(140, 79, 0, 0.8);
 	--md-sys-color-on-primary-light: #ffffff;
 	--md-sys-color-primary-container-light: #ffdcbf;
 	--md-sys-color-on-primary-container-light: #2d1600;
@@ -164,6 +165,7 @@
 	--md-sys-color-surface-dim-light: #e3d8d1;
 	/* dark */
 	--md-sys-color-primary-dark: #ffb874;
+	--md-sys-color-primary-dark-2: rgb(255, 184, 116, 0.8);
 	--md-sys-color-on-primary-dark: #4b2800;
 	--md-sys-color-primary-container-dark: #6b3b00;
 	--md-sys-color-on-primary-container-dark: #ffdcbf;

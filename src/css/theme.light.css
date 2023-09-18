@@ -1,5 +1,6 @@
 [data-theme='light'] {
  --md-sys-color-primary: var(--md-sys-color-primary-light);
+ --md-sys-color-primary-2: var(--md-sys-color-primary-light-2);
  --md-sys-color-on-primary: var(--md-sys-color-on-primary-light);
  --md-sys-color-primary-container: var(--md-sys-color-primary-container-light);
  --md-sys-color-on-primary-container: var(--md-sys-color-on-primary-container-light);
