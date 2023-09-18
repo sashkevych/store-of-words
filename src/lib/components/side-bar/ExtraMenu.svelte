@@ -16,14 +16,14 @@
 </script>
 
 <div>
+	<BackToMainMenu />
 	<div class="nav-position">
-		<BackToMainMenu />
 		<div class="extra-menu-margin">
 			{#each $extraMenuData as box}
 				{#if $extraDataIs == 'weekly'}
 					<div class="distantion">
 						<a on:click={() => clicHandler(box.repeat.label)} href="/weekly/{box.repeat.label.toLowerCase()}"
-							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.repeat.label}>First repeat</div></a
+							><div class="on-surface-variant-text title-medium" class:clicked-icon={$selected == box.repeat.label}>{box.repeat.label} repeat</div></a
 						>
 					</div>
 				{:else if $extraDataIs == 'also-today'}
@@ -40,8 +40,8 @@
 
 <style>
 	.nav-position {
-		margin-top: 42px;
-		margin-left: 18px;
+		/* margin-top: 42px; */
+		margin-left: 15px;
 	}
 
 	.extra-menu-margin {
@@ -53,6 +53,5 @@
 
 		padding-top: 10px;
 		padding-bottom: 10px;
-		border: 1px solid black;
 	}
 </style>
