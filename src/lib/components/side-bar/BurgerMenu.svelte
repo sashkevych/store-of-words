@@ -12,7 +12,6 @@
 	import { isExtraMenu, visible, mouseOver, mouseLeave } from '../../../store';
 
 	function toggleView() {
-		console.log('toggle visible');
 		visible.set(!$visible);
 	}
 
@@ -55,10 +54,7 @@
 		on:mouseleave={onMouseLeave}
 	>
 		<div>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="top-icon-position" role="button" on:click={toggleView} tabindex="0">
 				<MenuOpen />
-			</div>
 
 			<div class="nav-position">
 				{#if $isExtraMenu}
@@ -84,10 +80,7 @@
 		margin-left:5px;
 		margin-right: 10px;
 	}
-	.top-icon-position {
-		margin-top: 20px;
-		margin-left: 24px
-	}
+	
 	.menu-position {
 		display: flex;
 		height: 100%;
@@ -107,12 +100,5 @@
 		justify-content: space-between;
 
 		border-radius: 0px 16px 16px 0px;
-	}
-	.main {
-		height: 100vh;
-		background-color: rgb(173, 255, 47);
-	}
-	.bg {
-		background-color: rgba(173, 255, 47, 0.32);
 	}
 </style>

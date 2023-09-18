@@ -1,19 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
-	<mask
-		id="mask0_202_7"
-		style="mask-type:alpha"
-		maskUnits="userSpaceOnUse"
-		x="0"
-		y="0"
-		width="26"
-		height="26"
-	>
-		<rect width="26" height="26" fill="#D9D9D9" />
-	</mask>
-	<g mask="url(#mask0_202_7)">
-		<path
-			d="M3.25 19.5V17.3333H17.3333V19.5H3.25ZM21.2333 18.4167L15.8167 13L21.2333 7.58333L22.75 9.1L18.85 13L22.75 16.9L21.2333 18.4167ZM3.25 14.0833V11.9167H14.0833V14.0833H3.25ZM3.25 8.66667V6.5H17.3333V8.66667H3.25Z"
-			fill="#1C1B1F"
-		/>
-	</g>
-</svg>
+<script>
+	import { visible } from '../../../../store';
+
+	function toggleView() {
+		visible.set(!$visible);
+	}
+</script>
+
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="menu-open-position" role="button" on:click={toggleView} tabindex="0">
+	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+	<div class="menu-container" role="button" tabindex="0">
+		<span class="material-menu-open"> menu_open </span>
+	</div>
+</div>
+
+<style>
+	.menu-container {
+		width: 48px;
+		height: 48px;
+		stroke-width: 1px;
+		border-radius: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+	}
+	.menu-container:hover {
+		background-color: var(--md-sys-color-surface-variant-2);
+	}
+	.menu-container:hover .material-menu-open {
+		font-variation-settings: 'FILL' 1;
+		font-weight: 600;
+		transition: font-weight 0.1s ease;
+	}
+
+	.menu-open-position {
+		display: flex;
+		margin-top: 10px;
+		margin-left: 9px;
+	}
+
+	.menu-container:active .material-menu-open{
+		font-weight: 300;
+	}
+	.material-menu-open {
+		font-family: 'Material Symbols Outlined';
+		font-style: normal;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: normal;
+		white-space: nowrap;
+		direction: ltr;
+
+		font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40;
+		font-size: 25px;
+		font-weight: 500;
+		transition: font-weight 1.3s ease;
+		transition: background-color 0.3s ease;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
