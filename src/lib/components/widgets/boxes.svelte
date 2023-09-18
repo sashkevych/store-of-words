@@ -152,9 +152,14 @@
 		transition: border-radius 0.3s  ease-in-out;
 		flex: 0 0 auto;
 	}
+
 	.repeat-box:hover {
 		border-radius: 48px;
 		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		background-color: var(--md-sys-color-secondary-container-2);
+	}
+	.repeat-box:hover .header-position{
+		font-weight: 500;
 	}
 
 	.repeat-box-vertical {
@@ -168,5 +173,8 @@
 	.repeat-box-vertical:hover {
 		border-radius: 48px;
 		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	}
+	.repeat-box-vertical:hover .header-position{
+		font-weight: 500;
 	}
 </style>
