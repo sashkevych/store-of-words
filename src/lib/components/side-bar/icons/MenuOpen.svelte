@@ -10,7 +10,7 @@
 <div class="menu-open-position" role="button" on:click={toggleView} tabindex="0">
 	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 	<div class="menu-container" role="button" tabindex="0">
-		<span class="material-menu-open"> menu_open </span>
+		<span class="material-menu-open on-surface-variant-text"> menu_open </span>
 	</div>
 </div>
 
