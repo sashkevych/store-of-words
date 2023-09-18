@@ -9,7 +9,3 @@
 {:else}
 	<HomeDefault />
 {/if}
-
-<style>
-
-</style>

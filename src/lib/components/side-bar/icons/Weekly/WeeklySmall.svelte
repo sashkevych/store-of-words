@@ -82,9 +82,7 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.clicked {
-		background-color: var(--md-sys-color-on-surface-2);
-	}
+	
 
 	.devider {
 		padding-left: 16px;

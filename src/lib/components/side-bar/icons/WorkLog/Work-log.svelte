@@ -9,13 +9,3 @@
 {:else}
 	<WorkLogDefault />
 {/if}
-
-<style>
-	.devider {
-		padding-left: 16px;
-		padding-right: 16px;
-
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-</style>
