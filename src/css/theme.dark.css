@@ -36,6 +36,7 @@
 	--md-sys-color-surface-variant: var(--md-sys-color-surface-variant-dark);
 	--md-sys-color-surface-variant-2: var(--md-sys-color-surface-variant-dark-2);
 	--md-sys-color-on-surface-variant: var(--md-sys-color-on-surface-variant-dark);
+	--md-sys-color-on-surface-variant-2: var(--md-sys-color-on-surface-variant-dark-2);
 	--md-sys-color-inverse-surface: var(--md-sys-color-inverse-surface-dark);
 	--md-sys-color-inverse-on-surface: var(--md-sys-color-inverse-on-surface-dark);
 	--md-sys-color-inverse-primary: var(--md-sys-color-inverse-primary-dark);

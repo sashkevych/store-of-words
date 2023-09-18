@@ -38,65 +38,19 @@
 		</div>
 	</div>
 {:else}
-	<form action="" method="POST">
+	<form class="margin" action="" method="POST">
 		{#if $theme == 'dark'}
+			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<button formaction="/?/setTheme&theme=light&redirectTo={$page.url.pathname}">
-				<div class="circle">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="26"
-						height="26"
-						viewBox="0 0 26 26"
-						fill="none"
-					>
-						<mask
-							id="mask0_8_37"
-							style="mask-type:alpha"
-							maskUnits="userSpaceOnUse"
-							x="0"
-							y="0"
-							width="26"
-							height="26"
-						>
-							<rect width="26" height="26" fill="#D9D9D9" />
-						</mask>
-						<g mask="url(#mask0_8_37)">
-							<path
-								d="M11.9166 5.41666V1.08333H14.0833V5.41666H11.9166ZM19.1208 8.39583L17.6312 6.90625L20.6645 3.79166L22.1812 5.33541L19.1208 8.39583ZM20.5833 14.0833V11.9167H24.9166V14.0833H20.5833ZM11.9166 24.9167V20.5833H14.0833V24.9167H11.9166ZM6.87909 8.34166L3.79159 5.33541L5.33534 3.81875L8.39575 6.87916L6.87909 8.34166ZM20.6374 22.2083L17.6312 19.0937L19.0937 17.6312L22.1812 20.6104L20.6374 22.2083ZM1.08325 14.0833V11.9167H5.41659V14.0833H1.08325ZM5.33534 22.2083L3.81867 20.6646L6.852 17.6312L7.63742 18.3625L8.42284 19.1208L5.33534 22.2083ZM12.9999 19.5C11.1944 19.5 9.65964 18.8681 8.39575 17.6042C7.13186 16.3403 6.49992 14.8056 6.49992 13C6.49992 11.1944 7.13186 9.65972 8.39575 8.39583C9.65964 7.13194 11.1944 6.5 12.9999 6.5C14.8055 6.5 16.3402 7.13194 17.6041 8.39583C18.868 9.65972 19.4999 11.1944 19.4999 13C19.4999 14.8056 18.868 16.3403 17.6041 17.6042C16.3402 18.8681 14.8055 19.5 12.9999 19.5ZM12.9999 17.3333C14.1916 17.3333 15.2117 16.909 16.0603 16.0604C16.9089 15.2118 17.3333 14.1917 17.3333 13C17.3333 11.8083 16.9089 10.7882 16.0603 9.93958C15.2117 9.09097 14.1916 8.66666 12.9999 8.66666C11.8083 8.66666 10.7881 9.09097 9.9395 9.93958C9.09089 10.7882 8.66659 11.8083 8.66659 13C8.66659 14.1917 9.09089 15.2118 9.9395 16.0604C10.7881 16.909 11.8083 17.3333 12.9999 17.3333Z"
-								fill="#E6E1E5"
-							/>
-						</g>
-					</svg>
+				<div class="circle outline-text">
+					<span class="theme-material-symbols-outlined on-surface-variant-text"> light_mode </span>
 				</div>
 			</button>
 		{:else}
+			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<button formaction="/?/setTheme&theme=dark&redirectTo={$page.url.pathname}">
-				<div class="circle">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="26"
-						height="26"
-						viewBox="0 0 26 26"
-						fill="none"
-					>
-						<mask
-							id="mask0_116_41"
-							style="mask-type:alpha"
-							maskUnits="userSpaceOnUse"
-							x="0"
-							y="0"
-							width="26"
-							height="26"
-						>
-							<rect width="26" height="26" fill="#D9D9D9" />
-						</mask>
-						<g mask="url(#mask0_116_41)">
-							<path
-								d="M13 22.75C10.2917 22.75 7.98958 21.8021 6.09375 19.9062C4.19792 18.0104 3.25 15.7083 3.25 13C3.25 10.2917 4.19792 7.98958 6.09375 6.09375C7.98958 4.19792 10.2917 3.25 13 3.25C13.2528 3.25 13.501 3.25903 13.7448 3.27708C13.9885 3.29514 14.2278 3.32222 14.4625 3.35833C13.7222 3.88194 13.1309 4.56354 12.6885 5.40313C12.2462 6.24271 12.025 7.15 12.025 8.125C12.025 9.75 12.5938 11.1312 13.7313 12.2688C14.8688 13.4062 16.25 13.975 17.875 13.975C18.8681 13.975 19.7799 13.7538 20.6104 13.3115C21.441 12.8691 22.1181 12.2778 22.6417 11.5375C22.6778 11.7722 22.7049 12.0115 22.7229 12.2552C22.741 12.499 22.75 12.7472 22.75 13C22.75 15.7083 21.8021 18.0104 19.9062 19.9062C18.0104 21.8021 15.7083 22.75 13 22.75ZM13 20.5833C14.5889 20.5833 16.0153 20.1455 17.2792 19.2698C18.5431 18.3941 19.4639 17.2521 20.0417 15.8438C19.6806 15.934 19.3194 16.0063 18.9583 16.0604C18.5972 16.1146 18.2361 16.1417 17.875 16.1417C15.6542 16.1417 13.7628 15.3608 12.201 13.799C10.6392 12.2372 9.85833 10.3458 9.85833 8.125C9.85833 7.76389 9.88542 7.40278 9.93958 7.04167C9.99375 6.68056 10.066 6.31944 10.1563 5.95833C8.74792 6.53611 7.6059 7.45694 6.73021 8.72083C5.85451 9.98472 5.41667 11.4111 5.41667 13C5.41667 15.0944 6.15694 16.8819 7.6375 18.3625C9.11806 19.8431 10.9056 20.5833 13 20.5833Z"
-								fill="#1C1B1F"
-							/>
-						</g>
-					</svg>
+				<div class="circle outline-text">
+					<span class="theme-material-symbols-outlined on-surface-variant-text"> dark_mode </span>
 				</div>
 			</button>
 		{/if}
@@ -104,16 +58,6 @@
 {/if}
 
 <style>
-	.circle {
-		width: 48px;
-		height: 48px;
-		stroke-width: 1px;
-		border: 1px solid #1c1b1f;
-		border-radius: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 	.icon-text-position {
 		display: flex;
 		align-items: center;
@@ -133,5 +77,51 @@
 	.icon {
 		display: flex;
 		align-items: center;
+	}
+
+	.theme-material-symbols-outlined {
+		font-family: 'Material Symbols Outlined';
+		font-style: normal;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: normal;
+		white-space: nowrap;
+		direction: ltr;
+
+		font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40;
+		font-size: 24px;
+		font-weight: 500;
+		transition: font-weight 0.3s ease;
+		transition: background-color 0.3s ease;
+
+		width: 56px;
+		height: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.circle {
+		width: 48px;
+		height: 48px;
+		stroke-width: 1px;
+		border: 1px solid var(--md-sys-color-outline);
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		cursor: pointer;
+	}
+	.circle:hover {
+		background-color: var(--md-sys-color-on-surface-variant-2);
+	}
+	.circle:hover .theme-material-symbols-outlined {
+		font-variation-settings: 'FILL' 1, 'GRAD' 0, 'opsz' 40;
+		font-weight: 700;
+	}
+	.circle:active .theme-material-symbols-outlined {
+		font-weight: 300;
 	}
 </style>
