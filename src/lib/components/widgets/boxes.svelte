@@ -46,14 +46,13 @@
 			<div class="headline-small on-surface-text">{label}</div>
 			{#if isWeekly}
 				<button class="move-all">
-					<div
-						class="primary" style="width: 100%; height: 100%;  border-radius: 100px;"
-					>
+					<div class="primary" style="width: 100%; height: 100%;  border-radius: 100px;">
 						<div
 							style="align-self: stretch; flex: 1 1 0; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 8px; display: inline-flex"
 						>
 							<div
-								class="on-primary-text label-large" style="text-align: center; font-family: Roboto; font-weight: 500; line-height: 20px; letter-spacing: 0.10px; word-wrap: break-word"
+								class="on-primary-text label-large"
+								style="text-align: center; font-family: Roboto; font-weight: 500; line-height: 20px; letter-spacing: 0.10px; word-wrap: break-word"
 							>
 								Move all
 							</div>
@@ -66,13 +65,13 @@
 		<div class="repeats-container">
 			{#each weeklyRepeats as { sentences, repeat, box_id }}
 				{#if isWeekly}
-					<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box secondary">
-						<div class="header-position title-medium on-secondary-text">
+					<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box secondary-container">
+						<div class="header-position title-medium on-secondary-container-text">
 							{repeat.label} repeat
 						</div>
 						<div class="max-height">
 							{#each sentences as { id, text }}
-								<div class="sentence-position body-small on-secondary-text">
+								<div class="sentence-position body-small on-secondary-container-text">
 									<div>{id}.</div>
 									<div class="text-hidden">{text}</div>
 								</div>
@@ -81,13 +80,13 @@
 					</a>
 				{/if}
 				{#if isAlsoToday}
-					<a href="/also-today/{box_id}" class="repeat-box secondary">
-						<div class="header-position title-medium on-secondary-text">
+					<a href="/also-today/{box_id}" class="repeat-box secondary-container">
+						<div class="header-position title-medium on-secondary-container-text">
 							{repeat.date.value}
 						</div>
 						<div class="max-height">
 							{#each sentences as { id, text }}
-								<div class="sentence-position body-small on-secondary-text">
+								<div class="sentence-position body-small on-secondary-container-text">
 									<div>{id}.</div>
 									<div class="text-hidden">{text}</div>
 								</div>
@@ -104,13 +103,16 @@
 	<div class="surface-container weekly-widget">
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
-				<a href="/weekly/{repeat.label.toLowerCase()}" class="repeat-box-vertical secondary">
-					<div class="header-position title-medium on-secondary-text">
+				<a
+					href="/weekly/{repeat.label.toLowerCase()}"
+					class="repeat-box-vertical secondary-container"
+				>
+					<div class="header-position title-medium on-secondary-container-text">
 						{repeat.label} repeat
 					</div>
 					<div class="max-width">
 						{#each sentences as { id, text }}
-							<div class="sentence-position body-small on-secondary-text">
+							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
 								<div class="">{text}</div>
 							</div>
@@ -119,13 +121,13 @@
 				</a>
 			{/if}
 			{#if isAlsoToday}
-				<a href="/also-today/{box_id}" class="repeat-box-vertical secondary">
-					<div class="header-position title-medium on-secondary-text">
+				<a href="/also-today/{box_id}" class="repeat-box-vertical secondary-container">
+					<div class="header-position title-medium on-secondary-container-text">
 						{repeat.date.value}
 					</div>
 					<div class="max-width">
 						{#each sentences as { id, text }}
-							<div class="sentence-position body-small on-secondary-text">
+							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
 								<div class="">{text}</div>
 							</div>
@@ -137,9 +139,34 @@
 	</div>
 {/if}
 
-
 <style>
 	.move-all {
 		cursor: pointer;
+	}
+
+	.repeat-box {
+		width: 200px;
+		white-space: normal;
+		border-radius: 24px;
+
+		transition: border-radius 0.3s  ease-in-out;
+		flex: 0 0 auto;
+	}
+	.repeat-box:hover {
+		border-radius: 48px;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	}
+
+	.repeat-box-vertical {
+		width: 100%;
+		height: 140px;
+
+		overflow: hidden;
+		border-radius: 24px;
+		transition: border-radius 0.3s  ease-in-out;
+	}
+	.repeat-box-vertical:hover {
+		border-radius: 48px;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	}
 </style>
