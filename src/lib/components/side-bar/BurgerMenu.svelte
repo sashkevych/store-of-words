@@ -6,7 +6,7 @@
 
 	import Home from './icons/Home/Home.svelte';
 	import Weekly from './icons/Weekly/Weekly.svelte';
-	import Today from './icons/Today.svelte';
+	import Today from './icons/Today/Today.svelte';
 	import WorkLog from './icons/Work-log.svelte';
 
 	import { isExtraMenu, visible, mouseOver, mouseLeave } from '../../../store';
