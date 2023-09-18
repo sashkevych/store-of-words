@@ -34,6 +34,9 @@
 		font-weight: 600;
 		transition: font-weight 0.1s ease;
 	}
+	.back-to-main-position:hover #icon-label {
+		font-weight: 500;	
+	}
 	.back-to-main-position:active :is(.arrow-back, #icon-label) {
 		font-weight: 300;
 	}
