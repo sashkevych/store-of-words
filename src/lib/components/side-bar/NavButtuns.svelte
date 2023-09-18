@@ -2,7 +2,7 @@
 	import Home from './icons/Home/Home.svelte';
 	import Weekly from './icons/Weekly/Weekly.svelte';
 	import Today from './icons/Today/Today.svelte';
-	import WorkLog from './icons/Work-log.svelte';
+	import WorkLog from './icons/WorkLog/Work-log.svelte';
 
 	import BurgerMenu from './BurgerMenu.svelte';
 
