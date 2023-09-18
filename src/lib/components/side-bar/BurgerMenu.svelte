@@ -4,7 +4,7 @@
 	import Theme from './icons/Theme.svelte';
 	import ExtraMenu from './ExtraMenu.svelte';
 
-	import Home from './icons/Home.svelte';
+	import Home from './icons/Home/Home.svelte';
 	import Weekly from './icons/Weekly.svelte';
 	import Today from './icons/Today.svelte';
 	import WorkLog from './icons/Work-log.svelte';
