@@ -4,44 +4,22 @@
 	import { visible, selected } from '../../../../store';
 
 	const name = 'home';
+	
+	var newHower = '',
+		clicked = '';
 
-	var activ,
-		newHower,
-		clicked,
-		toggle = false;
-
-	function toggleView(visibleLastValue, name) {
-		selected.set(name);
-		clicked = 'clicked';
-		visible.set(!visibleLastValue);
-		newHower = 'clicked-hover-icon';
-		toggle = true;
-	}
-
-	function mouseover(selected, name) {
-		if (selected == name) {
-			newHower = 'clicked-hover-icon';
-			return;
-		}
-		toggle = true;
-	}
-	function mouseleave(selected, name) {
-		if (selected == name) {
-			newHower = '';
-			return;
-		}
-		toggle = false;
-	}
 	function changeCallBack(selected, name) {
-		if (selected == name) {
-			clicked = 'clicked';
-		} else {
-			clicked = '';
-			toggle = false;
-		}
+		clicked = selected == name ? 'clicked' : '';
 	}
-	function changeActivState() {
-		activ = activ ? '' : 'activ';
+
+	function clickHandler(name, visibleLastValue) {
+		selected.set(name);
+		visible.set(!visibleLastValue);
+		clicked = 'clicked';
+		newHower = 'clicked-hover-icon';
+	}
+	function mouseEvent() {
+		newHower = clicked ? '' : 'clicked-hover-icon';
 	}
 	$: changeCallBack($selected, name);
 </script>
@@ -83,23 +61,64 @@
 	<a
 		class="nav"
 		href="/"
-		on:mouseover={() => mouseover($selected, name)}
-		on:mouseleave={() => mouseleave($selected, name)}
-		on:mousedown={changeActivState}
-		on:mouseup={changeActivState}
+		on:mouseover={mouseEvent}
+		on:mouseleave={mouseEvent}
+		on:click={() => clickHandler(name, $visible)}
 		role="button"
-		on:click={() => toggleView($visible, name)}
 		tabindex="0"
 	>
-		<span
-			class="on-surface-variant-text material-symbols-outlined {activ} {clicked} {newHower}"
-			class:icon-hover={toggle}>Home</span
-		>
-		<div class="label-medium on-surface-variant-text {activ}" class:text-hover={toggle}>Home</div>
+		<span class="on-surface-variant-text material-symbols-outlined {clicked} {newHower}">Home</span>
+		<div id="icon-label" class="label-medium on-surface-variant-text">Home</div>
 	</a>
 {/if}
 
 <style>
+	.nav:hover .material-symbols-outlined {
+		font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40;
+		font-weight: 700;
+
+		background-color: var(--md-sys-color-surface-variant-2);
+		border-radius: 16px;
+	}
+	.nav:hover #icon-label {
+		font-weight: 500;
+	}
+
+	.nav:active :is(.material-symbols-outlined, #icon-label) {
+		font-weight: 300;
+	}
+
+	.material-symbols-outlined {
+		font-family: 'Material Symbols Outlined';
+		font-style: normal;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: normal;
+		white-space: nowrap;
+		direction: ltr;
+
+		font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40;
+		font-weight: 500;
+		transition: font-weight 0.3s ease;
+		transition: background-color 0.3s ease;
+
+		border-radius: 16px;
+		width: 56px;
+		height: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.clicked {
+		font-variation-settings: 'FILL' 1 !important;
+		background-color: var(--md-sys-color-on-surface-2) !important;
+	}
+	.clicked-hover-icon {
+		font-size: 25px;
+	}
+
 	.devider {
 		padding-left: 16px;
 		padding-right: 16px;
