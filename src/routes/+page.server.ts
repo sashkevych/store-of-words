@@ -1,5 +1,6 @@
 import { redirect, type Actions } from '@sveltejs/kit';
 
+
 export const actions: Actions = {
 	setTheme: async ({ url, cookies }) => {
 		const theme = url.searchParams.get('theme');

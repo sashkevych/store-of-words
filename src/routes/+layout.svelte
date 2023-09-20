@@ -99,6 +99,9 @@
 		}
 	}
 </script>
-
+<svelte:head>
+	<title>RepeatApp</title>
+</svelte:head>
 <svelte:window on:beforeunload={close_event_handler} on:click={clickHandler} />
+
 <slot />
