@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { updateWorkLog, updateWeeklySentences, moveAll } from '$lib/api/google-api';
+import { redis } from '$lib/redis/redis';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
@@ -19,7 +20,9 @@ export async function PUT({ request, url }) {
 
 	if (action === 'updateWeekly') {
 		await updateWeeklySentences(content);
+		redis.set('weekly', JSON.stringify(content),"EX",6000)
 	} else if (action === 'updateWorkLog') {
+		redis.set('worklog', JSON.stringify(content),"EX",6000)
 		await updateWorkLog(content);
 	}
 	return json(1 + 1);
