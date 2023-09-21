@@ -110,7 +110,7 @@
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
-								<div class="">{text}</div>
+								<div class="text-hidden">{text}</div>
 							</div>
 						{/each}
 					</div>
@@ -125,7 +125,7 @@
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
-								<div class="">{text}</div>
+								<div class="text-hidden">{text}</div>
 							</div>
 						{/each}
 					</div>

@@ -24,7 +24,7 @@
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
 <a
-	href="/"
+	href="/work-log"
 	class="devider small-icon-container {clicked}"
 	role="button"
 	on:mouseover={mouseEvent}
