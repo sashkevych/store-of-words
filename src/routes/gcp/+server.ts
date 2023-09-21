@@ -13,17 +13,17 @@ export async function POST({ request }) {
 
 /** @type {import('./$types').RequestHandler} */
 export async function PUT({ request, url }) {
-	const { content } = await request.json();
+	const { changes, content } = await request.json();
 
 	const queryParams = new URLSearchParams(url.search);
 	const action = queryParams.get('action');
 
 	if (action === 'updateWeekly') {
-		await updateWeeklySentences(content);
-		redis.set('weekly', JSON.stringify(content),"EX",6000)
+		await updateWeeklySentences(changes);
+		redis.set('weekly', JSON.stringify(content), 'EX', 6000);
 	} else if (action === 'updateWorkLog') {
-		redis.set('worklog', JSON.stringify(content),"EX",6000)
-		await updateWorkLog(content);
+		redis.set('worklog', JSON.stringify(content), 'EX', 6000);
+		await updateWorkLog(changes);
 	}
 	return json(1 + 1);
 }
