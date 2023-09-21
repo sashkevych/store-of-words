@@ -50,6 +50,7 @@
 }
 .text-hidden {
 	width: 137px;
+	overflow: hidden;
 }
 
 .max-height {
@@ -123,9 +124,6 @@ WorkLog
 	}
 	.max-height {
 		height: 80px;
-	}
-	.text-hidden {
-		width: 170px;
 	}
 	.repeats-container {
 		height: 68%;
