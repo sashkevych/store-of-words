@@ -1,57 +1,53 @@
 <script>
-	import { page } from '$app/stores';
 	import { theme } from '../../../../store';
+	import { switchTheme } from '$lib/scripts/theme/switcher';
 	export let small = false;
+
+	
 </script>
 
 {#if small}
-	<form action="" method="POST">
-		{#if $theme == 'dark'}
-			<button formaction="/?/setTheme&theme=light&redirectTo={$page.url.pathname}">
-				<div class="ellipse">
-					<div class="icon-text-position">
-						<div class="icon">
-							<span class="theme-material-symbols-outlined-small on-surface-variant-text">
-								light_mode
-							</span>
-						</div>
-						<div class="on-surface-variant-text body-large">Switch to light mode</div>
+	{#if $theme == 'dark'}
+		<button on:click={switchTheme}>
+			<div class="ellipse">
+				<div class="icon-text-position">
+					<div class="icon">
+						<span class="theme-material-symbols-outlined-small on-surface-variant-text">
+							light_mode
+						</span>
 					</div>
+					<div class="on-surface-variant-text body-large">Switch to light mode</div>
 				</div>
-			</button>
-		{:else}
-			<button formaction="/?/setTheme&theme=dark&redirectTo={$page.url.pathname}">
-				<div class="ellipse">
-					<div class="icon-text-position">
-						<div class="icon">
-							<span class="theme-material-symbols-outlined-small on-surface-variant-text">
-								dark_mode
-							</span>
-						</div>
-						<div class="on-surface-variant-text body-large">Switch to dark mode</div>
+			</div>
+		</button>
+	{:else}
+		<button  on:click={switchTheme}>
+			<div class="ellipse">
+				<div class="icon-text-position">
+					<div class="icon">
+						<span class="theme-material-symbols-outlined-small on-surface-variant-text">
+							dark_mode
+						</span>
 					</div>
+					<div class="on-surface-variant-text body-large">Switch to dark mode</div>
 				</div>
-			</button>
-		{/if}
-	</form>
+			</div>
+		</button>
+	{/if}
+{:else if $theme == 'dark'}
+	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+	<button on:click={switchTheme}>
+		<div class="circle outline-text">
+			<span class="theme-material-symbols-outlined on-surface-variant-text"> light_mode </span>
+		</div>
+	</button>
 {:else}
-	<form class="margin" action="" method="POST">
-		{#if $theme == 'dark'}
-			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-			<button formaction="/?/setTheme&theme=light&redirectTo={$page.url.pathname}">
-				<div class="circle outline-text">
-					<span class="theme-material-symbols-outlined on-surface-variant-text"> light_mode </span>
-				</div>
-			</button>
-		{:else}
-			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-			<button formaction="/?/setTheme&theme=dark&redirectTo={$page.url.pathname}">
-				<div class="circle outline-text">
-					<span class="theme-material-symbols-outlined on-surface-variant-text"> dark_mode </span>
-				</div>
-			</button>
-		{/if}
-	</form>
+	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+	<button on:click={switchTheme}>
+		<div class="circle outline-text">
+			<span class="theme-material-symbols-outlined on-surface-variant-text"> dark_mode </span>
+		</div>
+	</button>
 {/if}
 
 <style>

@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import '../app.css';
 	import {
 		mouseOver,
@@ -34,7 +35,7 @@
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));
-	theme.set(data.theme)
+		
 
 	async function close_event_handler() {
 		const changes = await areThereAnyChanges($newData, $oldData);
@@ -99,7 +100,9 @@
 		}
 	}
 </script>
+
 <svelte:head>
+	<script src="src/lib/scripts/theme/setTheme.js"></script>
 	<title>RepeatApp</title>
 </svelte:head>
 <svelte:window on:beforeunload={close_event_handler} on:click={clickHandler} />

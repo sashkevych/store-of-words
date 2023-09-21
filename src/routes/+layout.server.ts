@@ -5,7 +5,6 @@ import { work } from '$lib/scripts/data-for-test/work-log.js';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load(event) {
-	const theme = event.locals.theme;
 	// const data = await loadWeeklyRepeats();
 	// const today = await loadAlsoTodayRepeats();
 	// const workLog = await loadWorkLog();
@@ -14,7 +13,6 @@ export async function load(event) {
 	const today = alsoToday;
 	const workLog = work;
 	return {
-		theme,
 		weeklyRepeats: JSON.stringify(data.sort((a, b) => a.repeat.count - b.repeat.count)),
 		alsoTodayRepeats: JSON.stringify(today),
 		workLog: JSON.stringify(workLog)
