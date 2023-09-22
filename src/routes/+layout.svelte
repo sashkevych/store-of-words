@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import '../app.css';
 	import {
 		mouseOver,
@@ -101,7 +101,7 @@
 </script>
 
 <svelte:head>
-	<script src="src/lib/scripts/theme/setTheme.js"></script>
+	<script src="{$page.url.origin}/src/lib/scripts/theme/setTheme.js"></script>
 	<title>RepeatApp</title>
 </svelte:head>
 <svelte:window on:beforeunload={close_event_handler} on:click={clickHandler} />
