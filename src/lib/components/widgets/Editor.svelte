@@ -18,7 +18,7 @@
 <div id="editor">
 	<div class="editor-box">
 		{#if isWeekly}
-			<div class="headline-large on-surface-text header-text">{box.repeat.label} repeat</div>
+			<div class="headline-large on-surface-text">{box.repeat.label} repeat</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
 					<div class="sentence body-large on-surface-text">
@@ -40,7 +40,7 @@
 			</div>
 		{/if}
 		{#if isAlsoToday}
-			<div class="headline-large on-surface-text header-text">{box.repeat.date.value}</div>
+			<div class="headline-large on-surface-text">{box.repeat.date.value}</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
 					<div class="sentence body-large on-surface-text">
@@ -60,7 +60,7 @@
 			</div>
 		{/if}
 		{#if isWorkLog}
-			<div class="headline-large on-surface-text header-text">Work log</div>
+			<div class="headline-large on-surface-text">Work log</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
 					<div class="sentence body-large on-surface-text">
