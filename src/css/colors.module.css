@@ -1,309 +1,413 @@
 .primary {
   background-color: var(--md-sys-color-primary);
+  transition: background-color 0.1s ease; 
 }
 .primary-2 {
   background-color: var(--md-sys-color-primary-2);
+  transition: background-color 0.1s ease; 
 }
 .primary-text {
   color: var(--md-sys-color-primary);
+  transition: background-color 0.1s ease; 
 }
 .on-primary {
   background-color: var(--md-sys-color-on-primary);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-text {
   color: var(--md-sys-color-on-primary);
+  transition: background-color 0.1s ease; 
 }
 .primary-container {
   background-color: var(--md-sys-color-primary-container);
+  transition: background-color 0.1s ease; 
 }
 .primary-container-text {
   color: var(--md-sys-color-primary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-container {
   background-color: var(--md-sys-color-on-primary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-container-text {
   color: var(--md-sys-color-on-primary-container);
+  transition: background-color 0.1s ease; 
 }
 .primary-fixed {
   background-color: var(--md-sys-color-primary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .primary-fixed-text {
   color: var(--md-sys-color-primary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-fixed {
   background-color: var(--md-sys-color-on-primary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-fixed-text {
   color: var(--md-sys-color-on-primary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .primary-fixed-dim {
   background-color: var(--md-sys-color-primary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .primary-fixed-dim-text {
   color: var(--md-sys-color-primary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-fixed-variant {
   background-color: var(--md-sys-color-on-primary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .on-primary-fixed-variant-text {
   color: var(--md-sys-color-on-primary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .secondary {
   background-color: var(--md-sys-color-secondary);
+  transition: background-color 0.1s ease; 
 }
 .secondary-text {
   color: var(--md-sys-color-secondary);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary {
   background-color: var(--md-sys-color-on-secondary);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-text {
   color: var(--md-sys-color-on-secondary);
+  transition: background-color 0.1s ease; 
 }
 .secondary-container {
   background-color: var(--md-sys-color-secondary-container);
+  transition: background-color 0.1s ease; 
 }
 .secondary-container-2 {
   background-color: var(--md-sys-color-secondary-container-2);
+  transition: background-color 0.1s ease; 
 }
 .secondary-container-text {
   color: var(--md-sys-color-secondary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-container {
   background-color: var(--md-sys-color-on-secondary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-container-text {
   color: var(--md-sys-color-on-secondary-container);
+  transition: background-color 0.1s ease; 
 }
 .secondary-fixed {
   background-color: var(--md-sys-color-secondary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .secondary-fixed-text {
   color: var(--md-sys-color-secondary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-fixed {
   background-color: var(--md-sys-color-on-secondary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-fixed-text {
   color: var(--md-sys-color-on-secondary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .secondary-fixed-dim {
   background-color: var(--md-sys-color-secondary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .secondary-fixed-dim-text {
   color: var(--md-sys-color-secondary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-fixed-variant {
   background-color: var(--md-sys-color-on-secondary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .on-secondary-fixed-variant-text {
   color: var(--md-sys-color-on-secondary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .tertiary {
   background-color: var(--md-sys-color-tertiary);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-text {
   color: var(--md-sys-color-tertiary);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary {
   background-color: var(--md-sys-color-on-tertiary);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-text {
   color: var(--md-sys-color-on-tertiary);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-container {
   background-color: var(--md-sys-color-tertiary-container);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-container-text {
   color: var(--md-sys-color-tertiary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-container {
   background-color: var(--md-sys-color-on-tertiary-container);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-container-text {
   color: var(--md-sys-color-on-tertiary-container);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-fixed {
   background-color: var(--md-sys-color-tertiary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-fixed-text {
   color: var(--md-sys-color-tertiary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-fixed {
   background-color: var(--md-sys-color-on-tertiary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-fixed-text {
   color: var(--md-sys-color-on-tertiary-fixed);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-fixed-dim {
   background-color: var(--md-sys-color-tertiary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .tertiary-fixed-dim-text {
   color: var(--md-sys-color-tertiary-fixed-dim);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-fixed-variant {
   background-color: var(--md-sys-color-on-tertiary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .on-tertiary-fixed-variant-text {
   color: var(--md-sys-color-on-tertiary-fixed-variant);
+  transition: background-color 0.1s ease; 
 }
 .error {
   background-color: var(--md-sys-color-error);
+  transition: background-color 0.1s ease; 
 }
 .error-text {
   color: var(--md-sys-color-error);
+  transition: background-color 0.1s ease; 
 }
 .on-error {
   background-color: var(--md-sys-color-on-error);
+  transition: background-color 0.1s ease; 
 }
 .on-error-text {
   color: var(--md-sys-color-on-error);
+  transition: background-color 0.1s ease; 
 }
 .error-container {
   background-color: var(--md-sys-color-error-container);
+  transition: background-color 0.1s ease; 
 }
 .error-container-text {
   color: var(--md-sys-color-error-container);
+  transition: background-color 0.1s ease; 
 }
 .on-error-container {
   background-color: var(--md-sys-color-on-error-container);
+  transition: background-color 0.1s ease; 
 }
 .on-error-container-text {
   color: var(--md-sys-color-on-error-container);
+  transition: background-color 0.1s ease; 
 }
 .outline {
   background-color: var(--md-sys-color-outline);
+  transition: background-color 0.1s ease; 
 }
 .outline-text {
   color: var(--md-sys-color-outline);
+  transition: background-color 0.1s ease; 
 }
 .background {
   background-color: var(--md-sys-color-background);
+  transition: background-color 0.1s ease; 
 }
 .background-text {
   color: var(--md-sys-color-background);
+  transition: background-color 0.1s ease; 
 }
 .on-background {
   background-color: var(--md-sys-color-on-background);
+  transition: background-color 0.1s ease; 
 }
 .on-background-text {
   color: var(--md-sys-color-on-background);
+  transition: background-color 0.1s ease; 
 }
 .surface {
   background-color: var(--md-sys-color-surface);
+  transition: background-color 0.1s ease; 
 }
+
 .surface-text {
   color: var(--md-sys-color-surface);
+  transition: background-color 0.1s ease; 
 }
 .on-surface {
   background-color: var(--md-sys-color-on-surface);
+  transition: background-color 0.1s ease; 
 }
 .on-surface-2 {
   background-color: var(--md-sys-color-on-surface-2);
+  transition: background-color 0.1s ease; 
 }
 .on-surface-text {
   color: var(--md-sys-color-on-surface);
+  transition: background-color 0.1s ease; 
 }
 .surface-variant {
   background-color: var(--md-sys-color-surface-variant);
+  transition: background-color 0.1s ease; 
 }
 .surface-variant-2 {
   background-color: var(--md-sys-color-surface-variant-2);
+  transition: background-color 0.1s ease; 
 }
 .surface-variant-text {
   color: var(--md-sys-color-surface-variant);
+  transition: background-color 0.1s ease; 
 }
 .on-surface-variant {
   background-color: var(--md-sys-color-on-surface-variant);
+  transition: background-color 0.1s ease; 
 }
 .on-surface-variant-2 {
   background-color: var(--md-sys-color-on-surface-variant-2);
+  transition: background-color 0.1s ease; 
 }
 .on-surface-variant-text {
   color: var(--md-sys-color-on-surface-variant);
+  transition: background-color 0.1s ease; 
 }
 .inverse-surface {
   background-color: var(--md-sys-color-inverse-surface);
+  transition: background-color 0.1s ease; 
 }
 .inverse-surface-text {
   color: var(--md-sys-color-inverse-surface);
+  transition: background-color 0.1s ease; 
 }
 .inverse-on-surface {
   background-color: var(--md-sys-color-inverse-on-surface);
+  transition: background-color 0.1s ease; 
 }
 .inverse-on-surface-text {
   color: var(--md-sys-color-inverse-on-surface);
+  transition: background-color 0.1s ease; 
 }
 .inverse-primary {
   background-color: var(--md-sys-color-inverse-primary);
+  transition: background-color 0.1s ease; 
 }
 .inverse-primary-text {
   color: var(--md-sys-color-inverse-primary);
+  transition: background-color 0.1s ease; 
 }
 .shadow {
   background-color: var(--md-sys-color-shadow);
+  transition: background-color 0.1s ease; 
 }
 .shadow-text {
   color: var(--md-sys-color-shadow);
+  transition: background-color 0.1s ease; 
 }
 .surface-tint {
   background-color: var(--md-sys-color-surface-tint);
+  transition: background-color 0.1s ease; 
 }
 .surface-tint-text {
   color: var(--md-sys-color-surface-tint);
+  transition: background-color 0.1s ease; 
 }
 .outline-variant {
   background-color: var(--md-sys-color-outline-variant);
+  transition: background-color 0.1s ease; 
 }
 .outline-variant-text {
   color: var(--md-sys-color-outline-variant);
+  transition: background-color 0.1s ease; 
 }
 .scrim {
   background-color: var(--md-sys-color-scrim);
+  transition: background-color 0.1s ease; 
 }
 .scrim-text {
   color: var(--md-sys-color-scrim);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-highest {
   background-color: var(--md-sys-color-surface-container-highest);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-highest-text {
   color: var(--md-sys-color-surface-container-highest);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-high {
   background-color: var(--md-sys-color-surface-container-high);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-high-text {
   color: var(--md-sys-color-surface-container-high);
+  transition: background-color 0.1s ease; 
 }
 .surface-container {
   background-color: var(--md-sys-color-surface-container);
+  transition: background-color 0.2s ease; 
 }
 .surface-container-text {
   color: var(--md-sys-color-surface-container);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-low {
   background-color: var(--md-sys-color-surface-container-low);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-low-text {
   color: var(--md-sys-color-surface-container-low);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-lowest {
   background-color: var(--md-sys-color-surface-container-lowest);
+  transition: background-color 0.1s ease; 
 }
 .surface-container-lowest-text {
   color: var(--md-sys-color-surface-container-lowest);
+  transition: background-color 0.1s ease; 
 }
 .surface-bright {
   background-color: var(--md-sys-color-surface-bright);
+  transition: background-color 0.1s ease; 
 }
 .surface-bright-text {
   color: var(--md-sys-color-surface-bright);
+  transition: background-color 0.1s ease; 
 }
 .surface-dim {
   background-color: var(--md-sys-color-surface-dim);
+  transition: background-color 0.1s ease; 
 }
 .surface-dim-text {
   color: var(--md-sys-color-surface-dim);
+  transition: background-color 0.1s ease; 
 }
