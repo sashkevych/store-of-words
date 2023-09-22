@@ -100,5 +100,6 @@
 		justify-content: space-between;
 
 		border-radius: 0px 16px 16px 0px;
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	}
 </style>
