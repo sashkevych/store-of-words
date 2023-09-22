@@ -19,6 +19,7 @@
 }
 #work-log {
 	grid-area: work-log;
+	overflow: hidden;
 }
 #space {
 	grid-area: right-space;
