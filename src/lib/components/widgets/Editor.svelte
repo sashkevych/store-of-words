@@ -29,7 +29,7 @@
 							class="test"
 							contenteditable="true"
 							tabIndex="0"
-							bind:textContent={text}
+							bind:innerHTML={text}
 							on:input={callHMR}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:focus={() => onFocusDiv.set(true)}
@@ -50,7 +50,7 @@
 							{id}
 							class="test"
 							contenteditable="true"
-							bind:textContent={text}
+							bind:innerHTML={text}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
@@ -71,7 +71,7 @@
 							class="test"
 							contenteditable="true"
 							tabIndex="0"
-							bind:textContent={text}
+							bind:innerHTML={text}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
