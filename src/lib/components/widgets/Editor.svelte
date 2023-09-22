@@ -26,7 +26,6 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							{id}
-							class="test"
 							contenteditable="true"
 							tabIndex="0"
 							bind:innerHTML={text}
@@ -48,7 +47,6 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							{id}
-							class="test"
 							contenteditable="true"
 							bind:innerHTML={text}
 							on:mousedown={() => isOnClickHandler(box.box_id, id)}
@@ -68,7 +66,6 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							{id}
-							class="test"
 							contenteditable="true"
 							tabIndex="0"
 							bind:innerHTML={text}
