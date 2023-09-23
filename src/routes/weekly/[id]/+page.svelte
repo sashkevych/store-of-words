@@ -27,11 +27,26 @@
 			setTimeout(() => focusOnNewElement(box_id, sentence_id), 0);
 		}
 	}
+	function setFocusToEnd(element) {
+		// Focus the element
+		element.focus();
+
+		// Create a range object and set it to the end of the text
+		var range = document.createRange();
+		range.selectNodeContents(element);
+		range.collapse(false); // Collapse the range to the end
+
+		// Create a selection object and set it to the range
+		var selection = window.getSelection();
+		selection.removeAllRanges();
+		selection.addRange(range);
+	}
 	function focusOnNewElement(box_id, sentence_id) {
 		const parent = document.getElementById(box_id);
 		var lastChild = parent.lastElementChild?.lastElementChild;
 		isFocusDiv.set({ event: true, box_id, sentence_id });
-		lastChild.focus();
+		// lastChild.focus();
+		setFocusToEnd(lastChild);
 	}
 	async function key_down_handler(event, store) {
 		const { key } = event;

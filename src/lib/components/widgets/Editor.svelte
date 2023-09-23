@@ -21,12 +21,7 @@
 			<div class="headline-large on-surface-text">{box.repeat.label} repeat</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
-					<div
-						role="button"
-						tabindex="0"
-						on:mousedown={() => isOnClickHandler(box.box_id, id)}
-						class="sentence body-large on-surface-text"
-					>
+					<div class="sentence body-large on-surface-text">
 						<div>{id}.</div>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
@@ -34,6 +29,7 @@
 							contenteditable="true"
 							tabIndex="0"
 							bind:innerHTML={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:input={callHMR}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
@@ -46,18 +42,14 @@
 			<div class="headline-large on-surface-text">{box.repeat.date.value}</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
-					<div
-						class="sentence body-large on-surface-text"
-						role="button"
-						tabindex="0"
-						on:mousedown={() => isOnClickHandler(box.box_id, id)}
-					>
+					<div class="sentence body-large on-surface-text">
 						<div>{id}.</div>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							{id}
 							contenteditable="true"
 							bind:innerHTML={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 						/>
@@ -69,12 +61,7 @@
 			<div class="headline-large on-surface-text">Work log</div>
 			<div id={box.box_id} class="distance">
 				{#each box.sentences as { text, id }}
-					<div
-						class="sentence body-large on-surface-text"
-						role="button"
-						tabindex="0"
-						on:mousedown={() => isOnClickHandler(box.box_id, id)}
-					>
+					<div class="sentence body-large on-surface-text">
 						<div>{id}.</div>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
@@ -82,6 +69,7 @@
 							contenteditable="true"
 							tabIndex="0"
 							bind:innerHTML={text}
+							on:mousedown={() => isOnClickHandler(box.box_id, id)}
 							on:focus={() => onFocusDiv.set(true)}
 							on:blur={() => onFocusDiv.set(false)}
 						/>
@@ -95,5 +83,6 @@
 <style>
 	[contenteditable] {
 		line-break: anywhere;
+		width: 100%;
 	}
 </style>
