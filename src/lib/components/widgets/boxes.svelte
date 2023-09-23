@@ -7,6 +7,8 @@
 	export let horizontal = false;
 	export let vertical = false;
 
+	export let shouldApplyTransition = true;
+
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
 	import { onMount } from 'svelte';
@@ -101,9 +103,15 @@
 		</div>
 	</div>
 {/if}
-
 {#if vertical && ready}
-	<div class="surface-container weekly-widget" transition:fly={{ y: -4, delay: 400 }}>
+	<div
+		class="surface-container weekly-widget"
+		transition:fly={{
+			y: -4,
+			delay: shouldApplyTransition ? 400 : 0,
+			duration: shouldApplyTransition ? 350 : 0
+		}}
+	>
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
 				<a
