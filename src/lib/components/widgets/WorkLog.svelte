@@ -12,7 +12,7 @@
 				{#each $workLog[0].sentences as { text, id }}
 					<div class="sentence-position body-small on-secondary-container-text header-position margin-right">
 						<div>{id}.</div>
-						<div>{text}</div>
+						<div>{@html text}</div>
 					</div>
 				{/each}
 			</div>
