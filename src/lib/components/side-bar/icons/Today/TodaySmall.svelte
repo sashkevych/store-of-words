@@ -1,5 +1,4 @@
 <script>
-	import ArrowForward from '../ArrowForward.svelte';
 	import { isExtraMenu, extraMenuData, extraDataIs, alsoToday } from '../../../../../store';
 	function goFurther(data, whichData) {
 		isExtraMenu.set(true);
@@ -20,7 +19,7 @@
 			<span class="on-surface-variant-text small-material-symbols-outlined">event</span>
 			<div id="icon-label" class="title-medium on-surface-variant-text">Also today</div>
 		</div>
-		<ArrowForward />
+		<span class="material-symbols-outlined on-surface-variant-text arrow-forward"> arrow_forward </span>		
 	</div>
 </div>
 
@@ -31,7 +30,7 @@
 	.small-icon-container:hover {
 		background-color: var(--md-sys-color-surface-variant-2);
 	}
-	.small-icon-container:hover .small-material-symbols-outlined {
+	.small-icon-container:hover :is(.small-material-symbols-outlined, .arrow-forward) {
 		font-variation-settings: 'FILL' 1;
 		font-weight: 600;
 		transition: font-weight 0.1s ease;
