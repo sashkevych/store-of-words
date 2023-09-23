@@ -172,10 +172,13 @@
 		white-space: normal;
 		border-radius: 24px;
 
-		transition: border-radius 0.3s ease-in-out;
+		transition: transform 0.1s, border-radius 0.3s ease-in-out;
+
 		flex: 0 0 auto;
 	}
-
+	.repeat-box:active {
+		transform: scale(0.98);
+	}
 	.repeat-box:hover {
 		border-radius: 48px;
 		/* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
@@ -185,13 +188,14 @@
 		font-weight: 500;
 	}
 
+	/* Vertical */
 	.repeat-box-vertical {
 		width: 100%;
 		height: 140px;
 
 		overflow: hidden;
 		border-radius: 24px;
-		transition: border-radius 0.3s ease-in-out;
+		transition: transform 0.1s, border-radius 0.3s ease-in-out;
 	}
 	.repeat-box-vertical:hover {
 		border-radius: 48px;
@@ -200,4 +204,8 @@
 	.repeat-box-vertical:hover .header-position {
 		font-weight: 500;
 	}
+	.repeat-box-vertical:active {
+		transform: scale(0.98);
+	}
+	
 </style>

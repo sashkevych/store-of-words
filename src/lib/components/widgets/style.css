@@ -107,7 +107,10 @@ WorkLog
 .work-log-sentences-bg {
 	width: 100%;
 	border-radius: 24px;
-	transition: border-radius 0.3s ease-in-out;
+	transition: transform 0.1s, border-radius 0.3s ease-in-out;
+}
+.work-log-sentences-bg:active {
+	transform: scale(0.98);
 }
 .work-log-sentences-bg:hover {
 	border-radius: 48px;
