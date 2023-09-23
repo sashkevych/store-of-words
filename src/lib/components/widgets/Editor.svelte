@@ -81,4 +81,7 @@
 </div>
 
 <style>
+	[contenteditable] {
+		line-break: anywhere;
+	}
 </style>
