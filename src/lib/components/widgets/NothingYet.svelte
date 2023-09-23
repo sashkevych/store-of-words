@@ -1,7 +1,15 @@
 <script>
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
+
 	export let widget = false;
 
 	$: style = widget ? 'home-widget surface-container-low' : 'nothing-yet surface-container';
+
+	var ready = false;
+	onMount(() => {
+		ready = true;
+	});
 </script>
 
 <div class={style}>
@@ -10,12 +18,14 @@
 			<div class="headline-small on-surface-text">Also today</div>
 		</div>
 	{/if}
-	<div class="test">
-		<div class="position">
-			<div class="title-large on-surface-text">Nothing yet</div>
-			<span class="material-symbols-schedule on-surface-text"> schedule </span>
+	{#if ready}
+		<div class="test" transition:fly={{ y: 2, delay: 400 }}>
+			<div class="position">
+				<div class="title-large on-surface-text">Nothing yet</div>
+				<span class="material-symbols-schedule on-surface-text"> schedule </span>
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style>
@@ -52,7 +62,5 @@
 		height: 100%;
 		padding-top: 1px;
 		margin-top: -1px;
-
-		border-left: 1px solid var(--md-sys-color-outline-variant);
 	}
 </style>

@@ -9,6 +9,8 @@
 
 	import { createBox } from '$lib/scripts/newbox';
 	import { create7DayRep } from '$lib/scripts/sevenrep';
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 
 	async function sendPost(content) {
 		await fetch('http://localhost:5173/gcp', {
@@ -38,6 +40,11 @@
 
 		sendPost({ day7: new7DayBox, week1: newBox });
 	}
+
+	var ready = false;
+	onMount(() => {
+		ready = true;
+	});
 </script>
 
 {#if horizontal}
@@ -95,8 +102,8 @@
 	</div>
 {/if}
 
-{#if vertical}
-	<div class="surface-container weekly-widget">
+{#if vertical && ready}
+	<div class="surface-container weekly-widget" transition:fly={{ y: -4, delay: 400 }}>
 		{#each weeklyRepeats as { sentences, repeat, box_id }}
 			{#if isWeekly}
 				<a
@@ -148,10 +155,10 @@
 		font-weight: 500;
 	}
 
-	.move-all:active > div > div{
+	.move-all:active > div > div {
 		font-weight: 300;
 	}
-	
+
 	.repeat-box {
 		width: 200px;
 		white-space: normal;

@@ -4,16 +4,24 @@
 	import NothingYet from './NothingYet.svelte';
 	import { alsoToday } from '../../../store';
 
+	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	var ready = false;
+	onMount(() => {
+		ready = true;
+	});
 	let weeklyRepeats = [];
 	alsoToday.subscribe((vl) => (weeklyRepeats = vl));
 
 	const isAlsoToday = true;
 </script>
 
-<div id="also-today">
-	{#if weeklyRepeats[0]}
-		<Boxes {weeklyRepeats} label={'Also today'} horizontal={true} {isAlsoToday} />
-	{:else}
-		<NothingYet widget={true}/>
-	{/if}
-</div>
+{#if ready}
+	<div id="also-today" transition:fly={{ y: 2, delay: 200 }}>
+		{#if weeklyRepeats[0]}
+			<Boxes {weeklyRepeats} label={'Also today'} horizontal={true} {isAlsoToday} />
+		{:else}
+			<NothingYet widget={true} />
+		{/if}
+	</div>
+{/if}

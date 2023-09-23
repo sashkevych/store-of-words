@@ -5,11 +5,13 @@
 	import AlsoToday from '$lib/components/widgets/AlsoToday.svelte';
 	import WorkLog from '$lib/components/widgets/WorkLog.svelte';
 </script>
+
 <div class="container surface">
 	<SideBar />
 	<Data />
 	<Weekly />
 	<AlsoToday />
 	<WorkLog />
+
 	<div id="space" />
 </div>
