@@ -2,8 +2,6 @@
 	import { theme } from '../../../../store';
 	import { switchTheme } from '$lib/scripts/theme/switcher';
 	export let small = false;
-
-	
 </script>
 
 {#if small}
@@ -16,12 +14,12 @@
 							light_mode
 						</span>
 					</div>
-					<div class="on-surface-variant-text body-large">Switch to light mode</div>
+					<div class="nowrap on-surface-variant-text body-large">Switch to light mode</div>
 				</div>
 			</div>
 		</button>
 	{:else}
-		<button  on:click={switchTheme}>
+		<button on:click={switchTheme}>
 			<div class="ellipse">
 				<div class="icon-text-position">
 					<div class="icon">
@@ -29,7 +27,7 @@
 							dark_mode
 						</span>
 					</div>
-					<div class="on-surface-variant-text body-large">Switch to dark mode</div>
+					<div class="nowrap on-surface-variant-text body-large">Switch to dark mode</div>
 				</div>
 			</div>
 		</button>
@@ -51,6 +49,9 @@
 {/if}
 
 <style>
+	.nowrap {
+		white-space: nowrap;
+	}
 	/* Small */
 
 	.icon-text-position {

@@ -33,10 +33,13 @@
 	tabindex="0"
 >
 	<span class="on-surface-variant-text small-material-symbols-outlined">note</span>
-	<div id="icon-label" class="title-medium on-surface-variant-text">Work log</div>
+	<div id="icon-label" class="nowrap title-medium on-surface-variant-text">Work log</div>
 </a>
 
 <style>
+	.nowrap {
+		white-space: nowrap;
+	}
 	.small-icon-container {
 		border-radius: 100px;
 	}

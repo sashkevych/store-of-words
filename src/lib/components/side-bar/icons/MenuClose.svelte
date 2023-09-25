@@ -13,6 +13,9 @@
 		justify-content: center;
 		cursor: pointer;
 	}
+	.menu-container:active .material-menu-close{
+		font-weight: 300 !important;
+	}
 	.menu-container:hover {
 		background-color: var(--md-sys-color-surface-variant-2);
 	}

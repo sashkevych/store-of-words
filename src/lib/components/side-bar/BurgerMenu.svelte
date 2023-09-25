@@ -10,7 +10,8 @@
 	import WorkLog from './icons/WorkLog/Work-log.svelte';
 
 	import { isExtraMenu, visible, mouseOver, mouseLeave } from '../../../store';
-
+	import { fade, slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	function toggleView() {
 		visible.set(!$visible);
 	}
@@ -37,11 +38,7 @@
 	on:mouseover={onMouseOver}
 	on:mouseleave={onMouseLeave}
 >
-	{#if $visible}
-		<MenuOpen />
-	{:else}
-		<MenuClose />
-	{/if}
+	<MenuClose />
 </div>
 
 {#if $visible}
@@ -52,9 +49,11 @@
 		tabindex="0"
 		on:mouseover={onMouseOver}
 		on:mouseleave={onMouseLeave}
+		in:slide={{ delay: 50, duration: 350, easing: quintOut, axis: 'x' }}
+		out:slide={{ delay: 0, duration: 250, easing: quintOut, axis: 'x' }}
 	>
 		<div>
-				<MenuOpen />
+			<MenuOpen />
 
 			<div class="nav-position">
 				{#if $isExtraMenu}
@@ -69,26 +68,13 @@
 		</div>
 
 		<div class="theme-small">
-			<Theme small={true}/>
+			<Theme small={true} />
 		</div>
 	</div>
+	<div in:fade={{ duration: 350 }} out:fade={{ duration: 250 }} class="background" />
 {/if}
 
 <style>
-	.nav-position {
-		margin-top: 42px;
-		margin-left:5px;
-		margin-right: 10px;
-	}
-	
-	.menu-position {
-		display: flex;
-		height: 100%;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-	}
-
 	.open-menu {
 		height: 100vh;
 		width: 320px;
@@ -101,5 +87,29 @@
 
 		border-radius: 0px 16px 16px 0px;
 		box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+		z-index: 4;
+	}
+	.background {
+		position: absolute;
+		top: 0;
+		height: 100vh;
+		width: 100vw;
+		background-color: rgba(0, 0, 0, 0.32);
+
+		z-index: 2;
+	}
+	.nav-position {
+		margin-top: 42px;
+		margin-left: 5px;
+		margin-right: 10px;
+	}
+
+	.menu-position {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

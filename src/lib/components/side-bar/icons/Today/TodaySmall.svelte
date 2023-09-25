@@ -17,13 +17,18 @@
 	<div class="nav-small small-icon-container">
 		<div class="devider">
 			<span class="on-surface-variant-text small-material-symbols-outlined">event</span>
-			<div id="icon-label" class="title-medium on-surface-variant-text">Also today</div>
+			<div id="icon-label" class="nowrap title-medium on-surface-variant-text">Also today</div>
 		</div>
-		<span class="material-symbols-outlined on-surface-variant-text arrow-forward"> arrow_forward </span>		
+		<span class="material-symbols-outlined on-surface-variant-text arrow-forward">
+			arrow_forward
+		</span>
 	</div>
 </div>
 
 <style>
+	.nowrap {
+		white-space: nowrap;
+	}
 	.small-icon-container {
 		border-radius: 100px;
 	}
@@ -58,7 +63,6 @@
 		justify-content: center;
 		align-items: center;
 	}
-	
 
 	.devider {
 		padding-left: 16px;
