@@ -15,15 +15,18 @@
 
 		const Text = storeValue
 			.find((box) => box.box_id == box_id)
-			.sentences.find((sen) => sen.id == sentence_id).text;
+			.sentences.find((sen) => sen.id == sentence_id)?.text;
 		if (!Text) {
 			store.update((value) => {
 				console.log('update');
 				const box = value.find((box) => box.box_id == box_id);
+				if (box.sentences.length == 1) return value;
 				const newSentences = box.sentences.filter((sentence) => sentence.text);
+
 				box.sentences = newSentences;
 				return value;
 			});
+
 			setTimeout(() => focusOnNewElement(box_id, sentence_id), 0);
 		}
 	}
@@ -44,7 +47,7 @@
 	function focusOnNewElement(box_id, sentence_id) {
 		const parent = document.getElementById(box_id);
 		var lastChild = parent.lastElementChild?.lastElementChild;
-		isFocusDiv.set({ event: true, box_id, sentence_id });
+		isFocusDiv.set({ event: true, box_id, sentence_id: sentence_id - 1 });
 		// lastChild.focus();
 		setFocusToEnd(lastChild);
 	}
