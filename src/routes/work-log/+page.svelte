@@ -9,21 +9,31 @@
 
 	const isWorkLog = true;
 
+	function fixIds(sentences) {
+		return sentences.map((el, i) => {
+			el.id = i + 1;
+
+			return el;
+		});
+	}
 	function deleteBoxIfEmpty(box_id, sentence_id, store) {
 		let storeValue;
 		store.subscribe((value) => (storeValue = value));
 
 		const Text = storeValue
 			.find((box) => box.box_id == box_id)
-			.sentences.find((sen) => sen.id == sentence_id).text;
+			.sentences.find((sen) => sen.id == sentence_id)?.text;
 		if (!Text) {
 			store.update((value) => {
 				console.log('update');
 				const box = value.find((box) => box.box_id == box_id);
+				if (box.sentences.length == 1) return value;
 				const newSentences = box.sentences.filter((sentence) => sentence.text);
-				box.sentences = newSentences;
+
+				box.sentences = fixIds(newSentences);
 				return value;
 			});
+
 			setTimeout(() => focusOnNewElement(box_id, sentence_id), 0);
 		}
 	}
@@ -67,49 +77,6 @@
 		} else if (key == 'Backspace') {
 			deleteBoxIfEmpty(box_id, sentence_id, store);
 		}
-	}
-
-	async function areThereAnyChanges(newArr, oldArr) {
-		const changes = removeWhiteSpace(newArr).filter((el, i) => {
-			const el1 = el.sentences;
-			const el2 = oldArr[i].sentences;
-
-			const isAnyChange = el1.some((el, i, arr) => {
-				if (!el2[i]?.text) return true;
-				if (!el.text) return true;
-				if (el2[i + 1]?.text && !arr[i + 1]?.text) return true;
-				if (el.text != el2[i].text) return true;
-				return false;
-			});
-
-			if (isAnyChange) return el;
-		});
-
-		return changes;
-	}
-
-	function removeWhiteSpace(newArr) {
-		const res = newArr.filter((box) => {
-			const onlyWithText = box.sentences.filter((sentence, i, arr) => {
-				// fix id
-				const IsEmpty = sentence.text.trim();
-
-				sentence.text = IsEmpty;
-				return IsEmpty;
-			});
-			onlyWithText.forEach((sentence, index, arr) => {
-				sentence.id = index + 1;
-			});
-			box.sentences = onlyWithText;
-
-			return box;
-		});
-		console.log('white space', res);
-		return res;
-	}
-	async function test() {
-		const res = await areThereAnyChanges($workLog, $oldWorkLog);
-		console.log(res);
 	}
 </script>
 

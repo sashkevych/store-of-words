@@ -8,7 +8,7 @@
 	import SideBar from '$lib/components/side-bar/SideBar.svelte';
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
-
+	
 	function fixIds(sentences) {
 		return sentences.map((el, i) => {
 			el.id = i + 1;
