@@ -20,7 +20,6 @@
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(addLabels(JSON.parse(data.weeklyRepeats)));
-	console.log('$newData',$newData);
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));

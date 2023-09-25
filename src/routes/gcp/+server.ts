@@ -4,8 +4,10 @@ import { redis } from '$lib/redis/redis';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-	const { day7, week1 } = await request.json();
+	const { day7, week1, newData } = await request.json();
 
+	
+	redis.set('weekly', JSON.stringify(newData), 'EX', 6000);
 	await moveAll(day7, week1);
 
 	return json(1 + 1);

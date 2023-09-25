@@ -8,8 +8,9 @@ function label(count) {
 	if (count == 7) return 'Seventh';
 }
 export function addLabels(boxes) {
-	return boxes.map((box) => {
+	const res = boxes.map((box) => {
 		box.repeat.label = label(box.repeat.count);
 		return box;
 	});
+	return res;
 }

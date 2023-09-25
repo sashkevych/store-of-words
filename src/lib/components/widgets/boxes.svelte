@@ -26,7 +26,6 @@
 	}
 
 	function moveAll(weeklyRepeats) {
-		console.log('move all', weeklyRepeats);
 		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
@@ -38,12 +37,12 @@
 		const new7DayBox = create7DayRep(lastBox);
 		const newBox = createBox();
 		newWeeklyRepeats.unshift(newBox);
-		const labeledRepeats = addLabels(newWeeklyRepeats)
 
-		console.log('newWeeklyRepeats', labeledRepeats);
-		// newData.set(newWeeklyRepeats);
+		const labeledRepeats = addLabels(newWeeklyRepeats);
 
-		// sendPost({ day7: new7DayBox, week1: newBox });
+		newData.set(labeledRepeats);
+
+		sendPost({ day7: new7DayBox, week1: newBox, newData: labeledRepeats  });
 	}
 
 	var ready = false;
