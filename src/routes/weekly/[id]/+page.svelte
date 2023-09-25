@@ -9,6 +9,13 @@
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
+	function fixIds(sentences) {
+		return sentences.map((el, i) => {
+			el.id = i + 1;
+
+			return el;
+		});
+	}
 	function deleteBoxIfEmpty(box_id, sentence_id, store) {
 		let storeValue;
 		store.subscribe((value) => (storeValue = value));
@@ -23,7 +30,7 @@
 				if (box.sentences.length == 1) return value;
 				const newSentences = box.sentences.filter((sentence) => sentence.text);
 
-				box.sentences = newSentences;
+				box.sentences = fixIds(newSentences);
 				return value;
 			});
 
