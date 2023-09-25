@@ -4,7 +4,6 @@
 	export let box;
 
 	function isOnClickHandler(box_id, sentence_id) {
-		console.log('isOnClickHandler');
 		isFocusDiv.set({ event: true, box_id, sentence_id });
 	}
 

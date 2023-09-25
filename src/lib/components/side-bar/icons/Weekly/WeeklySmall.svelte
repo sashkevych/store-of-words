@@ -1,33 +1,10 @@
 <script>
 	import { isExtraMenu, extraMenuData, extraDataIs, newData } from '../../../../../store';
 	function goFurther(data, whichData) {
-		console.log('goFurther');
 		isExtraMenu.set(true);
 		extraDataIs.set(whichData);
 		extraMenuData.set(data);
 	}
-
-	// import { visible, selected } from '../../../../../store';
-
-	// const name = 'home';
-
-	// var newHower = '',
-	// 	clicked = '';
-
-	// function changeCallBack(selected, name) {
-	// 	clicked = selected == name ? 'clicked' : '';
-	// }
-
-	// function clickHandler(name, visibleLastValue) {
-	// 	selected.set(name);
-	// 	visible.set(!visibleLastValue);
-	// 	clicked = 'clicked';
-	// 	newHower = 'clicked-hover-icon';
-	// }
-	// function mouseEvent() {
-	// 	newHower = clicked ? '' : 'clicked-hover-icon';
-	// }
-	// $: changeCallBack($selected, name);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

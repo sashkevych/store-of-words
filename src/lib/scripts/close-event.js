@@ -1,10 +1,7 @@
 export async function close_event_handler(newData, oldData, workLog, oldWorkLog) {
 	const changes = await areThereAnyChanges(newData, oldData);
-	console.log('changes', changes);
 	const workLogChanges = await areThereAnyChanges(workLog, oldWorkLog);
 	if (changes[0]) {
-		console.log('updateWeekly CHANGES !', newData[0].sentences);
-
 		await sendPut(changes, 'updateWeekly', newData);
 	}
 	if (workLogChanges[0]) await sendPut(workLogChanges, 'updateWorkLog', workLog);
@@ -50,7 +47,6 @@ function areThereAnyChanges(newArr, oldArr) {
 }
 
 async function sendPut(changes, action, content) {
-	console.log('sendPut', content);
 	await fetch(`http://localhost:5173/gcp/?action=${action}`, {
 		method: 'PUT',
 		headers: {

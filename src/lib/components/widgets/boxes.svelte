@@ -15,6 +15,7 @@
 	import { fly } from 'svelte/transition';
 
 	import { addLabels } from '$lib/scripts/addLables';
+
 	async function sendPost(content) {
 		await fetch('http://localhost:5173/gcp', {
 			method: 'POST',
@@ -24,7 +25,6 @@
 			}
 		});
 	}
-
 	function moveAll(weeklyRepeats) {
 		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {

@@ -1,6 +1,5 @@
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
-	console.time('LOAD');
 
 	let theme: string | null = null;
 
@@ -14,17 +13,13 @@ export async function handle({ event, resolve }) {
 	}
 
 	event.locals.theme = theme
-	if (theme) {
-		console.log('theme');
-        
+	if (theme) {        
 		const response = await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('data-theme=""', `data-theme="${theme}"`)
 		});
-		console.timeEnd('LOAD');
 		return response
 	}
 
 	const response = await resolve(event);
-	console.timeEnd('LOAD');
 	return response;
 }

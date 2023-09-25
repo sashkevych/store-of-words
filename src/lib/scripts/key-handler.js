@@ -6,7 +6,6 @@ function fixIds(sentences) {
 	});
 }
 function deleteBoxIfEmpty(box_id, sentence_id, store, focusdDiv) {
-	console.log(box_id, sentence_id);
 	let storeValue;
 	store.subscribe((value) => (storeValue = value));
 
@@ -63,7 +62,6 @@ export async function key_down_handler(event, store, focusdDiv, onFocusDiv) {
 			return boxes;
 		});
 		focusdDiv.set({ event: true, box_id, sentence_id });
-		console.log(focusdDivStore);
 		setTimeout(() => focusOnNewElement(box_id, sentence_id, focusdDiv), 0);
 	} else if (key == 'Backspace') {
 		deleteBoxIfEmpty(box_id, sentence_id, store, focusdDiv);
