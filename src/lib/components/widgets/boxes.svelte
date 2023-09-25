@@ -42,7 +42,7 @@
 
 		newData.set(labeledRepeats);
 
-		sendPost({ day7: new7DayBox, week1: newBox, newData: labeledRepeats  });
+		sendPost({ day7: new7DayBox, week1: newBox, newData: labeledRepeats });
 	}
 
 	var ready = false;
@@ -66,7 +66,6 @@
 						</div>
 					</div>
 				</button>
-				<!-- <div><button on:click={() => moveAll($newData)}>Move all</button></div> -->
 			{/if}
 		</div>
 		<div class="repeats-container">
@@ -127,7 +126,7 @@
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
-								<div class="text-hidden">{@html text}</div>
+								<div class="text-hidden-ver">{@html text}</div>
 							</div>
 						{/each}
 					</div>
@@ -142,7 +141,7 @@
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
-								<div class="text-hidden">{@html text}</div>
+								<div class="text-hidden-ver">{@html text}</div>
 							</div>
 						{/each}
 					</div>
@@ -153,6 +152,10 @@
 {/if}
 
 <style>
+	.text-hidden-ver {
+		width: 257px;
+		overflow: hidden;
+	}
 	.move-all {
 		cursor: pointer;
 	}
