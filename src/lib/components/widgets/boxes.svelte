@@ -14,6 +14,7 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
+	import { addLabels } from '$lib/scripts/addLables';
 	async function sendPost(content) {
 		await fetch('http://localhost:5173/gcp', {
 			method: 'POST',
@@ -37,8 +38,9 @@
 		const new7DayBox = create7DayRep(lastBox);
 		const newBox = createBox();
 		newWeeklyRepeats.unshift(newBox);
-		console.log('newWeeklyRepeats', newWeeklyRepeats);
+		const labeledRepeats = addLabels(newWeeklyRepeats)
 
+		console.log('newWeeklyRepeats', labeledRepeats);
 		// newData.set(newWeeklyRepeats);
 
 		// sendPost({ day7: new7DayBox, week1: newBox });
