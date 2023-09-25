@@ -11,7 +11,7 @@
 <div
 	class="position-with-arrow"
 	role="button"
-	on:click={() => goFurther($alsoToday, 'weekly')}
+	on:click={() => goFurther($alsoToday, 'also-today')}
 	tabindex="0"
 >
 	<div class="nav-small small-icon-container">

@@ -25,10 +25,7 @@
 						<a
 							on:click={() => clicHandler(box.repeat.label)}
 							href="/weekly/{box.repeat.label.toLowerCase()}"
-							><div
-								class="label on-surface-variant-text title-medium"
-								
-							>
+							><div class="nowrap label on-surface-variant-text title-medium">
 								{box.repeat.label} repeat
 							</div></a
 						>
@@ -36,11 +33,8 @@
 				{:else if $extraDataIs == 'also-today'}
 					<div class="distantion" class:clicked={$selected == box.box_id}>
 						<a on:click={() => clicHandler(box.box_id)} href="/also-today/{box.box_id}"
-							><div
-								class="label on-surface-variant-text title-medium"
-								
-							>
-								{box.repeat.data.value}
+							><div class="nowrap label on-surface-variant-text title-medium">
+								{box.repeat.date.value}
 							</div></a
 						>
 					</div>
@@ -51,7 +45,9 @@
 </div>
 
 <style>
-	
+	.nowrap {
+		white-space: nowrap;
+	}
 	.distantion {
 		padding-left: 16px;
 		padding-right: 16px;
@@ -64,11 +60,10 @@
 		border-radius: 100px;
 	}
 	.distantion:hover {
-		
 		background-color: var(--md-sys-color-surface-variant-2);
 	}
 	.distantion:hover > a > .label {
-		font-weight: 500;	
+		font-weight: 500;
 	}
 	.clicked {
 		background-color: var(--md-sys-color-on-surface-2);

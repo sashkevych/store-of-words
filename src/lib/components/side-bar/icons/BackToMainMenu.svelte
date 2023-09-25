@@ -9,10 +9,13 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="back-to-main-position" role="button" tabindex="0" on:click={closeExtraMenu}>
 	<span class="arrow-back on-surface-variant-text"> arrow_back </span>
-	<div id="icon-label" class="title-medium on-surface-variant-text">Main menu</div>
+	<div id="icon-label" class="nowrap title-medium on-surface-variant-text">Main menu</div>
 </div>
 
 <style>
+	.nowrap {
+		white-space: nowrap;
+	}
 	.back-to-main-position {
 		display: flex;
 		align-items: center;
