@@ -32,15 +32,16 @@
 
 	oldData.set(JSON.parse(data.weeklyRepeats));
 	newData.set(addLabels(JSON.parse(data.weeklyRepeats)));
+	console.log('$newData',$newData);
 	alsoToday.set(JSON.parse(data.alsoTodayRepeats));
 	workLog.set(JSON.parse(data.workLog));
 	oldWorkLog.set(JSON.parse(data.workLog));
 
-	async function close_event_handler() {
-		const changes = await areThereAnyChanges($newData, $oldData);
-		const workLogChanges = await areThereAnyChanges($workLog, $oldWorkLog);
-		if (changes[0]) await sendPut(changes, 'updateWeekly', $newData);
-		if (workLogChanges[0]) await sendPut(workLogChanges, 'updateWorkLog', $workLog);
+	async function close_event_handler(newData,oldData,workLog,oldWorkLog) {
+		const changes = await areThereAnyChanges(newData, oldData);
+		const workLogChanges = await areThereAnyChanges(workLog, oldWorkLog);
+		if (changes[0]) await sendPut(changes, 'updateWeekly', newData);
+		if (workLogChanges[0]) await sendPut(workLogChanges, 'updateWorkLog', workLog);
 
 		return null;
 	}
@@ -104,6 +105,6 @@
 	<script src="{$page.url.origin}/src/lib/scripts/theme/setTheme.js"></script>
 	<title>RepeatApp</title>
 </svelte:head>
-<svelte:window on:beforeunload={close_event_handler} on:click={clickHandler} />
+<svelte:window on:beforeunload={() => close_event_handler($newData,$oldData,$workLog,$oldWorkLog)} on:click={clickHandler} />
 
 <slot />

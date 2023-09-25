@@ -6,7 +6,7 @@ export function createBox() {
 		repeat: {
 			count: 1,
 			date: '2023-1-11',
-			type: 'weekly'
+			type: 'weekly',
 		},
 		created_at: new Date().toJSON(),
 		box_id: uuidv4()

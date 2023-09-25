@@ -25,22 +25,23 @@
 	}
 
 	function moveAll(weeklyRepeats) {
-		console.log('move all');
-		const lastBox = weeklyRepeats.find((el) => el.repeat.label == 7);
+		console.log('move all', weeklyRepeats);
+		const lastBox = weeklyRepeats.find((el) => el.repeat.count == 7);
 		let newWeeklyRepeats = weeklyRepeats.filter((el) => {
 			if (el.repeat.count != 7) {
 				el.repeat.count += 1;
 				return el;
 			}
 		});
-		const new7DayBox = create7DayRep(lastBox);
 
+		const new7DayBox = create7DayRep(lastBox);
 		const newBox = createBox();
 		newWeeklyRepeats.unshift(newBox);
+		console.log('newWeeklyRepeats', newWeeklyRepeats);
 
-		newData.set(newWeeklyRepeats);
+		// newData.set(newWeeklyRepeats);
 
-		sendPost({ day7: new7DayBox, week1: newBox });
+		// sendPost({ day7: new7DayBox, week1: newBox });
 	}
 
 	var ready = false;
@@ -54,7 +55,7 @@
 		<div class="headline-position">
 			<div class="headline-small on-surface-text">{label}</div>
 			{#if isWeekly}
-				<button class="move-all">
+				<button class="move-all" on:click={() => moveAll($newData)}>
 					<div class="primary" style="width: 100%; height: 100%;  border-radius: 100px;">
 						<div
 							style="align-self: stretch; flex: 1 1 0; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 8px; display: inline-flex"
@@ -207,5 +208,4 @@
 	.repeat-box-vertical:active {
 		transform: scale(0.98);
 	}
-	
 </style>

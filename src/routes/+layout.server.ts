@@ -5,11 +5,12 @@ import { weekly } from '$lib/scripts/data-for-test/weekly.js';
 import { work } from '$lib/scripts/data-for-test/work-log.js';
 
 async function getData(key, apiCall) {
-	const cached = await redis.get(key);
-	if (cached) return JSON.parse(cached);
+	// const cached = await redis.get(key);
+	// if (cached) return JSON.parse(cached);
 
 	const data = await apiCall();
-	redis.set(key, JSON.stringify(data), 'EX', 6000);
+	console.log(data)
+	// redis.set(key, JSON.stringify(data), 'EX', 6000);
 
 	return data;
 }
