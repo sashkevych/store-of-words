@@ -122,7 +122,7 @@
 					<div class="header-position title-medium on-secondary-container-text">
 						{repeat.label} repeat
 					</div>
-					<div class="max-width">
+					<div class="max-width max-height-ver">
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
@@ -137,7 +137,7 @@
 					<div class="header-position title-medium on-secondary-container-text">
 						{repeat.date.value}
 					</div>
-					<div class="max-width">
+					<div class="max-width max-height-ver">
 						{#each sentences as { id, text }}
 							<div class="sentence-position body-small on-secondary-container-text">
 								<div>{id}.</div>
@@ -152,6 +152,10 @@
 {/if}
 
 <style>
+	.max-height-ver {
+		height: 85px;
+		overflow: hidden;
+	}
 	.text-hidden-ver {
 		width: 257px;
 		overflow: hidden;
