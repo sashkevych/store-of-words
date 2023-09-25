@@ -4,17 +4,15 @@
 	import Editor from '$lib/components/widgets/Editor.svelte';
 	import DropMenu from '$lib/components/widgets/DropMenu.svelte';
 
-	import { oldData, newData, isFocusDiv, onFocusDiv } from '../../store';
-	import { page } from '$app/stores';
-	
+	import { newData } from '../../store';
 
-
-	const isWeekly = true
+	const isWeekly = true;
 </script>
+
 <div class="weekly surface">
 	<SideBar />
-	<DropMenu dataArray={$newData} {isWeekly}/>
-	<Data/>
+	<DropMenu dataArray={$newData} {isWeekly} />
+	<Data />
 	<div id="space" />
 </div>
 
