@@ -1,38 +1,13 @@
-# create-svelte
+# store-of-words
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+My local word manager for language learning.
 
-## Creating a project
+## Description
+My motivation to create this app started when i start learning English. 
+I started using one method for remembering words in context and it was as follows : 
+	1. Take a sentence , repeat the sentence twice a day for a week(read out loud)
+	2. Then a week break, and then one more time 2 times a day but only one day
+	3. Repeat point 2 again.
+I used Evernote and when the system grew, it was extremely inconvenient for management.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+I decided to solve this problem by creating this application where with the help of one button I can manage everything and not waste my time and all I have to do is repeat.
