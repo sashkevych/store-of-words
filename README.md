@@ -28,5 +28,6 @@ I decided to solve this problem by creating this application where with the help
 https://github.com/WIR1337/store-of-words/assets/104357788/a07b0f5d-7325-4fbf-9a2d-78884eb437dd
 
 #### Responsive and theme
-https://github.com/WIR1337/store-of-words/assets/104357788/02acea14-789f-4345-8b41-e9445a579b5e
+https://github.com/WIR1337/store-of-words/assets/104357788/b57783f1-6762-4c62-bb94-af01c705c79d
+
 
