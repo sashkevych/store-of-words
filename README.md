@@ -22,3 +22,7 @@ I decided to solve this problem by creating this application where with the help
 * Google BigQuery
 * Redis
 
+## App Preview
+
+https://github.com/WIR1337/store-of-words/assets/104357788/a07b0f5d-7325-4fbf-9a2d-78884eb437dd
+
