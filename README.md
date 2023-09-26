@@ -2,7 +2,8 @@
 
 My local word manager for language learning.
 
-## Description
+## Motivation
+
 My motivation to create this app started when i start learning English. 
 I started using one method for remembering words in context and it was as follows : 
 
@@ -13,3 +14,11 @@ I started using one method for remembering words in context and it was as follow
 I used Evernote and when the system grew, it was extremely inconvenient for management.
 
 I decided to solve this problem by creating this application where with the help of one button I can manage everything and not waste my time and all I have to do is repeat.
+
+## Stack
+
+* SvelteKit
+* Material Design 3
+* Google BigQuery
+* Redis
+
